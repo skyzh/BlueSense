@@ -15,9 +15,17 @@
           <a class="nav-link" (click)="getLast(60 * 12, 6)" href="javascript:">Last 12 hrs</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" (click)="getLast(30 * 6, 1)" href="javascript:">Last 3 hrs</a>
+          <a class="nav-link" (click)="getLast(30 * 6, 2)" href="javascript:">Last 3 hrs</a>
+        </li>
+        <li class="nav-item">
+          <span class="text-muted nav-link disabled">Last updated {{ lastRefresh | amTimeAgo }} ({{ lastRefresh | amDateFormat: "LLLL" }})</span>
         </li>
       </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      
     </div>
   </div>
 
@@ -63,6 +71,14 @@
                     (chartClick)="chartClicked($event)">
         </canvas>
       </div>
+    </div>
+    <div class="col-12 col-lg-6">
+      <p>Data are collected from Arduino at SkyZH's home.</p>
+      <p>Sensors &amp; Board:
+        <a href="https://www.arduino.cc/en/main/arduinoBoardMega2560">Mega 2560</a>,
+        <a href="https://www.adafruit.com/product/385">DHT22</a> and
+        <a href="https://item.taobao.com/item.htm?spm=a1z09.2.0.0.XsFTzL&id=525688561779&_u=s2frb8vp2678">PM2.5 Sensor</a>
+      </p>
     </div>
   </div>
 </div>

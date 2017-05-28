@@ -15,33 +15,34 @@ export class HomeComponent implements OnInit {
   private query$: Subject<number> = new Subject;
   private ready: Boolean = false;
   private split: number = 1;
+  private lastRefresh: number = 0;
   public lineChartOptions:any = {
     responsive: true
   };
   public lineChartColors:Array<any> = [
-    { // grey
-      backgroundColor: 'rgba(148,159,177,0.2)',
-      borderColor: 'rgba(148,159,177,1)',
-      pointBackgroundColor: 'rgba(148,159,177,1)',
+    {
+      backgroundColor: 'rgba(21,101,192,0.2)',
+      borderColor: 'rgba(21,101,192,1)',
+      pointBackgroundColor: 'rgba(21,101,192,1)',
       pointBorderColor: '#fff',
       pointHoverBackgroundColor: '#fff',
-      pointHoverBorderColor: 'rgba(148,159,177,0.8)'
+      pointHoverBorderColor: 'rgba(21,101,192,0.8)'
     },
-    { // dark grey
-      backgroundColor: 'rgba(77,83,96,0.2)',
-      borderColor: 'rgba(77,83,96,1)',
-      pointBackgroundColor: 'rgba(77,83,96,1)',
+    {
+      backgroundColor: 'rgba(63,81,181,0.2)',
+      borderColor: 'rgba(63,81,181,1)',
+      pointBackgroundColor: 'rgba(63,81,181,1)',
       pointBorderColor: '#fff',
       pointHoverBackgroundColor: '#fff',
-      pointHoverBorderColor: 'rgba(77,83,96,1)'
+      pointHoverBorderColor: 'rgba(63,81,181,1)'
     },
-    { // grey
-      backgroundColor: 'rgba(148,159,177,0.2)',
-      borderColor: 'rgba(148,159,177,1)',
-      pointBackgroundColor: 'rgba(148,159,177,1)',
+    {
+      backgroundColor: 'rgba(33,150,243,0.2)',
+      borderColor: 'rgba(33,150,243,1)',
+      pointBackgroundColor: 'rgba(33,150,243,1)',
       pointBorderColor: '#fff',
       pointHoverBackgroundColor: '#fff',
-      pointHoverBorderColor: 'rgba(148,159,177,0.8)'
+      pointHoverBorderColor: 'rgba(33,150,243,0.8)'
     }
   ];
   public lineChartLegend:boolean = true;
@@ -60,6 +61,7 @@ export class HomeComponent implements OnInit {
           limitToLast: this.query$
         }
       }).map(d => {
+        this.lastRefresh = (_.last(d))['time'] * 1000;
         return {
           'pm': [
             { data: this.mapData(d, 'pm10'), label: "PM10" },
@@ -81,7 +83,7 @@ export class HomeComponent implements OnInit {
       this.dataset = d;
       this.ready = true;
     });
-    this.query$.next(30 * 6, 1);
+    this.getLast(30 * 6, 2);
   }
 
   ngOnInit() {
