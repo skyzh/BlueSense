@@ -1,0 +1,68 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <ul class="nav nav-pills mt-2">
+        <li class="nav-item">
+          <a class="nav-link" (click)="getLast(60 * 24 * 7, 60)" href="javascript:">Last Week</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"(click)="getLast(60 * 48, 24)" href="javascript:">Last 48hrs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="getLast(60 * 24, 12)" href="javascript:">Last 24 hrs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="getLast(60 * 12, 6)" href="javascript:">Last 12 hrs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="getLast(30 * 6, 1)" href="javascript:">Last 3 hrs</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12 col-lg-6">
+      <div class="d-block" *ngIf = "ready">
+        <canvas baseChart height="200px"
+                    [datasets]="dataset.tem"
+                    [labels]="dataset.labels"
+                    [options]="lineChartOptions"
+                    [colors]="lineChartColors"
+                    [legend]="lineChartLegend"
+                    [chartType]="lineChartType"
+                    (chartHover)="chartHovered($event)"
+                    (chartClick)="chartClicked($event)">
+        </canvas>
+      </div>
+    </div>
+    <div class="col-12 col-lg-6">
+      <div class="d-block" *ngIf = "ready">
+        <canvas baseChart height="200px"
+                    [datasets]="dataset.hum"
+                    [labels]="dataset.labels"
+                    [options]="lineChartOptions"
+                    [colors]="lineChartColors"
+                    [legend]="lineChartLegend"
+                    [chartType]="lineChartType"
+                    (chartHover)="chartHovered($event)"
+                    (chartClick)="chartClicked($event)">
+        </canvas>
+      </div>
+    </div>
+    <div class="col-12 col-lg-6">
+      <div class="d-block" *ngIf = "ready">
+        <canvas baseChart height="200px"
+                    [datasets]="dataset.pm"
+                    [labels]="dataset.labels"
+                    [options]="lineChartOptions"
+                    [colors]="lineChartColors"
+                    [legend]="lineChartLegend"
+                    [chartType]="lineChartType"
+                    (chartHover)="chartHovered($event)"
+                    (chartClick)="chartClicked($event)">
+        </canvas>
+      </div>
+    </div>
+  </div>
+</div>
