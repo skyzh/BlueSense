@@ -16,6 +16,7 @@ import { options as CHART_OPTIONS } from './chart.config';
 })
 export class HomeComponent implements OnInit, AfterViewInit {
   private dataset$: Observable<any>;
+  private errors$ : Observable<any>;
   private dataset: any;
   private query$: Subject<number> = new Subject;
   private ready: Boolean = false;
@@ -62,6 +63,12 @@ export class HomeComponent implements OnInit, AfterViewInit {
   
 
   constructor(private db: AngularFireDatabase) {
+    this.errors$ = db.list(
+      '/error', {
+        query: {
+          limitToLast: 10
+        }
+    });
     this.dataset$ = db.list(
       '/data', {
         query: {

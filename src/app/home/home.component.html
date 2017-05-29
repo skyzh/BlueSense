@@ -42,6 +42,23 @@
     <div class="col-12 col-lg-6">
       <div class="card mt-3">
         <div class="card-block">
+          <h4 class="card-title">Reports</h4>
+        </div>
+        <ul class="list-group list-group-flush blue-reports">
+          <li class="list-group-item"
+              [ngClass]="{'list-group-item-info': error.level == 1, 'list-group-item-warning': error.level == 0}"
+              *ngFor="let error of (errors$ | async)">
+            <small><samp>{{ error.time * 1000 | amDateFormat: "lll" }}</samp> | {{ error.message }}</small>
+          </li>
+        </ul>
+        <div class="card-block">
+          <span class="small text-muted">Showing latest 10 errors</span>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-lg-6">
+      <div class="card mt-3">
+        <div class="card-block">
           <h4 class="card-title">Current <small class="text-muted">within and compared with {{ current.period }} minutes</small></h4>
           <dl class="row">
             <dt class="col-sm-3">Temperature</dt>
