@@ -9,6 +9,8 @@ import { AboutComponent } from './about/about.component';
 import { ApiService } from './shared';
 import { routing } from './app.routing';
 
+import { TrendComponent } from './components/trend/trend.component';
+
 import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
 
 import { ChartsModule } from 'ng2-charts';
@@ -31,7 +33,8 @@ import { FIREBASE_CONFIG } from './config/firebase';
   declarations: [
     AppComponent,
     HomeComponent,
-    AboutComponent
+    AboutComponent,
+    TrendComponent
   ],
   providers: [
     ApiService

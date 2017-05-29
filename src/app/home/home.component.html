@@ -9,13 +9,13 @@
           <a class="nav-link"(click)="getLast(60 * 48, 24)" href="javascript:">Last 48hrs</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" (click)="getLast(60 * 24, 12)" href="javascript:">Last 24 hrs</a>
+          <a class="nav-link" (click)="getLast(60 * 24, 12)" href="javascript:">Last 24hrs</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" (click)="getLast(60 * 12, 6)" href="javascript:">Last 12 hrs</a>
+          <a class="nav-link" (click)="getLast(60 * 12, 6)" href="javascript:">Last 12hrs</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" (click)="getLast(30 * 6, 2)" href="javascript:">Last 3 hrs</a>
+          <a class="nav-link" (click)="getLast(30 * 6, 2)" href="javascript:">Last 3hrs</a>
         </li>
       </ul>
       <ul class="list-unstyled mx-3">
@@ -23,7 +23,7 @@
           <span class="text-muted">Updated {{ lastRefresh | amTimeAgo }} ({{ lastRefresh | amDateFormat: "LLLL" }})</span>
         </li>
         <li>
-          <span class="text-muted">Displaying from {{ lastData | amTimeAgo }} ({{ lastData | amDateFormat: "LLLL" }})</span>
+          <span class="text-muted">Displaying realtime data from {{ lastData | amTimeAgo }} ({{ lastData | amDateFormat: "LLLL" }}) to now</span>
         </li>
       </ul>
     </div>
@@ -75,10 +75,13 @@
     <div class="col-12 col-lg-6">
       <div class="card mt-3">
         <div class="card-block">
-          <h4 class="card-title">Current <small class="text-muted">within {{ current.period }} minutes</small></h4>
+          <h4 class="card-title">Current <small class="text-muted">within and compared with {{ current.period }} minutes</small></h4>
           <dl class="row">
             <dt class="col-sm-3">Temperature</dt>
-            <dd class="col-sm-9">{{ current.temperature }} °C </dd>
+            <dd class="col-sm-9">
+              <span>{{ current.temperature }} °C</span>
+              <trend class="mx-2" [trend]="current_trend.temperature"></trend>
+            </dd>
             <dt class="col-sm-3">Humidity</dt>
             <dd class="col-sm-9">{{ current.humidity }} % </dd>
             <dt class="col-sm-3">Heat Index</dt>
@@ -105,7 +108,7 @@
               <a href="https://www.adafruit.com/product/385">DHT22</a> and
               <a href="https://item.taobao.com/item.htm?spm=a1z09.2.0.0.XsFTzL&id=525688561779&_u=s2frb8vp2678">PM2.5 Sensor</a>
             </li>
-            <li>Data are refreshed every minute.</li>
+            <li>Data are refreshed every minute and are displayed realtime.</li>
             <li>Built with <a href="https://www.firebase.com/">Firebase</a> and <a href="https://angular.io/">Angular</a></li>
             <li>Follow SkyZH on <a href="https://twitter.com/iSkyZH"><i class="fa fa-twitter" aria-hidden="true"></i> Twitter</a> and <a href="https://github.com/SkyZH"><i class="fa fa-github" aria-hidden="true"></i> GitHub</a></li>
             <li>This project is on GitHub: 

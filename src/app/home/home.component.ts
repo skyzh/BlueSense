@@ -1,8 +1,11 @@
+import * as moment from 'moment';
+import * as _ from 'lodash';
+
 import { Component, OnInit } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
-import * as moment from 'moment';
-import * as _ from 'lodash';
+
+import { TrendComponent } from '../components/trend/trend.component';
 
 @Component({
   selector: 'my-home',
@@ -123,7 +126,7 @@ export class HomeComponent implements OnInit {
         pm10: d.pm[2].data,
       }
       this.current = _.mapValues(__current, (v: Array<number>) => Math.round(_.last(v)));
-      this.current_trend = _.mapValues(__current, (v: Array<number>) => v[_.size(v) - 1] - v[_.size(v) - 2]);
+      this.current_trend = _.mapValues(__current, (v: Array<number>) => Math.round((v[_.size(v) - 1] - v[_.size(v) - 2]) * 100) / 100);
       this.current.period = this.split;
     });
     this.current = {};
