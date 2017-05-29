@@ -17,21 +17,21 @@
         <li class="nav-item">
           <a class="nav-link" (click)="getLast(30 * 6, 2)" href="javascript:">Last 3 hrs</a>
         </li>
-        <li class="nav-item">
-          <span class="text-muted nav-link disabled">Last updated {{ lastRefresh | amTimeAgo }} ({{ lastRefresh | amDateFormat: "LLLL" }})</span>
+      </ul>
+      <ul class="list-unstyled mx-3">
+        <li>
+          <span class="text-muted">Updated {{ lastRefresh | amTimeAgo }} ({{ lastRefresh | amDateFormat: "LLLL" }})</span>
+        </li>
+        <li>
+          <span class="text-muted">Displaying from {{ lastData | amTimeAgo }} ({{ lastData | amDateFormat: "LLLL" }})</span>
         </li>
       </ul>
     </div>
   </div>
-  <div class="row">
-    <div class="col-12">
-      
-    </div>
-  </div>
 
   <div class="row">
-    <div class="col-12 col-lg-6">
-      <div class="d-block" *ngIf = "ready">
+    <div class="col-12 col-lg-6" *ngIf="ready">
+      <div class="d-block">
         <canvas baseChart height="200px"
                     [datasets]="dataset.tem"
                     [labels]="dataset.labels"
@@ -44,8 +44,8 @@
         </canvas>
       </div>
     </div>
-    <div class="col-12 col-lg-6">
-      <div class="d-block" *ngIf = "ready">
+    <div class="col-12 col-lg-6" *ngIf="ready">
+      <div class="d-block">
         <canvas baseChart height="200px"
                     [datasets]="dataset.hum"
                     [labels]="dataset.labels"
@@ -58,8 +58,8 @@
         </canvas>
       </div>
     </div>
-    <div class="col-12 col-lg-6">
-      <div class="d-block" *ngIf = "ready">
+    <div class="col-12 col-lg-6" *ngIf="ready">
+      <div class="d-block">
         <canvas baseChart height="200px"
                     [datasets]="dataset.pm"
                     [labels]="dataset.labels"
@@ -73,12 +73,50 @@
       </div>
     </div>
     <div class="col-12 col-lg-6">
-      <p>Data are collected from Arduino at SkyZH's home.</p>
-      <p>Sensors &amp; Board:
-        <a href="https://www.arduino.cc/en/main/arduinoBoardMega2560">Mega 2560</a>,
-        <a href="https://www.adafruit.com/product/385">DHT22</a> and
-        <a href="https://item.taobao.com/item.htm?spm=a1z09.2.0.0.XsFTzL&id=525688561779&_u=s2frb8vp2678">PM2.5 Sensor</a>
-      </p>
+      <div class="card mt-3">
+        <div class="card-block">
+          <h4 class="card-title">Current <small class="text-muted">within {{ current.period }} minutes</small></h4>
+          <dl class="row">
+            <dt class="col-sm-3">Temperature</dt>
+            <dd class="col-sm-9">{{ current.temperature }} °C </dd>
+            <dt class="col-sm-3">Humidity</dt>
+            <dd class="col-sm-9">{{ current.humidity }} % </dd>
+            <dt class="col-sm-3">Heat Index</dt>
+            <dd class="col-sm-9">{{ current.heatindex }} °C </dd>
+
+            <dt class="col-sm-3">PM0.1</dt>
+            <dd class="col-sm-9">{{ current.pm01 }} µg/m<sup>3</sup> </dd>
+            <dt class="col-sm-3">PM2.5</dt>
+            <dd class="col-sm-9">{{ current.pm25 }} µg/m<sup>3</sup> </dd>
+            <dt class="col-sm-3">PM10</dt>
+            <dd class="col-sm-9">{{ current.pm10 }} µg/m<sup>3</sup> </dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-lg-6">
+      <div class="card mt-3">
+        <div class="card-block">
+          <h4 class="card-title">About</h4>
+          <ul class="list-unstyled">
+            <li>Data are collected from Arduino at SkyZH's home.</li>
+            <li>Sensors &amp; Board:
+              <a href="https://www.arduino.cc/en/main/arduinoBoardMega2560">Mega 2560</a>,
+              <a href="https://www.adafruit.com/product/385">DHT22</a> and
+              <a href="https://item.taobao.com/item.htm?spm=a1z09.2.0.0.XsFTzL&id=525688561779&_u=s2frb8vp2678">PM2.5 Sensor</a>
+            </li>
+            <li>Data are refreshed every minute.</li>
+            <li>Built with <a href="https://www.firebase.com/">Firebase</a> and <a href="https://angular.io/">Angular</a></li>
+            <li>Follow SkyZH on <a href="https://twitter.com/iSkyZH"><i class="fa fa-twitter" aria-hidden="true"></i> Twitter</a> and <a href="https://github.com/SkyZH"><i class="fa fa-github" aria-hidden="true"></i> GitHub</a></li>
+            <li>This project is on GitHub: 
+              <a href="https://github.com/SkyZH/BlueSensor">BlueSensor</a>,
+              <a href="https://github.com/SkyZH/BlueMonitor">BlueMonitor</a> and
+              <a href="https://github.com/SkyZH/BlueSense">BlueSense</a>.
+            </li>
+          </ul>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
