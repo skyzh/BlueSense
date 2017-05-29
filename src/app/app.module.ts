@@ -17,6 +17,7 @@ import { ChartsModule } from 'ng2-charts';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule} from 'angularfire2/database';
 import { MomentModule } from 'angular2-moment';
+import { NgPipesModule } from 'ngx-pipes';
 import { FIREBASE_CONFIG } from './config/firebase';
 
 @NgModule({
@@ -28,7 +29,8 @@ import { FIREBASE_CONFIG } from './config/firebase';
     AngularFireModule.initializeApp(FIREBASE_CONFIG),
     AngularFireDatabaseModule,
     MomentModule,
-    ChartsModule
+    ChartsModule,
+    NgPipesModule
   ],
   declarations: [
     AppComponent,

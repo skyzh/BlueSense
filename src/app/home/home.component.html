@@ -46,8 +46,8 @@
         </div>
         <ul class="list-group list-group-flush blue-reports">
           <li class="list-group-item"
-              [ngClass]="{'list-group-item-info': error.level == 1, 'list-group-item-warning': error.level == 0}"
-              *ngFor="let error of (errors$ | async)">
+              [ngClass]="{'list-group-item-info': error.level == 1, 'list-group-item-warning': error.level == 0,  'list-group-item-success': error.level == 2}"
+              *ngFor="let error of (errors$ | async | reverse)">
             <small><samp>{{ error.time * 1000 | amDateFormat: "lll" }}</samp> | {{ error.message }}</small>
           </li>
         </ul>
