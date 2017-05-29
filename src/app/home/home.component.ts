@@ -1,18 +1,20 @@
 import * as moment from 'moment';
 import * as _ from 'lodash';
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 
-import { TrendComponent } from '../components/trend/trend.component';
+import { TrendComponent, ChartComponent } from '../components';
+
+import { options as CHART_OPTIONS } from './chart.config';
 
 @Component({
   selector: 'my-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, AfterViewInit {
   private dataset$: Observable<any>;
   private dataset: any;
   private query$: Subject<number> = new Subject;
@@ -22,37 +24,8 @@ export class HomeComponent implements OnInit {
   private split: number = 1;
   private lastRefresh: number = 0;
   private lastData: number = 0;
-  public lineChartOptions:any = {
-    responsive: true
-  };
-  public lineChartColors:Array<any> = [
-    {
-      backgroundColor: 'rgba(21,101,192,0.2)',
-      borderColor: 'rgba(21,101,192,1)',
-      pointBackgroundColor: 'rgba(21,101,192,1)',
-      pointBorderColor: '#fff',
-      pointHoverBackgroundColor: '#fff',
-      pointHoverBorderColor: 'rgba(21,101,192,0.8)'
-    },
-    {
-      backgroundColor: 'rgba(63,81,181,0.2)',
-      borderColor: 'rgba(63,81,181,1)',
-      pointBackgroundColor: 'rgba(63,81,181,1)',
-      pointBorderColor: '#fff',
-      pointHoverBackgroundColor: '#fff',
-      pointHoverBorderColor: 'rgba(63,81,181,1)'
-    },
-    {
-      backgroundColor: 'rgba(33,150,243,0.2)',
-      borderColor: 'rgba(33,150,243,1)',
-      pointBackgroundColor: 'rgba(33,150,243,1)',
-      pointBorderColor: '#fff',
-      pointHoverBackgroundColor: '#fff',
-      pointHoverBorderColor: 'rgba(33,150,243,0.8)'
-    }
-  ];
-  public lineChartLegend:boolean = true;
-  public lineChartType:string = 'line';
+
+  public options: any = CHART_OPTIONS;
 
   public AQITable = { 
     "pm25": [
@@ -82,13 +55,13 @@ export class HomeComponent implements OnInit {
       ["muted", "Hazardous"]
     ]
   };
+
   mapData(data, key) {
     return _.chain(data).map(key).map((d, i) => _.merge(d, {index: i})).groupBy((v) => Math.floor(v.index / this.split)).map(v =>  _.mean(v)).value()
   }
   
 
   constructor(private db: AngularFireDatabase) {
-    
     this.dataset$ = db.list(
       '/data', {
         query: {
@@ -131,10 +104,13 @@ export class HomeComponent implements OnInit {
     });
     this.current = {};
     this.current_trend = {};
-    this.getLast(30 * 6, 2);
   }
 
   ngOnInit() {
+  }
+
+  ngAfterViewInit() {
+    this.getLast(30 * 6, 2);
   }
 
   getLast(n: number, split: number) {

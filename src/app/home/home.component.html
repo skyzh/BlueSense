@@ -30,47 +30,14 @@
   </div>
 
   <div class="row">
-    <div class="col-12 col-lg-6" *ngIf="ready">
-      <div class="d-block">
-        <canvas baseChart height="200px"
-                    [datasets]="dataset.tem"
-                    [labels]="dataset.labels"
-                    [options]="lineChartOptions"
-                    [colors]="lineChartColors"
-                    [legend]="lineChartLegend"
-                    [chartType]="lineChartType"
-                    (chartHover)="chartHovered($event)"
-                    (chartClick)="chartClicked($event)">
-        </canvas>
-      </div>
+    <div class="col-12 col-lg-6">
+      <blue-chart [datasets]="(dataset$ | async)?.tem || [{data:[]}]" [labels]="(dataset$ | async)?.labels || []" [options]="options" class="d-block"></blue-chart>
     </div>
-    <div class="col-12 col-lg-6" *ngIf="ready">
-      <div class="d-block">
-        <canvas baseChart height="200px"
-                    [datasets]="dataset.hum"
-                    [labels]="dataset.labels"
-                    [options]="lineChartOptions"
-                    [colors]="lineChartColors"
-                    [legend]="lineChartLegend"
-                    [chartType]="lineChartType"
-                    (chartHover)="chartHovered($event)"
-                    (chartClick)="chartClicked($event)">
-        </canvas>
-      </div>
+    <div class="col-12 col-lg-6">
+      <blue-chart [datasets]="(dataset$ | async)?.hum || [{data:[]}]" [labels]="(dataset$ | async)?.labels || []" [options]="options" class="d-block"></blue-chart>
     </div>
-    <div class="col-12 col-lg-6" *ngIf="ready">
-      <div class="d-block">
-        <canvas baseChart height="200px"
-                    [datasets]="dataset.pm"
-                    [labels]="dataset.labels"
-                    [options]="lineChartOptions"
-                    [colors]="lineChartColors"
-                    [legend]="lineChartLegend"
-                    [chartType]="lineChartType"
-                    (chartHover)="chartHovered($event)"
-                    (chartClick)="chartClicked($event)">
-        </canvas>
-      </div>
+    <div class="col-12 col-lg-6">
+      <blue-chart [datasets]="(dataset$ | async)?.pm || [{data:[]}]" [labels]="(dataset$ | async)?.labels || []" [options]="options" class="d-block"></blue-chart>
     </div>
     <div class="col-12 col-lg-6">
       <div class="card mt-3">
@@ -83,16 +50,31 @@
               <trend class="mx-2" [trend]="current_trend.temperature"></trend>
             </dd>
             <dt class="col-sm-3">Humidity</dt>
-            <dd class="col-sm-9">{{ current.humidity }} % </dd>
+            <dd class="col-sm-9">
+              <span>{{ current.humidity }}%</span>
+              <trend class="mx-2" [trend]="current_trend.humidity"></trend>
+            </dd>
             <dt class="col-sm-3">Heat Index</dt>
-            <dd class="col-sm-9">{{ current.heatindex }} °C </dd>
+             <dd class="col-sm-9">
+              <span>{{ current.heatindex }} °C</span>
+              <trend class="mx-2" [trend]="current_trend.heatindex"></trend>
+            </dd>
 
             <dt class="col-sm-3">PM0.1</dt>
-            <dd class="col-sm-9">{{ current.pm01 }} µg/m<sup>3</sup> </dd>
+            <dd class="col-sm-9">
+              <span>{{ current.pm01 }} µg/m<sup>3</sup></span>
+              <trend class="mx-2" [trend]="current_trend.pm01"></trend>
+            </dd>
             <dt class="col-sm-3">PM2.5</dt>
-            <dd class="col-sm-9">{{ current.pm25 }} µg/m<sup>3</sup> </dd>
+            <dd class="col-sm-9">
+              <span>{{ current.pm25 }} µg/m<sup>3</sup></span>
+              <trend class="mx-2" [trend]="current_trend.pm25"></trend>
+            </dd>
             <dt class="col-sm-3">PM10</dt>
-            <dd class="col-sm-9">{{ current.pm10 }} µg/m<sup>3</sup> </dd>
+            <dd class="col-sm-9">
+              <span>{{ current.pm10 }} µg/m<sup>3</sup></span>
+              <trend class="mx-2" [trend]="current_trend.pm10"></trend>
+            </dd>
           </dl>
         </div>
       </div>
