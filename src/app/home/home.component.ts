@@ -124,7 +124,7 @@ export class HomeComponent implements OnInit {
       }
       this.current = _.mapValues(__current, (v: Array<number>) => Math.round(_.last(v)));
       this.current_trend = _.mapValues(__current, (v: Array<number>) => v[_.size(v) - 1] - v[_.size(v) - 2]);
-      console.log(this.current)
+      this.current.period = this.split;
     });
     this.current = {};
     this.current_trend = {};
