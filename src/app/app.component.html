@@ -2,7 +2,7 @@
   <nav class="navbar flex-row bg-faded">
     <span class="navbar-brand">BlueSense</span>
     <span class="navbar-text ml-auto">
-      <span class="blue-navbar-indicator" [ngClass]="{ 'show': !(connected$ | async).$value }"><i class="fa fa-exclamation-circle"></i> 与 Firebase 失去连接</span>
+      <span class="blue-navbar-indicator" [ngClass]="{ 'show': !(connected$ | async).$value }"><i class="fa fa-exclamation-circle"></i> Disconnected from Firebase</span>
     </span>
   </nav>
 </header>

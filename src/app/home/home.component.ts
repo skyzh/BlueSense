@@ -66,9 +66,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
     this.errors$ = db.list(
       '/error', {
         query: {
-          limitToLast: 10
+          limitToLast: 15
         }
-    });
+    }).map(d => _.reverse(_.clone(d)));
     this.dataset$ = db.list(
       '/data', {
         query: {
@@ -105,7 +105,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
         pm25: d.pm[1].data,
         pm10: d.pm[2].data,
       }
-      this.current = _.mapValues(__current, (v: Array<number>) => Math.round(_.last(v)));
+      this.current = _.mapValues(__current, (v: Array<number>) => Math.round(_.last(v) * 100) / 100);
       this.current_trend = _.mapValues(__current, (v: Array<number>) => Math.round((v[_.size(v) - 1] - v[_.size(v) - 2]) * 100) / 100);
       this.current.period = this.split;
     });

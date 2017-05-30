@@ -1,24 +1,27 @@
-<div class="container">
+<div class="container-fluid">
   <div class="row">
     <div class="col-12">
       <ul class="nav nav-pills mt-2">
         <li class="nav-item">
-          <a class="nav-link" (click)="getLast(60 * 24 * 7, 60)" href="javascript:">Last Week</a>
+          <a class="nav-link" (click)="getLast(60 * 24 * 7, 60)" href="javascript:">Week</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link"(click)="getLast(60 * 48, 24)" href="javascript:">Last 48hrs</a>
+          <a class="nav-link"(click)="getLast(60 * 48, 24)" href="javascript:">48hrs</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" (click)="getLast(60 * 24, 12)" href="javascript:">Last 24hrs</a>
+          <a class="nav-link" (click)="getLast(60 * 24, 12)" href="javascript:">24hrs</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" (click)="getLast(60 * 12, 6)" href="javascript:">Last 12hrs</a>
+          <a class="nav-link" (click)="getLast(60 * 12, 6)" href="javascript:">12hrs</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" (click)="getLast(30 * 6, 2)" href="javascript:">Last 3hrs</a>
+          <a class="nav-link" (click)="getLast(30 * 6, 2)" href="javascript:">3hrs</a>
         </li>
       </ul>
       <ul class="list-unstyled mx-3">
+        <li class="text-info">
+          <span class="blue-loading-indicator" [ngClass]="{ 'show': !ready }"><i class="fa fa-circle-o-notch fa-spin fa-fw"></i> Retriving Data...</span>
+        </li>
         <li>
           <span class="text-muted">Updated {{ lastRefresh | amTimeAgo }} ({{ lastRefresh | amDateFormat: "LLLL" }})</span>
         </li>
@@ -31,13 +34,19 @@
 
   <div class="row">
     <div class="col-12 col-lg-6">
-      <blue-chart [datasets]="(dataset$ | async)?.tem || [{data:[]}]" [labels]="(dataset$ | async)?.labels || []" [options]="options" class="d-block"></blue-chart>
+      <div class="card mt-3 px-1">
+        <blue-chart [datasets]="(dataset$ | async)?.tem || [{data:[]}]" [labels]="(dataset$ | async)?.labels || []" [options]="options" class="d-block"></blue-chart>
+      </div>
     </div>
     <div class="col-12 col-lg-6">
-      <blue-chart [datasets]="(dataset$ | async)?.hum || [{data:[]}]" [labels]="(dataset$ | async)?.labels || []" [options]="options" class="d-block"></blue-chart>
+      <div class="card mt-3 px-1">
+        <blue-chart [datasets]="(dataset$ | async)?.hum || [{data:[]}]" [labels]="(dataset$ | async)?.labels || []" [options]="options" class="d-block"></blue-chart>
+      </div>
     </div>
     <div class="col-12 col-lg-6">
-      <blue-chart [datasets]="(dataset$ | async)?.pm || [{data:[]}]" [labels]="(dataset$ | async)?.labels || []" [options]="options" class="d-block"></blue-chart>
+      <div class="card mt-3 px-1">
+        <blue-chart [datasets]="(dataset$ | async)?.pm || [{data:[]}]" [labels]="(dataset$ | async)?.labels || []" [options]="options" class="d-block"></blue-chart>
+      </div>
     </div>
     <div class="col-12 col-lg-6">
       <div class="card mt-3">
@@ -46,13 +55,13 @@
         </div>
         <ul class="list-group list-group-flush blue-reports">
           <li class="list-group-item"
-              [ngClass]="{'list-group-item-info': error.level == 1, 'list-group-item-warning': error.level == 0,  'list-group-item-success': error.level == 2}"
-              *ngFor="let error of (errors$ | async | reverse)">
+              [ngClass]="{'list-group-item-info': error.level == 1, 'list-group-item-danger': error.level == 0,  'list-group-item-success': error.level == 2}"
+              *ngFor="let error of (errors$ | async)">
             <small><samp>{{ error.time * 1000 | amDateFormat: "lll" }}</samp> | {{ error.message }}</small>
           </li>
         </ul>
-        <div class="card-block">
-          <span class="small text-muted">Showing latest 10 errors</span>
+        <div class="card-block py-2">
+          <span class="small text-muted">Showing latest 15 errors</span>
         </div>
       </div>
     </div>
@@ -63,34 +72,34 @@
           <dl class="row">
             <dt class="col-sm-3">Temperature</dt>
             <dd class="col-sm-9">
-              <span>{{ current.temperature }} °C</span>
-              <trend class="mx-2" [trend]="current_trend.temperature"></trend>
+              <span>{{ current.temperature }}°C</span>
+              <trend class="mx-2 small" [trend]="current_trend.temperature"></trend>
             </dd>
             <dt class="col-sm-3">Humidity</dt>
             <dd class="col-sm-9">
               <span>{{ current.humidity }}%</span>
-              <trend class="mx-2" [trend]="current_trend.humidity"></trend>
+              <trend class="mx-2 small" [trend]="current_trend.humidity"></trend>
             </dd>
             <dt class="col-sm-3">Heat Index</dt>
              <dd class="col-sm-9">
-              <span>{{ current.heatindex }} °C</span>
-              <trend class="mx-2" [trend]="current_trend.heatindex"></trend>
+              <span>{{ current.heatindex }}°C</span>
+              <trend class="mx-2 small" [trend]="current_trend.heatindex"></trend>
             </dd>
 
-            <dt class="col-sm-3">PM0.1</dt>
+            <dt class="col-sm-3">PM1.0</dt>
             <dd class="col-sm-9">
               <span>{{ current.pm01 }} µg/m<sup>3</sup></span>
-              <trend class="mx-2" [trend]="current_trend.pm01"></trend>
+              <trend class="mx-2 small" [trend]="current_trend.pm01"></trend>
             </dd>
             <dt class="col-sm-3">PM2.5</dt>
             <dd class="col-sm-9">
               <span>{{ current.pm25 }} µg/m<sup>3</sup></span>
-              <trend class="mx-2" [trend]="current_trend.pm25"></trend>
+              <trend class="mx-2 small" [trend]="current_trend.pm25"></trend>
             </dd>
             <dt class="col-sm-3">PM10</dt>
             <dd class="col-sm-9">
               <span>{{ current.pm10 }} µg/m<sup>3</sup></span>
-              <trend class="mx-2" [trend]="current_trend.pm10"></trend>
+              <trend class="mx-2 small" [trend]="current_trend.pm10"></trend>
             </dd>
           </dl>
         </div>

@@ -20,4 +20,3 @@ import 'angular2-moment';
 import 'angularfire2';
 import 'chart.js';
 import 'ng2-charts';
-import 'ngx-pipes';
