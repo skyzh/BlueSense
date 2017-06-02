@@ -32,7 +32,7 @@ export class ErrorComponent implements AfterViewInit {
   }
 
   onScrollDown () {
-    this.__current += 20;
+    this.__current += 100;
     this.query$.next(this.__current);
     this.ready = false;
   }

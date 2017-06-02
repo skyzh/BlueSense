@@ -8,4 +8,7 @@
   <ul class="list-group my-3">
     <blue-report [errors]="errors$ | async"></blue-report>
   </ul>
+  <div class="text-left">
+    <blue-loading [ready]="false" text="Retrieving latest reports..."></blue-loading>
+  </div>
 </div>

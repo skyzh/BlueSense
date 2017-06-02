@@ -1,19 +1,14 @@
 <header>
   <nav class="navbar navbar-toggleable-sm navbar-light bg-faded">
-    <span class="navbar-brand">BlueSense</span>
-  <div class="collapse navbar-collapse" id="navbarText">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" routerLink="/" routerLinkActive="active">Home</a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" routerLink="/error" routerLinkActive="active">Reports</a>
-      </li>
-    </ul>
-    <span class="navbar-text">
-      <span class="blue-navbar-indicator" [ngClass]="{ 'show': !(connected$ | async).$value }"><i class="fa fa-exclamation-circle"></i> Disconnected from Firebase</span>
-    </span>
-  </div>
+    <a class="navbar-brand" routerLink="/">BlueSense</a>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <div class="navbar-nav mr-auto">
+        <a class="nav-link nav-item" routerLink="/error" routerLinkActive="active">Reports</a>
+      </div>
+      <span class="navbar-text">
+        <span class="blue-navbar-indicator" [ngClass]="{ 'show': !(connected$ | async).$value }"><i class="fa fa-exclamation-circle"></i> Disconnected from Firebase</span>
+      </span>
+    </div>
   </nav>
 </header>
 
