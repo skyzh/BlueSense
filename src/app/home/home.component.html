@@ -3,7 +3,7 @@
     <div class="col-12">
       <ul class="nav nav-pills mt-2">
         <li class="nav-item">
-          <a class="nav-link" (click)="getLast(60 * 24 * 7, 60)" href="javascript:">Week</a>
+          <a class="nav-link" (click)="getLast(60 * 24 * 7, 84)" href="javascript:">Week</a>
         </li>
         <li class="nav-item">
           <a class="nav-link"(click)="getLast(60 * 48, 24)" href="javascript:">48hrs</a>
@@ -15,18 +15,18 @@
           <a class="nav-link" (click)="getLast(60 * 12, 6)" href="javascript:">12hrs</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" (click)="getLast(30 * 6, 2)" href="javascript:">3hrs</a>
+          <a class="nav-link" (click)="getLast(60 * 2, 1)" href="javascript:">2hrs</a>
         </li>
       </ul>
       <ul class="list-unstyled mx-3">
         <li class="text-info">
-          <span class="blue-loading-indicator" [ngClass]="{ 'show': !ready }"><i class="fa fa-circle-o-notch fa-spin fa-fw"></i> Retriving Data...</span>
+          <blue-loading [ready]="ready" text="Retrieving latest data..."></blue-loading>
         </li>
         <li>
           <span class="text-muted">Updated {{ lastRefresh | amTimeAgo }} ({{ lastRefresh | amDateFormat: "LLLL" }})</span>
         </li>
         <li>
-          <span class="text-muted">Displaying realtime data from {{ lastData | amTimeAgo }} ({{ lastData | amDateFormat: "LLLL" }}) to now</span>
+          <span class="text-muted">Displaying realtime data from {{ lastData | amTimeAgo }} ({{ lastData | amDateFormat: "LLLL" }}) to now every {{ split }} minutes</span>
         </li>
       </ul>
     </div>
@@ -53,12 +53,8 @@
         <div class="card-block">
           <h4 class="card-title">Reports</h4>
         </div>
-        <ul class="list-group list-group-flush blue-reports">
-          <li class="list-group-item"
-              [ngClass]="{'list-group-item-info': error.level == 1, 'list-group-item-danger': error.level == 0,  'list-group-item-success': error.level == 2}"
-              *ngFor="let error of (errors$ | async)">
-            <small><samp>{{ error.time * 1000 | amDateFormat: "lll" }}</samp> | {{ error.message }}</small>
-          </li>
+        <ul class="list-group list-group-flush">
+          <blue-report [errors]="errors$ | async"></blue-report>
         </ul>
         <div class="card-block py-2">
           <span class="small text-muted">Showing latest 15 errors</span>

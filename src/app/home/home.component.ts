@@ -117,7 +117,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.getLast(30 * 6, 2);
+    this.getLast(20 * 6, 2);
   }
 
   getLast(n: number, split: number) {

@@ -5,17 +5,18 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { AboutComponent } from './about/about.component';
+import { ErrorComponent } from './error/error.component';
 import { ApiService } from './shared';
 import { routing } from './app.routing';
 
-import { TrendComponent, ChartComponent } from './components';
+import { TrendComponent, ChartComponent, ReportComponent, LoadingComponent } from './components';
 
 import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
 
 import { ChartsModule } from 'ng2-charts';
 import { AngularFireModule } from 'angularfire2';
-import { AngularFireDatabaseModule} from 'angularfire2/database';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { MomentModule } from 'angular2-moment';
 import { FIREBASE_CONFIG } from './config/firebase';
 
@@ -28,14 +29,17 @@ import { FIREBASE_CONFIG } from './config/firebase';
     AngularFireModule.initializeApp(FIREBASE_CONFIG),
     AngularFireDatabaseModule,
     MomentModule,
-    ChartsModule
+    ChartsModule,
+    InfiniteScrollModule
   ],
   declarations: [
     AppComponent,
     HomeComponent,
-    AboutComponent,
+    ErrorComponent,
     TrendComponent,
-    ChartComponent
+    ChartComponent,
+    ReportComponent,
+    LoadingComponent
   ],
   providers: [
     ApiService
