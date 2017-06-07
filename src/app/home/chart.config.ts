@@ -1,6 +1,11 @@
 export const options = {
   lineChartOptions: {
-    responsive: true
+    responsive: true,
+    element: {
+      point: {
+        pointStyle: 'rectRounded'
+      }
+    }
   },
   lineChartColors: [
     {

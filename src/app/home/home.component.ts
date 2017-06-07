@@ -58,7 +58,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   };
 
   mapData(data, key) {
-    return _.chain(data).map(key).map((d, i) => _.merge(d, {index: i})).groupBy((v) => Math.floor(v.index / this.split)).map(v =>  _.mean(v)).value()
+    return _.chain(data).map(key).chunk(this.split).map(v =>  _.mean(v)).value()
   }
   
 
@@ -90,7 +90,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
           'hum': [
             { data: this.mapData(d, 'hum'), label: "Humidity" }
           ],
-          'labels': _.chain(d).map(d => moment(d['time'] * 1000).format('LT')).filter((v, i) => i % this.split == 0).value()
+          'labels': _.chain(d).map(d => moment(d['time'] * 1000).format('MMM D LT')).filter((v, i) => (i + 1) % this.split == 0).value()
         }
       }
     );
