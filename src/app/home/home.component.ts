@@ -26,7 +26,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   private lastRefresh: number = 0;
   private lastData: number = 0;
 
-  public options: any = CHART_OPTIONS;
+  public chartOptions: any = CHART_OPTIONS;
 
   public AQITable = { 
     "pm25": [
@@ -94,11 +94,12 @@ export class HomeComponent implements OnInit, AfterViewInit {
         }
       }
     );
+
     this.dataset$.subscribe(d => {
       this.dataset = d;
       this.ready = true;
       const __current = {
-        temperature:d.tem[0].data,
+        temperature: d.tem[0].data,
         heatindex: d.tem[1].data,
         humidity: d.hum[0].data,
         pm01: d.pm[0].data,
@@ -109,6 +110,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
       this.current_trend = _.mapValues(__current, (v: Array<number>) => Math.round((v[_.size(v) - 1] - v[_.size(v) - 2]) * 100) / 100);
       this.current.period = this.split;
     });
+    
     this.current = {};
     this.current_trend = {};
   }
@@ -117,7 +119,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.getLast(20 * 6, 2);
+    this.getLast(60 * 24, 12);
   }
 
   getLast(n: number, split: number) {

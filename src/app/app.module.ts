@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { ErrorComponent } from './error/error.component';
+import { SummaryComponent } from './summary/summary.component';
 import { ApiService } from './shared';
 import { routing } from './app.routing';
 
@@ -36,6 +37,7 @@ import { FIREBASE_CONFIG } from './config/firebase';
     AppComponent,
     HomeComponent,
     ErrorComponent,
+    SummaryComponent,
     TrendComponent,
     ChartComponent,
     ReportComponent,

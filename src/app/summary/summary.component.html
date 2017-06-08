@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h1 class="display-3">Sumary</h1>
+      <ul class="nav nav-pills mt-2">
+        <li class="nav-item">
+          <a class="nav-link" (click)="getLast(31 * 24, 7)" href="javascript:">31 Days</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="getLast(7 * 24, 2)" href="javascript:">7 Days</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="getLast(3 * 24, 1)" href="javascript:">3 Days</a>
+        </li>
+      </ul>
+      <ul class="list-unstyled mx-3">
+        <li class="text-info">
+          <blue-loading [ready]="ready" text="Retrieving latest data..."></blue-loading>
+        </li>
+        <li>
+          <span class="text-muted">Updated {{ lastRefresh | amTimeAgo }} ({{ lastRefresh | amDateFormat: "LLLL" }})</span>
+        </li>
+        <li>
+          <span class="text-muted">Displaying realtime data from {{ lastData | amTimeAgo }} ({{ lastData | amDateFormat: "LLLL" }}) to now every {{ split }} hours</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12 col-lg-6">
+      <div class="card mt-3 px-1">
+        <blue-chart [datasets]="(dataset$ | async)?.tem || [{data:[]}]" [labels]="(dataset$ | async)?.labels || []" [options]="chartOptions" class="d-block"></blue-chart>
+      </div>
+    </div>
+    
+    <div class="col-12 col-lg-6">
+      <div class="card mt-3 px-1">
+        <blue-chart [datasets]="(dataset$ | async)?.hum || [{data:[]}]" [labels]="(dataset$ | async)?.labels || []" [options]="chartOptions" class="d-block"></blue-chart>
+      </div>
+    </div>
+
+    <div class="col-12 col-lg-6">
+      <div class="card mt-3 px-1">
+        <blue-chart [datasets]="(dataset$ | async)?.pm || [{data:[]}]" [labels]="(dataset$ | async)?.labels || []" [options]="chartOptions" class="d-block"></blue-chart>
+      </div>
+    </div>
+  </div>
+</div>

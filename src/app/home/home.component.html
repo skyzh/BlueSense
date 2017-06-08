@@ -1,13 +1,8 @@
-<div class="container-fluid">
+<div class="container">
   <div class="row">
     <div class="col-12">
+      <h1 class="display-3">Recent</h1>
       <ul class="nav nav-pills mt-2">
-        <li class="nav-item">
-          <a class="nav-link" (click)="getLast(60 * 24 * 7, 84)" href="javascript:">Week</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link"(click)="getLast(60 * 48, 24)" href="javascript:">48hrs</a>
-        </li>
         <li class="nav-item">
           <a class="nav-link" (click)="getLast(60 * 24, 12)" href="javascript:">24hrs</a>
         </li>
@@ -35,30 +30,17 @@
   <div class="row">
     <div class="col-12 col-lg-6">
       <div class="card mt-3 px-1">
-        <blue-chart [datasets]="(dataset$ | async)?.tem || [{data:[]}]" [labels]="(dataset$ | async)?.labels || []" [options]="options" class="d-block"></blue-chart>
+        <blue-chart [datasets]="(dataset$ | async)?.tem || [{data:[]}]" [labels]="(dataset$ | async)?.labels || []" [options]="chartOptions" class="d-block"></blue-chart>
       </div>
     </div>
     <div class="col-12 col-lg-6">
       <div class="card mt-3 px-1">
-        <blue-chart [datasets]="(dataset$ | async)?.hum || [{data:[]}]" [labels]="(dataset$ | async)?.labels || []" [options]="options" class="d-block"></blue-chart>
+        <blue-chart [datasets]="(dataset$ | async)?.hum || [{data:[]}]" [labels]="(dataset$ | async)?.labels || []" [options]="chartOptions" class="d-block"></blue-chart>
       </div>
     </div>
     <div class="col-12 col-lg-6">
       <div class="card mt-3 px-1">
-        <blue-chart [datasets]="(dataset$ | async)?.pm || [{data:[]}]" [labels]="(dataset$ | async)?.labels || []" [options]="options" class="d-block"></blue-chart>
-      </div>
-    </div>
-    <div class="col-12 col-lg-6">
-      <div class="card mt-3">
-        <div class="card-block">
-          <h4 class="card-title">Reports</h4>
-        </div>
-        <ul class="list-group list-group-flush">
-          <blue-report [errors]="errors$ | async"></blue-report>
-        </ul>
-        <div class="card-block py-2">
-          <span class="small text-muted">Showing latest 15 errors</span>
-        </div>
+        <blue-chart [datasets]="(dataset$ | async)?.pm || [{data:[]}]" [labels]="(dataset$ | async)?.labels || []" [options]="chartOptions" class="d-block"></blue-chart>
       </div>
     </div>
     <div class="col-12 col-lg-6">
@@ -101,6 +83,21 @@
         </div>
       </div>
     </div>
+
+    <div class="col-12 col-lg-6">
+      <div class="card mt-3">
+        <div class="card-block">
+          <h4 class="card-title">Reports</h4>
+        </div>
+        <ul class="list-group list-group-flush">
+          <blue-report [errors]="errors$ | async"></blue-report>
+        </ul>
+        <div class="card-block py-2">
+          <span class="small text-muted">Showing latest 15 errors</span>
+        </div>
+      </div>
+    </div>
+
     <div class="col-12 col-lg-6">
       <div class="card mt-3">
         <div class="card-block">

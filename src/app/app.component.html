@@ -3,7 +3,9 @@
     <a class="navbar-brand" routerLink="/">BlueSense</a>
     <div class="collapse navbar-collapse" id="navbarText">
       <div class="navbar-nav mr-auto">
+        <a class="nav-link nav-item" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Recent</a>
         <a class="nav-link nav-item" routerLink="/error" routerLinkActive="active">Reports</a>
+        <a class="nav-link nav-item" routerLink="/summary" routerLinkActive="active">Summary</a>
       </div>
       <span class="navbar-text">
         <span class="blue-navbar-indicator" [ngClass]="{ 'show': !(connected$ | async).$value }"><i class="fa fa-exclamation-circle"></i> Disconnected from Firebase</span>
