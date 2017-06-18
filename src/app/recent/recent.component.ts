@@ -28,35 +28,6 @@ export class RecentComponent implements OnInit, AfterViewInit {
 
   public chartOptions: any = CHART_OPTIONS;
 
-  public AQITable = { 
-    "pm25": [
-      [0, 12, 0, 50],
-      [12, 35.4, 51, 100],
-      [35.4, 55.4, 101, 150],
-      [55.4, 150.4, 151, 200],
-      [150.4, 250.4, 201, 300],
-      [250.4, 350.4, 301, 400],
-      [350.4, 500.4, 401, 500]
-    ],
-    "pm10": [
-      [0, 54, 0, 50],
-      [54, 154, 51, 100],
-      [154, 254, 101, 150],
-      [254, 354, 151, 200],
-      [354, 424, 201, 300],
-      [424, 504, 301, 400],
-      [504, 604, 401, 500]
-    ],
-    "text": [
-      ["success", "Good"],
-      ["warning", "Moderate"],
-      ["warning", "Unhealthy for Sensitive Groups"],
-      ["danger", "Unhealthy"],
-      ["danger", "Very Unhealthy"],
-      ["muted", "Hazardous"]
-    ]
-  };
-
   mapData(data, key) {
     return _.chain(data).map(key).chunk(this.split).map(v =>  _.mean(v)).value()
   }

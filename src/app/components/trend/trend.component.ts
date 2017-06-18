@@ -7,4 +7,5 @@ import { Component, Input, OnChanges } from '@angular/core';
 })
 export class TrendComponent {
   @Input() trend: number;
+  @Input() simple: Boolean;
 }

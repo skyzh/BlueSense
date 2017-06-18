@@ -13,40 +13,63 @@ import { TrendComponent, ChartComponent } from '../components';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit, AfterViewInit {
+  private dataset$: Observable<any>;
+  private ready: Boolean = false;
+  private current: any;
+  private current_trend: any;
+  private lastRefresh: number;
 
-  public AQITable = { 
-    "pm25": [
-      [0, 12, 0, 50],
-      [12, 35.4, 51, 100],
-      [35.4, 55.4, 101, 150],
-      [55.4, 150.4, 151, 200],
-      [150.4, 250.4, 201, 300],
-      [250.4, 350.4, 301, 400],
-      [350.4, 500.4, 401, 500]
-    ],
-    "pm10": [
-      [0, 54, 0, 50],
-      [54, 154, 51, 100],
-      [154, 254, 101, 150],
-      [254, 354, 151, 200],
-      [354, 424, 201, 300],
-      [424, 504, 301, 400],
-      [504, 604, 401, 500]
-    ],
-    "text": [
-      ["success", "Good"],
-      ["warning", "Moderate"],
-      ["warning", "Unhealthy for Sensitive Groups"],
-      ["danger", "Unhealthy"],
-      ["danger", "Very Unhealthy"],
-      ["muted", "Hazardous"]
-    ]
-  };
+  mapData(data, key) {
+    return _.chain(data).map(key).value()
+  }
+  
+  constructor(private db: AngularFireDatabase) {
+    this.dataset$ = db.list(
+      '/data', {
+        query: {
+          limitToLast: 5
+        }
+      }).map(d => {
+        this.lastRefresh = (_.last(d))['time'] * 1000;
+        return {
+          'pm': [
+            { data: this.mapData(d, 'pm10'), label: "PM10" },
+            { data: this.mapData(d, 'pm25'), label: "PM2.5" },
+            { data: this.mapData(d, 'pm01'), label: "PM1.0" }
+          ],
+          'tem': [
+            { data: this.mapData(d, 'tc'), label: "Temperature" },
+            { data: this.mapData(d, 'hic'), label: "Heat Index" }
+          ],
+          'hum': [
+            { data: this.mapData(d, 'hum'), label: "Humidity" }
+          ]
+        }
+      }
+    );
+
+    this.dataset$.subscribe(d => {
+      this.ready = true;
+      const __current = {
+        temperature: d.tem[0].data,
+        heatindex: d.tem[1].data,
+        humidity: d.hum[0].data,
+        pm01: d.pm[0].data,
+        pm25: d.pm[1].data,
+        pm10: d.pm[2].data,
+      }
+      this.current = _.mapValues(__current, (v: Array<number>) => Math.round(_.last(v) * 100) / 100);
+      this.current_trend = _.mapValues(__current, (v: Array<number>) => Math.round((v[_.size(v) - 1] - v[_.size(v) - 2]) * 100) / 100);
+    });
+    
+    this.current = {};
+    this.current_trend = {};
+    this.ready = false;
+  }
 
   ngOnInit() {
   }
 
   ngAfterViewInit() {
-    
   }
 }
