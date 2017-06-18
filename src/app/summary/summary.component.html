@@ -28,19 +28,19 @@
   </div>
 
   <div class="row">
-    <div class="col-12 col-lg-6">
+    <div class="col-12">
       <div class="card mt-3 px-1">
         <blue-chart [datasets]="(dataset$ | async)?.tem || [{data:[]}]" [labels]="(dataset$ | async)?.labels || []" [options]="chartOptions" class="d-block"></blue-chart>
       </div>
     </div>
     
-    <div class="col-12 col-lg-6">
+    <div class="col-12">
       <div class="card mt-3 px-1">
         <blue-chart [datasets]="(dataset$ | async)?.hum || [{data:[]}]" [labels]="(dataset$ | async)?.labels || []" [options]="chartOptions" class="d-block"></blue-chart>
       </div>
     </div>
 
-    <div class="col-12 col-lg-6">
+    <div class="col-12">
       <div class="card mt-3 px-1">
         <blue-chart [datasets]="(dataset$ | async)?.pm || [{data:[]}]" [labels]="(dataset$ | async)?.labels || []" [options]="chartOptions" class="d-block"></blue-chart>
       </div>

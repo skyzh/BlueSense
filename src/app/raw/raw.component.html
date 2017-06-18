@@ -1,0 +1,14 @@
+<div class="container"
+     data-infinite-scroll
+     debounce
+     [infiniteScrollDistance]="2"
+     [infiniteScrollThrottle]="300"
+     (scrolled)="onScrollDown()">
+  <h1 class="display-3">Reports</h1>
+  <ul class="list-group my-3">
+    <blue-report [errors]="errors$ | async"></blue-report>
+  </ul>
+  <div class="text-left">
+    <blue-loading [ready]="false" text="Retrieving latest reports..."></blue-loading>
+  </div>
+</div>

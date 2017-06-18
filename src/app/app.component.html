@@ -3,7 +3,7 @@
     <a class="navbar-brand" routerLink="/">BlueSense</a>
     <div class="collapse navbar-collapse" id="navbarText">
       <div class="navbar-nav mr-auto">
-        <a class="nav-link nav-item" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Recent</a>
+        <a class="nav-link nav-item" routerLink="/recent" routerLinkActive="active">Recent</a>
         <a class="nav-link nav-item" routerLink="/error" routerLinkActive="active">Reports</a>
         <a class="nav-link nav-item" routerLink="/summary" routerLinkActive="active">Summary</a>
       </div>
@@ -16,6 +16,11 @@
 
 <main>
   <router-outlet></router-outlet>
+  <div class="blue-loading-overlay d-flex flex-column justify-content-center align-items-center" *ngIf="!ready">
+    <h1 class="display-3"><span class="text-primary">Blue</span>Sense</h1>
+    <p><em>Sense of the <span class="text-primary">Blue</span> Sky.</em></p>
+    <p><small><i class="fa fa-circle-o-notch fa-spin fa-fw"></i> Establishing connection...</small></p>
+  </div>
 </main>
 
 <footer class="my-3">
