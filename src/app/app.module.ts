@@ -7,7 +7,9 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { ErrorComponent } from './error/error.component';
 import { SummaryComponent } from './summary/summary.component';
-import { RecentComponent } from './recent/recent.component';
+import { ChartsComponent } from './charts/charts.component';
+import { AboutComponent } from './about/about.component';
+
 import { ApiService, SenseService } from './shared';
 import { routing } from './app.routing';
 
@@ -43,7 +45,8 @@ import { FIREBASE_CONFIG } from './config/firebase';
     ChartComponent,
     ReportComponent,
     LoadingComponent,
-    RecentComponent
+    ChartsComponent,
+    AboutComponent
   ],
   providers: [
     ApiService,

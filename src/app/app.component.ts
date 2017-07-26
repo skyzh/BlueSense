@@ -12,6 +12,7 @@ import '../style/app.scss';
 export class AppComponent {
   private connected$: FirebaseObjectObservable<any>;
   private ready: boolean = false;
+  private debug: boolean = !(process.env.ENV === 'build');
   constructor(private api: ApiService, private db: AngularFireDatabase) {
     this.connected$ = db.object('/.info/connected');
     this.connected$.subscribe(d => this.ready = this.ready || d.$value);

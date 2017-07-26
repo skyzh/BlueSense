@@ -10,11 +10,11 @@ import { TrendComponent, ChartComponent } from '../components';
 import { options as CHART_OPTIONS } from './chart.config';
 
 @Component({
-  selector: 'my-recent',
-  templateUrl: './recent.component.html',
-  styleUrls: ['./recent.component.scss']
+  selector: 'my-charts',
+  templateUrl: './charts.component.html',
+  styleUrls: ['./charts.component.scss']
 })
-export class RecentComponent implements OnInit, AfterViewInit {
+export class ChartsComponent implements OnInit, AfterViewInit {
   private dataset$: Observable<any>;
   private errors$ : Observable<any>;
   private dataset: any;

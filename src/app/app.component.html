@@ -1,4 +1,4 @@
-<header>
+<header><!--
   <nav class="navbar navbar-toggleable-sm navbar-light bg-faded">
     <a class="navbar-brand" routerLink="/">BlueSense</a>
     <div class="collapse navbar-collapse" id="navbarText">
@@ -11,12 +11,63 @@
         <span class="blue-navbar-indicator" [ngClass]="{ 'show': !(connected$ | async).$value }"><i class="fa fa-exclamation-circle"></i> Disconnected from Firebase</span>
       </span>
     </div>
-  </nav>
+  </nav>-->
+  <div class="row placeholder-header"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col text-center">
+        <h1 class="display-3"><span class="text-bluesense">Blue</span>Sense</h1>
+        <p><em>Sense of the <span class="text-bluesense-sub">Blue</span> Sky.</em></p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-8 offset-md-2 col-lg-6 offset-lg-3">
+        <div class="col text-uppercase">
+          <div class="row">
+            <div class="col-5 text-right hidden-sm-down">
+              <ul class="list-unstyled">
+                <li>BlueSense</li>
+                <li>Data</li>
+                <li>Charts</li>
+                <li>About</li>
+              </ul>
+            </div>
+            <div class="col-md-7 text-md-left text-center">
+              <ul class="list-unstyled">
+                <li><a class="blue-nav-link" routerLink="/"><i class="fa fa-circle-o"></i> Overview</a></li>
+                <li>
+                  <ul class="list-inline">
+                    <li class="list-inline-item"><a class="blue-nav-link" routerLink="/raw"><i class="fa fa-circle-o"></i> Raw</a></li>
+                    <li class="list-inline-item"><a class="blue-nav-link" routerLink="/logs"><i class="fa fa-circle-o"></i> Logs</a></li>
+                    <li class="list-inline-item"><a class="blue-nav-link" routerLink="/alerts"><i class="fa fa-circle-o"></i> Alerts</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <ul class="list-inline">
+                    <li class="list-inline-item"><a class="blue-nav-link" routerLink="/charts/realtime"><i class="fa fa-circle-o"></i> Realtime</a></li>
+                    <li class="list-inline-item"><a class="blue-nav-link" routerLink="/charts/summary"><i class="fa fa-circle-o"></i> Summary</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <ul class="list-inline">
+                    <li class="list-inline-item"><a class="blue-nav-link" href="https://about.me/SkyZH"><i class="fa fa-circle-o"></i> SkyZH</a></li>
+                    <li class="list-inline-item"><a class="blue-nav-link" routerLink="/about"><i class="fa fa-circle-o"></i> BlueSense</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <p class="text-muted small text-center">An open-source project by SkyZH. Data collected from his home.</p>
+        <hr class="mx-3">
+      </div>
+    </div>
+  </div>
 </header>
 
 <main>
   <router-outlet></router-outlet>
-  <div class="blue-loading-overlay d-flex flex-column justify-content-center align-items-center" *ngIf="!ready">
+  <div class="blue-loading-overlay d-flex flex-column justify-content-center align-items-center" *ngIf="!ready && !debug">
     <h1 class="display-3"><span class="text-primary">Blue</span>Sense</h1>
     <p><em>Sense of the <span class="text-primary">Blue</span> Sky.</em></p>
     <p><small><i class="fa fa-circle-o-notch fa-spin fa-fw"></i> Establishing connection...</small></p>
@@ -25,4 +76,3 @@
 
 <footer class="my-3">
 </footer>
-
