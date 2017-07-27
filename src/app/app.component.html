@@ -1,17 +1,4 @@
-<header><!--
-  <nav class="navbar navbar-toggleable-sm navbar-light bg-faded">
-    <a class="navbar-brand" routerLink="/">BlueSense</a>
-    <div class="collapse navbar-collapse" id="navbarText">
-      <div class="navbar-nav mr-auto">
-        <a class="nav-link nav-item" routerLink="/recent" routerLinkActive="active">Recent</a>
-        <a class="nav-link nav-item" routerLink="/error" routerLinkActive="active">Reports</a>
-        <a class="nav-link nav-item" routerLink="/summary" routerLinkActive="active">Summary</a>
-      </div>
-      <span class="navbar-text">
-        <span class="blue-navbar-indicator" [ngClass]="{ 'show': !(connected$ | async).$value }"><i class="fa fa-exclamation-circle"></i> Disconnected from Firebase</span>
-      </span>
-    </div>
-  </nav>-->
+<header>
   <div class="row placeholder-header"></div>
   <div class="container">
     <div class="row">
@@ -34,24 +21,24 @@
             </div>
             <div class="col-md-7 text-md-left text-center">
               <ul class="list-unstyled">
-                <li><a class="blue-nav-link" routerLink="/"><i class="fa fa-circle-o"></i> Overview</a></li>
+                <li><a class="blue-nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class="fa fa-circle-o"></i> Overview</a></li>
                 <li>
                   <ul class="list-inline">
-                    <li class="list-inline-item"><a class="blue-nav-link" routerLink="/raw"><i class="fa fa-circle-o"></i> Raw</a></li>
-                    <li class="list-inline-item"><a class="blue-nav-link" routerLink="/logs"><i class="fa fa-circle-o"></i> Logs</a></li>
-                    <li class="list-inline-item"><a class="blue-nav-link" routerLink="/alerts"><i class="fa fa-circle-o"></i> Alerts</a></li>
+                    <li class="list-inline-item"><a class="blue-nav-link" routerLink="/raw" routerLinkActive="active"><i class="fa fa-circle-o"></i> Raw</a></li>
+                    <li class="list-inline-item"><a class="blue-nav-link" routerLink="/logs" routerLinkActive="active"><i class="fa fa-circle-o"></i> Logs</a></li>
+                    <li class="list-inline-item"><a class="blue-nav-link" routerLink="/alerts" routerLinkActive="active"><i class="fa fa-circle-o"></i> Alerts</a></li>
                   </ul>
                 </li>
                 <li>
                   <ul class="list-inline">
-                    <li class="list-inline-item"><a class="blue-nav-link" routerLink="/charts/realtime"><i class="fa fa-circle-o"></i> Realtime</a></li>
-                    <li class="list-inline-item"><a class="blue-nav-link" routerLink="/charts/summary"><i class="fa fa-circle-o"></i> Summary</a></li>
+                    <li class="list-inline-item"><a class="blue-nav-link" routerLink="/charts/realtime" routerLinkActive="active"><i class="fa fa-circle-o"></i> Realtime</a></li>
+                    <li class="list-inline-item"><a class="blue-nav-link" routerLink="/charts/summary" routerLinkActive="active"><i class="fa fa-circle-o"></i> Summary</a></li>
                   </ul>
                 </li>
                 <li>
                   <ul class="list-inline">
                     <li class="list-inline-item"><a class="blue-nav-link" href="https://about.me/SkyZH"><i class="fa fa-circle-o"></i> SkyZH</a></li>
-                    <li class="list-inline-item"><a class="blue-nav-link" routerLink="/about"><i class="fa fa-circle-o"></i> BlueSense</a></li>
+                    <li class="list-inline-item"><a class="blue-nav-link" routerLink="/about" routerLinkActive="active"><i class="fa fa-circle-o"></i> BlueSense</a></li>
                   </ul>
                 </li>
               </ul>
@@ -59,7 +46,7 @@
           </div>
         </div>
         <p class="text-muted small text-center">An open-source project by SkyZH. Data collected from his home.</p>
-        <hr class="mx-3">
+        <hr class="mx-1">
       </div>
     </div>
   </div>
@@ -73,6 +60,3 @@
     <p><small><i class="fa fa-circle-o-notch fa-spin fa-fw"></i> Establishing connection...</small></p>
   </div>
 </main>
-
-<footer class="my-3">
-</footer>

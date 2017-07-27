@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { ErrorComponent } from './error/error.component';
+import { LogComponent } from './log/log.component';
 import { SummaryComponent } from './summary/summary.component';
 import { ChartsComponent } from './charts/charts.component';
 import { AboutComponent } from './about/about.component';
@@ -39,7 +39,7 @@ import { FIREBASE_CONFIG } from './config/firebase';
   declarations: [
     AppComponent,
     HomeComponent,
-    ErrorComponent,
+    LogComponent,
     SummaryComponent,
     TrendComponent,
     ChartComponent,

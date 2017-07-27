@@ -16,4 +16,9 @@
 .blue-nav-link {
   color: $gray-light !important;
   text-decoration: dotted underline;
+
+  &.active {
+    color: $gray-dark !important;
+    text-decoration: dashed underline;
+  }
 }

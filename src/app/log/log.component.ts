@@ -1,28 +1,29 @@
 import * as _ from 'lodash';
 import { Component, HostListener, OnInit, AfterViewInit } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { Observable, ReplaySubject } from 'rxjs';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 
 @Component({
-  selector: 'my-error',
-  templateUrl: './error.component.html',
-  styleUrls: ['./error.component.scss']
+  selector: 'my-log',
+  templateUrl: './log.component.html',
+  styleUrls: ['./log.component.scss']
 })
-export class ErrorComponent implements AfterViewInit {
+export class LogComponent implements AfterViewInit {
 
-  private errors$ : Observable<any>;
-  private query$: Subject<number> = new Subject;
+  private logs$ : Observable<any>;
+  private query$: ReplaySubject<number>;
   private __current: number = 200;
   private ready: boolean;
 
   constructor(private db: AngularFireDatabase) {
-    this.errors$ = db.list(
+    this.query$ = new ReplaySubject<number>(1);
+    this.logs$ = db.list(
       '/error', {
         query: {
           limitToLast: this.query$
         }
     }).map(d => _.reverse(_.clone(d)));
-    this.errors$.subscribe(d => this.ready = true);
+    this.logs$.subscribe(d => this.ready = true);
   }
 
   ngAfterViewInit() {
