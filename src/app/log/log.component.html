@@ -11,7 +11,7 @@
         <blue-report [errors]="logs$ | async"></blue-report>
       </ul>
       <div class="text-left">
-        <blue-loading [ready]="false" text="Retrieving latest logs..."></blue-loading>
+        <blue-loading *ngIf="!ready" text="Retrieving latest logs..."></blue-loading>
       </div>
     </div>
   </div>

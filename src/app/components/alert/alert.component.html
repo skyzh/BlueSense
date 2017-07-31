@@ -1,0 +1,11 @@
+<div class="card card-inverse alert-card mb-3" [ngClass]="'card-' + alert.theme" *ngFor="let alert of alerts">
+  <div class="card-block">
+    <blockquote class="card-blockquote d-flex flex-row justify-content-start align-items-center">
+      <div class="display-1"><i class="fa fa-fw" [ngClass]="'fa-' + alert.icon"></i></div>
+      <div>
+        <h3 class="text-uppercase">{{ alert.title }}</h3>
+        <span>{{ alert.content }}</span>
+      </div>
+    </blockquote>
+  </div>
+</div>

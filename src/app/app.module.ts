@@ -1,19 +1,19 @@
 import { NgModule, ApplicationRef } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { LogComponent } from './log/log.component';
-import { SummaryComponent } from './summary/summary.component';
 import { ChartsComponent } from './charts/charts.component';
 import { AboutComponent } from './about/about.component';
 
 import { ApiService, SenseService } from './shared';
 import { routing } from './app.routing';
 
-import { TrendComponent, ChartComponent, ReportComponent, LoadingComponent } from './components';
+import { TrendComponent, ChartComponent, ReportComponent, LoadingComponent, AlertComponent } from './components';
 
 import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
 
@@ -27,6 +27,7 @@ import { FIREBASE_CONFIG } from './config/firebase';
 @NgModule({
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     HttpModule,
     FormsModule,
     routing,
@@ -40,13 +41,13 @@ import { FIREBASE_CONFIG } from './config/firebase';
     AppComponent,
     HomeComponent,
     LogComponent,
-    SummaryComponent,
     TrendComponent,
     ChartComponent,
     ReportComponent,
     LoadingComponent,
     ChartsComponent,
-    AboutComponent
+    AboutComponent,
+    AlertComponent
   ],
   providers: [
     ApiService,

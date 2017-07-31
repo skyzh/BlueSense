@@ -2,11 +2,16 @@ import * as _ from 'lodash';
 import { Component, HostListener, OnInit, AfterViewInit } from '@angular/core';
 import { Observable, ReplaySubject } from 'rxjs';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
+import { RouteAnimation } from '../const/routeanimation';
 
 @Component({
   selector: 'my-log',
   templateUrl: './log.component.html',
-  styleUrls: ['./log.component.scss']
+  styleUrls: ['./log.component.scss'],
+  host: {
+    '[@routeAnimation]': 'true'
+  },
+  animations: [ RouteAnimation ]
 })
 export class LogComponent implements AfterViewInit {
 

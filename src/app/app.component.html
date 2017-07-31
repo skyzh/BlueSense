@@ -14,14 +14,20 @@
             <div class="col-5 text-right hidden-sm-down">
               <ul class="list-unstyled">
                 <li>BlueSense</li>
-                <li>Data</li>
                 <li>Charts</li>
+                <li>Data</li>
                 <li>About</li>
               </ul>
             </div>
             <div class="col-md-7 text-md-left text-center">
               <ul class="list-unstyled">
                 <li><a class="blue-nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class="fa fa-circle-o"></i> Overview</a></li>
+                <li>
+                  <ul class="list-inline">
+                    <li class="list-inline-item"><a class="blue-nav-link" routerLink="/charts/realtime" routerLinkActive="active"><i class="fa fa-circle-o"></i> Realtime</a></li>
+                    <li class="list-inline-item"><a class="blue-nav-link" routerLink="/charts/hourly" routerLinkActive="active"><i class="fa fa-circle-o"></i> Summary</a></li>
+                  </ul>
+                </li>
                 <li>
                   <ul class="list-inline">
                     <li class="list-inline-item"><a class="blue-nav-link" routerLink="/raw" routerLinkActive="active"><i class="fa fa-circle-o"></i> Raw</a></li>
@@ -31,14 +37,8 @@
                 </li>
                 <li>
                   <ul class="list-inline">
-                    <li class="list-inline-item"><a class="blue-nav-link" routerLink="/charts/realtime" routerLinkActive="active"><i class="fa fa-circle-o"></i> Realtime</a></li>
-                    <li class="list-inline-item"><a class="blue-nav-link" routerLink="/charts/summary" routerLinkActive="active"><i class="fa fa-circle-o"></i> Summary</a></li>
-                  </ul>
-                </li>
-                <li>
-                  <ul class="list-inline">
-                    <li class="list-inline-item"><a class="blue-nav-link" href="https://about.me/SkyZH"><i class="fa fa-circle-o"></i> SkyZH</a></li>
                     <li class="list-inline-item"><a class="blue-nav-link" routerLink="/about" routerLinkActive="active"><i class="fa fa-circle-o"></i> BlueSense</a></li>
+                    <li class="list-inline-item"><a class="blue-nav-link" href="https://about.me/SkyZH"><i class="fa fa-circle-o"></i> SkyZH <small><i class="fa fa-external-link" aria-hidden="true"></i></small></a></li>
                   </ul>
                 </li>
               </ul>

@@ -33,7 +33,7 @@ export class SenseWrapper {
   private __query$: ReplaySubject<number>;
 
   constructor(private db: AngularFireDatabase, private source: string, private keys: Array<string>) {
-    this.__query$ = new ReplaySubject<number>(5);
+    this.__query$ = new ReplaySubject<number>(1);
     this.source$ = this.db.list(this.source, {
       query: { limitToLast: this.__query$ }
     });

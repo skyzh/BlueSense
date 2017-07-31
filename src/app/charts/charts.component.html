@@ -1,7 +1,92 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8 offset-md-2 col-lg-6 offset-lg-3">
-      <h2 class="h3 text-muted text-uppercase">Charts</h2>
+      <h2 class="h3 text-muted text-uppercase">Charts <small>{{ type$ | async }}</small></h2>
+      <ul *ngIf="(type$ | async) == 'realtime'" class="nav nav-pills justify-content-start mb-3">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/charts/realtime/1440/12" routerLinkActive="active">24hrs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/charts/realtime/720/6" routerLinkActive="active">12hrs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/charts/realtime/360/3" routerLinkActive="active">6hrs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/charts/realtime/120/1" routerLinkActive="active">2hrs</a>
+        </li>
+      </ul>
+      <ul *ngIf="(type$ | async) == 'hourly'" class="nav nav-pills justify-content-start mb-3">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/charts/hourly/744/6" routerLinkActive="active">30days</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/charts/hourly/336/4" routerLinkActive="active">14days</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/charts/hourly/168/2" routerLinkActive="active">7days</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/charts/hourly/72/1" routerLinkActive="active">3days</a>
+        </li>
+      </ul>
+      <!--<ul class="nav nav-pills mt-2">
+        <li class="nav-item">
+          <a class="nav-link" (click)="getLast(60 * 24, 12)" href="javascript:">24hrs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="getLast(60 * 12, 6)" href="javascript:">12hrs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="getLast(60 * 2, 1)" href="javascript:">2hrs</a>
+        </li>
+      </ul>-->
+      <span class="text-info"><blue-loading *ngIf="!(dataset$ | async)" text="Retrieving latest data..."></blue-loading></span>
+      <p class="text-muted" *ngIf="lastRefresh$ | async">Reported {{ lastRefresh$ | async | amTimeAgo }} <small>({{ lastRefresh$ | async | amDateFormat: "LLLL" }})</small></p>
+      <p class="text-muted" *ngIf="lastData$ | async">From {{ lastData$ | async | amTimeAgo }} <small>({{ lastData$ | async | amDateFormat: "LLLL" }})</small> to now every {{ sample$ | async }} samples</p>
+
+      <div class="row">
+        <div class="col-12">
+          <div class="card mt-3 px-1">
+            <h3 class="h4 text-muted text-center my-3"><span class="text-uppercase">Temperature</span> <small>(°C)</small></h3>
+            <div class="embed-responsive embed-responsive-4by3">
+              <div class="wrapper-chart embed-responsive-item">
+                <blue-chart [datasets]="(chart_tem$ | async) || [{data:[]}]" [labels]="(chart_labels$ | async) || []" [options]="chartOptions" class="d-block"></blue-chart>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="card mt-3 px-1">
+            <h3 class="h4 text-muted text-center my-3"><span class="text-uppercase">Humidity</span> <small>(%)</small></h3>
+            <div class="embed-responsive embed-responsive-4by3">
+              <div class="wrapper-chart embed-responsive-item">
+                <blue-chart [datasets]="(chart_hum$ | async) || [{data:[]}]" [labels]="(chart_labels$ | async) || []" [options]="chartOptions" class="d-block"></blue-chart>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="card mt-3 px-1">
+            <h3 class="h4 text-muted text-center my-3"><span class="text-uppercase">Pressure</span> <small>(kPa)</small></h3>
+            <div class="embed-responsive embed-responsive-4by3">
+              <div class="wrapper-chart embed-responsive-item">
+                <blue-chart [datasets]="(chart_pre$ | async) || [{data:[]}]" [labels]="(chart_labels$ | async) || []" [options]="chartOptions" class="d-block"></blue-chart>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="card mt-3 px-1">
+            <h3 class="h4 text-muted text-center my-3"><span class="text-uppercase">Air Pollutant</span> <small>(µg/m<sup>3</sup>)</small></h3>
+            <div class="embed-responsive embed-responsive-4by3">
+              <div class="wrapper-chart embed-responsive-item">
+                <blue-chart [datasets]="(chart_pm$ | async) || [{data:[]}]" [labels]="(chart_labels$ | async) || []" [options]="chartOptions" class="d-block"></blue-chart>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
