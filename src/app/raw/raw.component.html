@@ -4,11 +4,36 @@
      [infiniteScrollDistance]="2"
      [infiniteScrollThrottle]="300"
      (scrolled)="onScrollDown()">
-  <h1 class="display-3">Reports</h1>
-  <ul class="list-group my-3">
-    <blue-report [errors]="errors$ | async"></blue-report>
-  </ul>
-  <div class="text-left">
-    <blue-loading [ready]="false" text="Retrieving latest reports..."></blue-loading>
+  <div class="row">
+    <div class="col">
+      <h2 class="h3 text-muted text-uppercase">Raw</h2>
+      <table class="table my-3">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th><abbr title="Temperature" class="initialism">T.</abbr> <small>(°C)</small></th>
+            <th><abbr title="Humidity" class="initialism">H.</abbr> <small>(%)</small></th>
+            <th>PM1.0 <small>(µg/m<sup>3</sup>)</small></th>
+            <th>PM2.5 <small>(µg/m<sup>3</sup>)</small></th>
+            <th>PM10 <small>(µg/m<sup>3</sup>)</small></th>
+            <th><abbr title="Pressure" class="initialism">P.</abbr> <small>(kPa)</small></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of (flipped$ | async)">
+            <th scope="row">{{ data[0] | amDateFormat: 'l LTS' }}</th>
+            <td>{{ data[1] }}</td>
+            <td>{{ data[2] }}</td>
+            <td>{{ data[3] }}</td>
+            <td>{{ data[4] }}</td>
+            <td>{{ data[5] }}</td>
+            <td>{{ data[6] }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="text-left">
+        <blue-loading *ngIf="!ready" text="Retrieving latest data..."></blue-loading>
+      </div>
+    </div>
   </div>
 </div>

@@ -118,13 +118,14 @@ export class HomeComponent implements OnInit, AfterViewInit {
     this.current = {};
     this.current_trend = {};
     this.lastRefresh = Date.now();
-    sense.realtime(['time', 'tc', 'hic', 'hum', 'pm25', 'pm10']).duration(2).report().convertTimestamp().summary().sample(1).observe().subscribe(d => {
+    sense.realtime(['time', 'tc', 'hum', 'pm25', 'pm10', 'pressure']).duration(2).report().convertTimestamp().summary().sample(1).observe().subscribe(d => {
       const __current = {
         temperature: d[1].data,
-        heatindex: d[2].data,
-        humidity: d[3].data,
-        pm25: d[4].data,
-        pm10: d[5].data,
+        heatindex: d[1].data,
+        humidity: d[2].data,
+        pm25: d[3].data,
+        pm10: d[4].data,
+        pressure: d[5].data
       };
       this.lastRefresh = _.last(d[0].data);
       this.current = _.mapValues(__current, (v: Array<number>) => Math.round(_.last(v) * 100) / 100);
