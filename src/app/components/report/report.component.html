@@ -1,5 +1,5 @@
 <li class="list-group-item"
     [ngClass]="{'list-group-item-info': error.level == 1, 'list-group-item-danger': error.level == 0,  'list-group-item-success': error.level == 2}"
     *ngFor="let error of errors">
-  <small><samp>{{ error.time * 1000 | amDateFormat: "lll" }}</samp> | {{ error.message }}</small>
+  <small><samp>{{ error.time * 1000 | amDateFormat: "lll" }}</samp> | {{ error.stage }} - {{ error.message }}</small>
 </li>

@@ -10,6 +10,7 @@ import { LogComponent } from './log/log.component';
 import { ChartsComponent } from './charts/charts.component';
 import { AboutComponent } from './about/about.component';
 import { RawComponent } from './raw/raw.component';
+import { AlertsComponent } from './alerts/alerts.component';
 
 import { ApiService, SenseService } from './shared';
 import { routing } from './app.routing';
@@ -49,7 +50,8 @@ import { FIREBASE_CONFIG } from './config/firebase';
     ChartsComponent,
     AboutComponent,
     AlertComponent,
-    RawComponent
+    RawComponent,
+    AlertsComponent
   ],
   providers: [
     ApiService,

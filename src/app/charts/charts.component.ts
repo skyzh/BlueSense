@@ -43,8 +43,8 @@ export class ChartsComponent implements OnInit, AfterViewInit {
       let __duration = +(params['duration'] || 24 * 60);
       this.__type = params['type'] || 'realtime';
       let __call = null;
-      if (this.__type == 'realtime') __call = sense.realtime(['time', 'tc', 'hum', 'pm01', 'pm25', 'pm10']);
-      if (this.__type == 'hourly') __call = sense.hourly(['time', 'tc', 'hum', 'pm01', 'pm25', 'pm10']);
+      if (this.__type == 'realtime') __call = sense.realtime(['time', 'tc', 'hum', 'pm01', 'pm25', 'pm10', 'pressure']);
+      if (this.__type == 'hourly') __call = sense.hourly(['time', 'tc', 'hum', 'pm01', 'pm25', 'pm10', 'pressure']);
       return __call
         .duration(__duration)
         .convertTimestamp()
@@ -57,7 +57,7 @@ export class ChartsComponent implements OnInit, AfterViewInit {
     this.lastData$ = this.dataset$.map(d => _.first(d[0].data));
     this.chart_tem$ = this.dataset$.map(d => [{ data: d[1].data, label: 'Temperature' }]);
     this.chart_hum$ = this.dataset$.map(d => [{ data: d[2].data, label: 'Humidity' }]);
-    this.chart_pre$ = this.dataset$.map(d => [{ data: [], label: 'Pressure' }]);
+    this.chart_pre$ = this.dataset$.map(d => [{ data: d[6].data, label: 'Pressure' }]);
     this.chart_pm$ = this.dataset$.map(d => [
       { data: d[5].data, label: 'PM10' },
       { data: d[4].data, label: 'PM2.5' },
