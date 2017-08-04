@@ -37,7 +37,7 @@ export class SenseWrapper {
     this.source$ = this.db.list(this.source, {
       query: { limitToLast: this.__query$ }
     });
-    this.dataset$ = this.source$.map(d => _.map(keys, key => <SenseData>{ data: _.map(d, key) , key}));
+    this.dataset$ = this.source$.map(d => _.map(keys, key => <SenseData>{ data: _.map(d, key), key}));
   }
 
   public duration(duration: number): SenseWrapper {
@@ -83,6 +83,7 @@ export class SenseWrapper {
       data.data = _
         .chain(data.data)
         .chunk(split)
+        .map(d => _.filter(d, _.isNumber))
         .map(v => __func(v))
         .value()
       return data;

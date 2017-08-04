@@ -13,28 +13,28 @@
             </div>
           </div>
           <dl class="mt-1 row">
-            <dt class="col-3 text-uppercase">Humidity</dt>
-            <dd class="col-9">
+            <dt class="col-6 col-xl-3 text-uppercase">Humidity</dt>
+            <dd class="col-6 col-xl-9">
               <span>{{ current.humidity }}%</span>
               <trend class="mx-2 small" [trend]="current_trend.humidity" simple="true"></trend>
             </dd>
-            <dt class="col-3 text-uppercase">Feel like</dt>
-            <dd class="col-9">
+            <dt class="col-6 col-xl-3 text-uppercase">Feel like</dt>
+            <dd class="col-6 col-xl-9">
               <span>{{ current.heatindex }}°C</span>
               <trend class="mx-2 small" [trend]="current_trend.heatindex" simple="true"></trend>
             </dd>
-            <dt class="col-3 text-uppercase">Pressure</dt>
-            <dd class="col-9">
-              <span>{{ current.pm10 }} µg/m<sup>3</sup></span>
+            <dt class="col-6 col-xl-3 text-uppercase">Pressure</dt>
+            <dd class="col-6 col-xl-9">
+              <span>{{ current.pressure }} Pa</span>
               <trend class="mx-2 small" [trend]="current_trend.pm10" simple="true"></trend>
             </dd>
-            <dt class="col-3 text-uppercase">PM2.5</dt>
-            <dd class="col-9">
-              <span>{{ current.pm25 }} Pa</span>
+            <dt class="col-6 col-xl-3 text-uppercase">PM2.5</dt>
+            <dd class="col-6 col-xl-9">
+              <span>{{ current.pm25 }} µg/m<sup>3</sup></span>
               <trend class="mx-2 small" [trend]="current_trend.pm25" simple="true"></trend>
             </dd>
-            <dt class="col-3 text-uppercase">PM10</dt>
-            <dd class="col-9">
+            <dt class="col-6 col-xl-3 text-uppercase">PM10</dt>
+            <dd class="col-6 col-xl-9">
               <span>{{ current.pm10 }} µg/m<sup>3</sup></span>
               <trend class="mx-2 small" [trend]="current_trend.pm10" simple="true"></trend>
             </dd>

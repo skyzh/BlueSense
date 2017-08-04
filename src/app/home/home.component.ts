@@ -121,14 +121,14 @@ export class HomeComponent implements OnInit, AfterViewInit {
     sense.realtime(['time', 'tc', 'hum', 'pm25', 'pm10', 'pressure']).duration(2).report().convertTimestamp().summary().sample(1).observe().subscribe(d => {
       const __current = {
         temperature: d[1].data,
-        heatindex: d[1].data,
         humidity: d[2].data,
         pm25: d[3].data,
         pm10: d[4].data,
         pressure: d[5].data
       };
       this.lastRefresh = _.last(d[0].data);
-      this.current = _.mapValues(__current, (v: Array<number>) => Math.round(_.last(v) * 100) / 100);
+      this.current = _.mapValues(__current, (v: Array<number>) => _.round(_.last(v), 2));
+      this.current.heatindex = _.round(require('heat-index').heatIndex({temperature: this.current.temperature, humidity: this.current.humidity }), 2);
       this.current_trend = _.mapValues(__current, (v: Array<number>) => Math.round((v[_.size(v) - 1] - v[_.size(v) - 2]) * 100) / 100);
     });
   }
