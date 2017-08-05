@@ -1,4 +1,4 @@
-<!--<div class="card card-inverse alert-card mb-3" [ngClass]="'card-' + alert.theme" *ngFor="let alert of alerts">
+<div class="card card-inverse alert-card mb-3" [ngClass]="'card-' + alert.theme" *ngFor="let alert of __alerts">
   <div class="card-block">
     <blockquote class="card-blockquote d-flex flex-row justify-content-start align-items-center">
       <div class="display-1"><i class="fa fa-fw" [ngClass]="'fa-' + alert.icon"></i></div>
@@ -8,5 +8,5 @@
       </div>
     </blockquote>
   </div>
-</div>-->
-<p class="text-muted">Alerts currently not available.</p>
+</div>
+<p class="small text-muted">BlueSense uses AQI standard of <a href="https://en.wikipedia.org/wiki/Air_quality_index#United_States">United States</a>.</p>

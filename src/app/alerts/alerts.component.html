@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-8 offset-md-2 col-lg-6 offset-lg-3">
       <h2 class="h3 text-muted text-uppercase">Alerts</h2>
-      <blue-alert [alerts]="alerts"></blue-alert>
+      <blue-alert [alerts]="realtime$ | async"></blue-alert>
     </div>
   </div>
 </div>

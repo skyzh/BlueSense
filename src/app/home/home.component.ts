@@ -21,114 +21,26 @@ export class HomeComponent implements OnInit, AfterViewInit {
   private current: any;
   private current_trend: any;
   private lastRefresh: number;
-  private alerts = [
-    {
-      theme: 'info',
-      title: 'Fully Operational',
-      content: 'Data reporting system fully operational in past hour. Realtime data is available.',
-      icon: 'check'
-    },
-    {
-      theme: 'success',
-      title: 'Excellent Air Quality',
-      content: 'Current AQI is 10.',
-      icon: 'check'
-    },
-    {
-      theme: 'success',
-      title: 'Good Air Quality',
-      content: 'Current AQI is 10.',
-      icon: 'check'
-    },
-    {
-      theme: 'warning',
-      title: 'Lightly Polluted',
-      content: 'Current AQI is 10.',
-      icon: 'exclamation-circle'
-    },
-    {
-      theme: 'warning',
-      title: 'Moderately Polluted',
-      content: 'Current AQI is 10.',
-      icon: 'exclamation-circle'
-    },
-    {
-      theme: 'danger',
-      title: 'Heavily Polluted',
-      content: 'Current AQI is 10.',
-      icon: 'exclamation-circle'
-    },
-    {
-      theme: 'danger',
-      title: 'Severely Polluted',
-      content: 'Current AQI is 10.',
-      icon: 'exclamation-circle'
-    },
-    {
-      theme: 'warning',
-      title: 'Service Outage',
-      content: 'Data reporting system reporting 94% in past hour.',
-      icon: 'wrench'
-    },
-    {
-      theme: 'danger',
-      title: 'Service Outage',
-      content: 'Data reporting system reporting 94% in past hour.',
-      icon: 'wrench'
-    },
-    {
-      theme: 'warning',
-      title: 'Temperature Change',
-      content: 'Temperature changing more than 1 in past hour.',
-      icon: 'exclamation-circle'
-    },
-    {
-      theme: 'warning',
-      title: 'High Temperature',
-      content: 'Temperature reaching 37 in past hour.',
-      icon: 'exclamation-circle'
-    },
-    {
-      theme: 'danger',
-      title: 'High Temperature',
-      content: 'Temperature reaching 40 in past hour.',
-      icon: 'exclamation-circle'
-    },
-    {
-      theme: 'warning',
-      title: 'Low Temperature',
-      content: 'Temperature reaching 0 in past hour.',
-      icon: 'exclamation-circle'
-    },
-    {
-      theme: 'danger',
-      title: 'Low Temperature',
-      content: 'Temperature reaching -3 in past hour.',
-      icon: 'exclamation-circle'
-    },
-    {
-      theme: 'warning',
-      title: 'Wetten',
-      content: 'Humidity reaching 90% in past hour.',
-      icon: 'exclamation-circle'
-    },
-  ];
+  private realtime$: Observable<any>;
 
   constructor(private sense: SenseService) {
     this.current = {};
     this.current_trend = {};
     this.lastRefresh = Date.now();
-    sense.realtime(['time', 'tc', 'hum', 'pm25', 'pm10', 'pressure']).duration(2).report().convertTimestamp().summary().sample(1).observe().subscribe(d => {
+    this.realtime$ = sense.realtime(['time', 'tc', 'hum', 'pm25', 'pm10', 'pressure']).duration(60).report().convertTimestamp().summary().sample(1).observe()
+    this.realtime$.subscribe(d => {
       const __current = {
         temperature: d[1].data,
         humidity: d[2].data,
         pm25: d[3].data,
         pm10: d[4].data,
-        pressure: d[5].data
+        pressure: d[5].data,
+        heatindex: d[0].data
       };
+      __current.heatindex = _.map(__current.heatindex, (d, i) => require('heat-index').heatIndex({temperature: __current.temperature[i], humidity: __current.humidity[i] }));
+
       this.lastRefresh = _.last(d[0].data);
       this.current = _.mapValues(__current, (v: Array<number>) => _.round(_.last(v), 2));
-      this.current.heatindex = _.round(require('heat-index').heatIndex({temperature: this.current.temperature, humidity: this.current.humidity }), 2);
       this.current_trend = _.mapValues(__current, (v: Array<number>) => Math.round((v[_.size(v) - 1] - v[_.size(v) - 2]) * 100) / 100);
     });
   }
