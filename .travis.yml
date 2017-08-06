@@ -5,7 +5,7 @@ node_js:
 before_script:
 - npm install -g node-gyp
 after_success:
-- cd functions && npm install && cd ..
+- cd functions && npm i && cd ..
 cache:
   directories:
   - node_modules

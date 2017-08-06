@@ -2,6 +2,7 @@ export const options = {
   chartOptions: {
     responsive: true,
     maintainAspectRatio: true,
+    animation: false,
     element: {
       point: {
         pointStyle: 'rectRounded'

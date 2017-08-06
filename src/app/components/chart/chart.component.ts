@@ -13,7 +13,6 @@ export class ChartComponent implements OnChanges {
   @Input() labels: Array<any>;
   @Input() options: any;
   @ViewChild(BaseChartDirective) chart: BaseChartDirective;
-  private __labels: Array<any> = [];
 
   chartHovered($event) {
 
@@ -24,8 +23,8 @@ export class ChartComponent implements OnChanges {
   }
 
   ngOnChanges() {
-    Observable.timer(0).first().subscribe(d => {
-      this.chart.chart.config.data.labels = this.labels;
+    Observable.timer(0).subscribe(d => {
+      this.chart.ngOnChanges({} as SimpleChanges);
       this.chart.chart.update();
     });
   }
