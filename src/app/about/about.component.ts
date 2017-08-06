@@ -11,6 +11,7 @@ import { RouteAnimation } from '../const/routeanimation';
   animations: [ RouteAnimation ]
 })
 export class AboutComponent {
+  private __version: string = process.env.VERSION;
 
   constructor() {
   }

@@ -8,7 +8,9 @@ var autoprefixer = require('autoprefixer');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
-
+var GitRevisionPlugin = new (require('git-revision-webpack-plugin'))({
+  versionCommand: 'describe --always --tags'
+});
 /**
  * Env
  * Get npm lifecycle event to identify the environment
@@ -162,7 +164,9 @@ module.exports = function makeWebpackConfig() {
     new webpack.DefinePlugin({
       // Environment helpers
       'process.env': {
-        ENV: JSON.stringify(ENV)
+        ENV: JSON.stringify(ENV),
+        VERSION: JSON.stringify(GitRevisionPlugin.version()),
+        COMMITHASH: JSON.stringify(GitRevisionPlugin.commithash())
       }
     }),
 

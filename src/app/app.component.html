@@ -57,6 +57,7 @@
   <div class="blue-loading-overlay d-flex flex-column justify-content-center align-items-center" *ngIf="!ready && !debug">
     <h1 class="display-3"><span class="text-primary">Blue</span>Sense</h1>
     <p><em>Sense of the <span class="text-primary">Blue</span> Sky.</em></p>
-    <p><small><i class="fa fa-circle-o-notch fa-spin fa-fw"></i> Establishing connection...</small></p>
+    <p class="small"><i class="fa fa-circle-o-notch fa-spin fa-fw"></i> Establishing connection...</p>
+    <p class="small text-muted">Ver. {{ __version }}</p>
   </div>
 </main>

@@ -13,6 +13,8 @@ export class AppComponent {
   private connected$: FirebaseObjectObservable<any>;
   private ready: boolean = false;
   private debug: boolean = !(process.env.ENV === 'build');
+  private __version: string = process.env.VERSION;
+  
   constructor(private api: ApiService, private db: AngularFireDatabase) {
     this.connected$ = db.object('/.info/connected');
     this.connected$.subscribe(d => this.ready = this.ready || d.$value);
