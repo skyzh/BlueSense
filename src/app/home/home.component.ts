@@ -41,7 +41,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
       this.lastRefresh = _.last(d[0].data);
       this.current = _.mapValues(__current, (v: Array<number>) => _.round(_.last(v), 2));
-      this.current_trend = _.mapValues(__current, (v: Array<number>) => Math.round((v[_.size(v) - 1] - v[_.size(v) - 2]) * 100) / 100);
+      this.current_trend = _.mapValues(__current, (v: Array<number>) => v[_.size(v) - 1] - v[_.size(v) - 2]);
     });
   }
   

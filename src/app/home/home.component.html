@@ -7,7 +7,7 @@
             <div class="col">
               <h3 class="text-muted"><i class="fa fa-compass" aria-hidden="true"></i> Changning, Shanghai</h3>
               <h1 class="mt-0 mb-3">
-                <span>{{ current.temperature }}°C</span>
+                <span><i class="fa fa-thermometer-full" aria-hidden="true"></i> <blue-pending [ready]="realtime$ | async" [data]="current.temperature"></blue-pending>°C</span>
                 <trend class="mx-2 small" [trend]="current_trend.temperature" simple="true"></trend>
               </h1>
             </div>
@@ -15,27 +15,27 @@
           <dl class="mt-1 row">
             <dt class="col-6 col-xl-3 text-uppercase">Humidity</dt>
             <dd class="col-6 col-xl-9">
-              <span>{{ current.humidity }}%</span>
+              <span><blue-pending [ready]="realtime$ | async" [data]="current.humidity"></blue-pending>%</span>
               <trend class="mx-2 small" [trend]="current_trend.humidity" simple="true"></trend>
             </dd>
             <dt class="col-6 col-xl-3 text-uppercase">Feel like</dt>
             <dd class="col-6 col-xl-9">
-              <span>{{ current.heatindex }}°C</span>
+              <span><blue-pending [ready]="realtime$ | async" [data]="current.heatindex"></blue-pending>°C</span>
               <trend class="mx-2 small" [trend]="current_trend.heatindex" simple="true"></trend>
             </dd>
             <dt class="col-6 col-xl-3 text-uppercase">Pressure</dt>
             <dd class="col-6 col-xl-9">
-              <span>{{ current.pressure }} Pa</span>
-              <trend class="mx-2 small" [trend]="current_trend.pm10" simple="true"></trend>
+              <span><blue-pending [ready]="realtime$ | async" [data]="current.pressure"></blue-pending> Pa</span>
+              <trend class="mx-2 small" [trend]="current_trend.pressure" simple="true"></trend>
             </dd>
             <dt class="col-6 col-xl-3 text-uppercase">PM2.5</dt>
             <dd class="col-6 col-xl-9">
-              <span>{{ current.pm25 }} µg/m<sup>3</sup></span>
+              <span><blue-pending [ready]="realtime$ | async" [data]="current.pm25"></blue-pending> µg/m<sup>3</sup></span>
               <trend class="mx-2 small" [trend]="current_trend.pm25" simple="true"></trend>
             </dd>
             <dt class="col-6 col-xl-3 text-uppercase">PM10</dt>
             <dd class="col-6 col-xl-9">
-              <span>{{ current.pm10 }} µg/m<sup>3</sup></span>
+              <span><blue-pending [ready]="realtime$ | async" [data]="current.pm10"></blue-pending> µg/m<sup>3</sup></span>
               <trend class="mx-2 small" [trend]="current_trend.pm10" simple="true"></trend>
             </dd>
           </dl>

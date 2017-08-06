@@ -43,30 +43,30 @@ const ALERTS = [
       check: (data: Array<SenseData>) => data[1].summary.max >= 40,
       theme: 'danger',
       title: 'High Temperature',
-      content: (data: Array<SenseData>) => `Temperature reaching ${_.round(data[1].summary.max, 2)}°C in past hour.`,
-      icon: 'exclamation-circle'
+      content: (data: Array<SenseData>) => `Temperature reaching ${_.round(data[1].summary.max, 2)}°C in the past hour.`,
+      icon: 'thermometer-full'
     },
     {
       check: (data: Array<SenseData>) => data[1].summary.max >= 35,
       theme: 'warning',
       title: 'High Temperature',
-      content: (data: Array<SenseData>) => `Temperature reaching ${_.round(data[1].summary.max, 2)}°C in past hour.`,
-      icon: 'exclamation-circle'
+      content: (data: Array<SenseData>) => `Temperature reaching ${_.round(data[1].summary.max, 2)}°C in the past hour.`,
+      icon: 'thermometer-three-quarters'
     }
   ], [
     {
       check: (data: Array<SenseData>) => data[1].summary.min <= -3,
       theme: 'danger',
       title: 'Low Temperature',
-      content: (data: Array<SenseData>) => `Temperature reaching ${_.round(data[1].summary.min, 2)}°C in past hour.`,
-      icon: 'exclamation-circle'
+      content: (data: Array<SenseData>) => `Temperature reaching ${_.round(data[1].summary.min, 2)}°C in the past hour.`,
+      icon: 'thermometer-empty'
     },
     {
       check: (data: Array<SenseData>) => data[1].summary.min <= 0,
       theme: 'warning',
       title: 'Low Temperature',
-      content: (data: Array<SenseData>) => `Temperature reaching ${_.round(data[1].summary.min, 2)}°C in past hour.`,
-      icon: 'exclamation-circle'
+      content: (data: Array<SenseData>) => `Temperature reaching ${_.round(data[1].summary.min, 2)}°C in the past hour.`,
+      icon: 'thermometer-quarter'
     }
   ], [
     {
@@ -116,37 +116,37 @@ const ALERTS = [
       check: (data: Array<SenseData>) => data[1].summary.delta >= 1,
       theme: 'warning',
       title: 'Temperature Change',
-      content: (data: Array<SenseData>) => `Temperature changing ${_.round(data[1].summary.delta, 2)} in past hour.`,
-      icon: 'exclamation-circle'
+      content: (data: Array<SenseData>) => `Temperature changing ${_.round(data[1].summary.delta, 2)}°C in the past hour.`,
+      icon: 'thermometer-half'
     }
   ], [
     {
       check: (data: Array<SenseData>) => data[2].summary.max >= 90,
       theme: 'warning',
       title: 'Wetten',
-      content: (data: Array<SenseData>) => `Humidity reaching ${_.round(data[2].summary.max, 2)}% in past hour.`,
-      icon: 'exclamation-circle'
+      content: (data: Array<SenseData>) => `Humidity reaching ${_.round(data[2].summary.max, 2)}% in the past hour.`,
+      icon: 'tint'
     }
   ], [
     {
       check: (data: Array<SenseData>) => data[0].report.rate >= 0.95, 
       theme: 'info',
       title: 'Fully Operational',
-      content: (data: Array<SenseData>) => `Data reporting system fully operational in past hour. Realtime data is available.`,
+      content: (data: Array<SenseData>) => `Data reporting system fully operational in the past hour. Realtime data is available.`,
       icon: 'check'
     },
     {
       check: (data: Array<SenseData>) => data[0].report.rate >= 0.90,
       theme: 'warning',
       title: 'Service Outage',
-      content: (data: Array<SenseData>) => `Data reporting system reporting ${_.round(data[0].report.rate, 2)}% in past hour.`,
+      content: (data: Array<SenseData>) => `Data reporting system reporting ${_.round(data[0].report.rate, 2)}% in the past hour.`,
       icon: 'wrench'
     },
     {
       check: (data: Array<SenseData>) => true,
       theme: 'danger',
       title: 'Service Outage',
-      content: (data: Array<SenseData>) => `Data reporting system reporting ${_.round(data[0].report.rate, 2)}% in past hour.`,
+      content: (data: Array<SenseData>) => `Data reporting system reporting ${_.round(data[0].report.rate, 2)}% in the past hour.`,
       icon: 'wrench'
     }
   ]

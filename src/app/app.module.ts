@@ -15,7 +15,7 @@ import { AlertsComponent } from './alerts/alerts.component';
 import { ApiService, SenseService } from './shared';
 import { routing } from './app.routing';
 
-import { TrendComponent, ChartComponent, ReportComponent, LoadingComponent, AlertComponent } from './components';
+import { TrendComponent, ChartComponent, ReportComponent, LoadingComponent, AlertComponent, PendingComponent } from './components';
 
 import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
 
@@ -51,7 +51,8 @@ import { FIREBASE_CONFIG } from './config/firebase';
     AboutComponent,
     AlertComponent,
     RawComponent,
-    AlertsComponent
+    AlertsComponent,
+    PendingComponent
   ],
   providers: [
     ApiService,
