@@ -11,7 +11,7 @@ const admin = require('firebase-admin');
 admin.initializeApp(functions.config().firebase);
 
 exports.updateStat = functions.https.onRequest((req, res) => {
-  if (req.query.key == require('../config').FUNCTION_KEY) {
+  if (req.query.key == functions.config().bluesense.key) {
     require('./stat.js')().then(() => {
       res.status(200).send('success');
     });
@@ -21,7 +21,7 @@ exports.updateStat = functions.https.onRequest((req, res) => {
 });
 
 exports.cleanUp = functions.https.onRequest((req, res) => {
-  if (req.query.key == require('../config').FUNCTION_KEY) {
+  if (req.query.key == functions.config().bluesense.key) {
     require('./cleanup.js')().then(() => {
       res.status(200).send('success');
     });
