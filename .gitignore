@@ -53,3 +53,5 @@ __build__/**
 # IDE #
 .idea/
 *.swp
+
+/functions/node_modules/
