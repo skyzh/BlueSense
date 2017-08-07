@@ -139,14 +139,14 @@ const ALERTS = [
       check: (data: Array<SenseData>) => data[0].report.rate >= 0.90,
       theme: 'warning',
       title: 'Service Outage',
-      content: (data: Array<SenseData>) => `Data reporting system reporting ${_.round(data[0].report.rate, 2)}% in the past hour.`,
+      content: (data: Array<SenseData>) => `Data reporting system reporting ${_.round(data[0].report.rate, 2) * 100}% in the past hour.`,
       icon: 'wrench'
     },
     {
       check: (data: Array<SenseData>) => true,
       theme: 'danger',
       title: 'Service Outage',
-      content: (data: Array<SenseData>) => `Data reporting system reporting ${_.round(data[0].report.rate, 2)}% in the past hour.`,
+      content: (data: Array<SenseData>) => `Data reporting system reporting ${_.round(data[0].report.rate, 2) * 100}% in the past hour.`,
       icon: 'wrench'
     }
   ]

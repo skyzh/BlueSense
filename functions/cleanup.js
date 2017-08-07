@@ -15,7 +15,7 @@ module.exports = () => new Promise((resolve, reject) => {
       snapshot.forEach(childSnapshot => {
         lstObject = childSnapshot.key;
         let _val = childSnapshot.val();
-        if (_val['pressure'] <= 90000) {
+        if (!_val.pm25) {
           admin.database().ref(`/data/${childSnapshot.key}`).remove().then(d => console.log(`${childSnapshot.key} removed`));
         }
         ++__cnt;
