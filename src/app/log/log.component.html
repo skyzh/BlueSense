@@ -4,8 +4,8 @@
      [infiniteScrollDistance]="2"
      [infiniteScrollThrottle]="300"
      (scrolled)="onScrollDown()">
-  <div class="row">
-    <div class="col-md-8 offset-md-2 col-lg-6 offset-lg-3">
+  <div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
       <h2 class="h3 text-muted text-uppercase">Logs</h2>
       <ul class="list-group my-3">
         <blue-report [errors]="logs$ | async"></blue-report>

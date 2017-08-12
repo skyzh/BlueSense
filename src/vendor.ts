@@ -13,7 +13,6 @@ import '@angularclass/hmr';
 // You can import js, ts, css, sass, ...
 
 import 'lodash';
-import 'bootstrap/dist/css/bootstrap.css';
 import 'font-awesome/css/font-awesome.css';
 import 'moment';
 import 'angular2-moment';

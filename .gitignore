@@ -55,3 +55,4 @@ __build__/**
 *.swp
 
 /functions/node_modules/
+/config/

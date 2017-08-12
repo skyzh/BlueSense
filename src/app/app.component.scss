@@ -14,11 +14,11 @@
 }
 
 .blue-nav-link {
-  color: $gray-light !important;
+  color: $gray-600 !important;
   text-decoration: dotted underline;
 
   &.active {
-    color: $gray-dark !important;
+    color: $gray-800 !important;
     text-decoration: solid underline;
   }
 }

@@ -1,5 +1,5 @@
-<div class="card card-inverse alert-card mb-3" [ngClass]="'card-' + alert.theme" *ngFor="let alert of __alerts">
-  <div class="card-block">
+<div class="card text-white alert-card mb-3" [ngClass]="'bg-' + alert.theme" *ngFor="let alert of __alerts">
+  <div class="card-body">
     <blockquote class="card-blockquote d-flex flex-row justify-content-start align-items-center">
       <div class="display-1"><i class="fa fa-fw" [ngClass]="'fa-' + alert.icon"></i></div>
       <div>
