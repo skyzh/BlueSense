@@ -68,7 +68,7 @@ export class SenseWrapper {
           end: _.last(data.data),
           rate: null
         };
-        report.rate = (this.__duration - 1) / (report.end - report.start) * 60;
+        report.rate = (this.__duration - 1) / (Date.now() / 1000 - report.start) * 60;
         return _.merge(data, { report });
       } else {
         return data;
