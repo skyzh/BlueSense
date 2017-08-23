@@ -21,13 +21,14 @@
         </thead>
         <tbody>
           <tr *ngFor="let data of (flipped$ | async)">
-            <th scope="row">{{ data[0] | amDateFormat: 'l LTS' }}</th>
-            <td>{{ data[1] }}</td>
-            <td>{{ data[2] }}</td>
-            <td>{{ data[3] }}</td>
-            <td>{{ data[4] }}</td>
-            <td>{{ data[5] }}</td>
-            <td>{{ data[6] }}</td>
+            <th scope="row" *ngIf="data.d">{{ data.d[0] | amDateFormat: 'l LTS' }}</th>
+            <td *ngIf="data.d">{{ data.d[1] }}</td>
+            <td *ngIf="data.d">{{ data.d[2] }}</td>
+            <td *ngIf="data.d">{{ data.d[3] }}</td>
+            <td *ngIf="data.d">{{ data.d[4] }}</td>
+            <td *ngIf="data.d">{{ data.d[5] }}</td>
+            <td *ngIf="data.d">{{ data.d[6] }}</td>
+            <td *ngIf="data.t" colspan="7" class="table-danger text-center">Service Outage for {{ data.t | amDuration: 'milliseconds' }}</td>
           </tr>
         </tbody>
       </table>

@@ -23,13 +23,14 @@ export class RawComponent {
   private flipped$: Observable<any>;
 
   constructor(private sense: SenseService) {
-    this.__current = 50;
+    this.__current = 100;
     this.ready = false;
     this.__dataset = sense.realtime(['time', 'tc', 'hum', 'pm01', 'pm25', 'pm10', 'pressure']).duration(this.__current).convertTimestamp().sample(1);
     this.dataset$ = this.__dataset.observe();
     this.dataset$.subscribe(d => this.ready = true);
-    this.flipped$ = this.dataset$.map(dataset => 
-      _.zip(...
+    this.flipped$ = this.dataset$.map(dataset => {
+      let _res = [];
+      let data = _.zip(...
         (<Array<Array<number>>>_.map(dataset, 
           data => _
             .chain(data['data'])
@@ -38,12 +39,21 @@ export class RawComponent {
             .value()
           )
         )
-      )
-    );
+      );
+      _.forEach(data, (d, index) => {
+        _res.push({ d });
+        if (index + 1 < data.length) {
+          if (d[0] - data[index + 1][0] > 61000) {
+            _res.push({ t: d[0] - data[index + 1][0] });
+          }
+        }
+      });
+      return _res;
+    });
   }
 
   onScrollDown () {
-    this.__current += 50;
+    this.__current += 100;
     this.__dataset.duration(this.__current);
     this.ready = false;
   }
