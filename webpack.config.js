@@ -4,7 +4,6 @@ var webpack = require('webpack');
 
 // Webpack Plugins
 var CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
-var autoprefixer = require('autoprefixer');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -195,17 +194,7 @@ module.exports = function makeWebpackConfig() {
          */
         sassLoader: {
           //includePaths: [path.resolve(__dirname, "node_modules/foundation-sites/scss")]
-        },
-        /**
-         * PostCSS
-         * Reference: https://github.com/postcss/autoprefixer-core
-         * Add vendor prefixes to your css
-         */
-        postcss: [
-          autoprefixer({
-            browsers: ['last 2 version']
-          })
-        ]
+        }
       }
     })
   ];

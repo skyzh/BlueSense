@@ -6,6 +6,7 @@ before_script:
 - npm install -g node-gyp
 - cd functions && npm i && cd ..
 cache:
+  yarn: true
   directories:
   - node_modules
   - functions/node_modules
@@ -16,5 +17,5 @@ deploy:
   provider: firebase
   token:
     secure: RuAOZbO3ZMlOt5ON/c2wZupELp60JzUcwtg7vWHUtPesU0rDA3Nja4rA1B2T6qLkqqctV+xt91HlICls8XHCYfv5RqJcG19BSYG1z2/LS8anLlBhu4tgx7tAsfnUfbL5N+hrPAomrkZR/bgTXFfkFxCYzGf8WENDGFhGA9gyxexKOjxpShH8sxv41SrBwTCXvmC1C2ljT/FkQg/yk8kATsDtTzYtJxKIJuZifFgWvwjSE6EDDfEMAsdKY3M/DxHGaFqz4prGXVKezsuLyORbAeD0F2rUeQc46VGu+FyzKkVA4SapLvaog2QGIKATeX1za6SivqQV/SJxO7UyafqQ/5sWRzqCME7UZjHK48bq6vGKWPqaEEgIRq4PKtP4TFYr1ifurvMSQnjg0g6a6bN9ckMnjBk361gLog88UEKlAdRfW/RGvuUhkWvITY9LBlidSD9zBVVKD6T5GXbJUC10UWXqVNQhCHVENxPGJ6V65C3dJbwi+lI5mJKJbB5+1ysleqaIAqEoPTqcZNW3/d/fIvwOpA/RXbqjwUinsOrWRc9f1Nqr7v6A1m34keLowO4ZbPJdi/9ny0GC0u8B32vEnNlcuRJjLHJDYJC7NG6ydrwFmmkxw2mAglVwk722CEkpvGQ9umDafvBRdd+T7dJ5Gll9WrM9K1p/tkLf4jm7nh8=
-  message: Deployed by Travis CI
+  message: Deployed via Travis CI
   skip_cleanup: true
