@@ -1,10 +1,11 @@
-<div class="card text-white alert-card mb-3" [ngClass]="'bg-' + alert.theme" *ngFor="let alert of __alerts">
+<div class="card text-light alert-card mb-3" [ngClass]="'bg-' + alert.theme" *ngFor="let alert of __alerts">
   <div class="card-body">
     <blockquote class="card-blockquote d-flex flex-row justify-content-start align-items-center">
       <div class="display-1"><i class="fa fa-fw" [ngClass]="'fa-' + alert.icon"></i></div>
       <div>
         <h3 class="text-uppercase">{{ alert.title }}</h3>
         <span>{{ alert.content }}</span>
+        <a class="d-block mt-1 text-uppercase small text-light" [routerLink]="alert.anchor.url" *ngIf="alert.anchor">{{ alert.anchor.caption }} <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
       </div>
     </blockquote>
   </div>

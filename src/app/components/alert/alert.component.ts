@@ -37,6 +37,15 @@ const AQI = (data: Array<SenseData>) => {
   data[0]['aqi'] = _.round(_.max([__AQI(data[3].summary.avg, AQI_SCALE.pm25), __AQI(data[4].summary.avg, AQI_SCALE.pm10)]));
 };
 
+interface Alert {
+  check: (SenseData) => number;
+  theme: string;
+  title: string;
+  content: (SenseData) => string;
+  icon: string;
+  anchor?: any;
+};
+
 const ALERTS = [
   [
     {
@@ -44,14 +53,22 @@ const ALERTS = [
       theme: 'danger',
       title: 'High Temperature',
       content: (data: Array<SenseData>) => `Temperature reaching ${_.round(data[1].summary.max, 2)}°C in the past hour.`,
-      icon: 'thermometer-full'
+      icon: 'thermometer-full',
+      anchor: {
+        url: '/charts/realtime',
+        caption: 'View Realtime Charts'
+      }
     },
     {
       check: (data: Array<SenseData>) => data[1].summary.max >= 35,
       theme: 'warning',
       title: 'High Temperature',
       content: (data: Array<SenseData>) => `Temperature reaching ${_.round(data[1].summary.max, 2)}°C in the past hour.`,
-      icon: 'thermometer-three-quarters'
+      icon: 'thermometer-three-quarters',
+      anchor: {
+        url: '/charts/realtime',
+        caption: 'View Realtime Charts'
+      }
     }
   ], [
     {
@@ -59,14 +76,22 @@ const ALERTS = [
       theme: 'danger',
       title: 'Low Temperature',
       content: (data: Array<SenseData>) => `Temperature reaching ${_.round(data[1].summary.min, 2)}°C in the past hour.`,
-      icon: 'thermometer-empty'
+      icon: 'thermometer-empty',
+      anchor: {
+        url: '/charts/realtime',
+        caption: 'View Realtime Charts'
+      }
     },
     {
       check: (data: Array<SenseData>) => data[1].summary.min <= 0,
       theme: 'warning',
       title: 'Low Temperature',
       content: (data: Array<SenseData>) => `Temperature reaching ${_.round(data[1].summary.min, 2)}°C in the past hour.`,
-      icon: 'thermometer-quarter'
+      icon: 'thermometer-quarter',
+      anchor: {
+        url: '/charts/realtime',
+        caption: 'View Realtime Charts'
+      }
     }
   ], [
     {
@@ -74,50 +99,90 @@ const ALERTS = [
       theme: 'danger',
       title: 'Severely Polluted',
       content: (data: Array<SenseData>) => `Current AQI is ${data[0]['aqi']}.`,
-      icon: 'exclamation-circle'
+      icon: 'exclamation-circle',
+      anchor: {
+        url: '/charts/realtime',
+        caption: 'View Realtime Charts'
+      }
     },
     {
       check: (data: Array<SenseData>) => data[0]['aqi'] >= 201,
       theme: 'danger',
       title: 'Heavily Polluted',
       content: (data: Array<SenseData>) => `Current AQI is ${data[0]['aqi']}.`,
-      icon: 'exclamation-circle'
+      icon: 'exclamation-circle',
+      anchor: {
+        url: '/charts/realtime',
+        caption: 'View Realtime Charts'
+      }
     },
     {
       check: (data: Array<SenseData>) => data[0]['aqi'] >= 151,
       theme: 'warning',
       title: 'Moderately Polluted',
       content: (data: Array<SenseData>) => `Current AQI is ${data[0]['aqi']}.`,
-      icon: 'exclamation-circle'
+      icon: 'exclamation-circle',
+      anchor: {
+        url: '/charts/realtime',
+        caption: 'View Realtime Charts'
+      }
     }, 
     {
       check: (data: Array<SenseData>) => data[0]['aqi'] >= 101,
       theme: 'warning',
       title: 'Lightly Polluted',
       content: (data: Array<SenseData>) => `Current AQI is ${data[0]['aqi']}.`,
-      icon: 'exclamation-circle'
+      icon: 'exclamation-circle',
+      anchor: {
+        url: '/charts/realtime',
+        caption: 'View Realtime Charts'
+      }
     }, 
     {
       check: (data: Array<SenseData>) => data[0]['aqi'] >= 51,
       theme: 'success',
       title: 'Good Air Quality',
       content: (data: Array<SenseData>) => `Current AQI is ${data[0]['aqi']}.`,
-      icon: 'check'
+      icon: 'check',
+      anchor: {
+        url: '/charts/realtime',
+        caption: 'View Realtime Charts'
+      }
     }, 
     {
       check: (data: Array<SenseData>) => true,
       theme: 'success',
       title: 'Excellent Air Quality',
       content: (data: Array<SenseData>) => `Current AQI is ${data[0]['aqi']}.`,
-      icon: 'check'
+      icon: 'check',
+      anchor: {
+        url: '/charts/realtime',
+        caption: 'View Realtime Charts'
+      }
     }
   ], [
     {
       check: (data: Array<SenseData>) => data[1].summary.delta >= 1,
       theme: 'warning',
-      title: 'Temperature Change',
+      title: 'Temperature Changing',
       content: (data: Array<SenseData>) => `Temperature changing ${_.round(data[1].summary.delta, 2)}°C in the past hour.`,
-      icon: 'thermometer-half'
+      icon: 'thermometer-half',
+      anchor: {
+        url: '/charts/realtime',
+        caption: 'View Realtime Charts'
+      }
+    }
+  ], [
+    {
+      check: (data: Array<SenseData>) => data[5].summary.delta >= 100,
+      theme: 'warning',
+      title: 'Pressure Changing',
+      content: (data: Array<SenseData>) => `Barometric Pressure changing ${_.round(data[5].summary.delta, 2)} Pa in the past hour.`,
+      icon: 'sun-o',
+      anchor: {
+        url: '/charts/realtime',
+        caption: 'View Realtime Charts'
+      }
     }
   ], [
     {
@@ -125,7 +190,11 @@ const ALERTS = [
       theme: 'warning',
       title: 'Wetten',
       content: (data: Array<SenseData>) => `Humidity reaching ${_.round(data[2].summary.max, 2)}% in the past hour.`,
-      icon: 'tint'
+      icon: 'tint',
+      anchor: {
+        url: '/charts/realtime',
+        caption: 'View Realtime Charts'
+      }
     }
   ], [
     {
@@ -133,21 +202,33 @@ const ALERTS = [
       theme: 'info',
       title: 'Fully Operational',
       content: (data: Array<SenseData>) => `Data reporting system fully operational in the past hour. Realtime data is available.`,
-      icon: 'check'
+      icon: 'check',
+      anchor: {
+        url: '/logs',
+        caption: 'View Logs'
+      }
     },
     {
       check: (data: Array<SenseData>) => data[0].report.rate >= 0.90,
       theme: 'warning',
       title: 'Service Outage',
       content: (data: Array<SenseData>) => `Data reporting system reporting ${_.round(data[0].report.rate, 2) * 100}% in the past hour.`,
-      icon: 'wrench'
+      icon: 'wrench',
+      anchor: {
+        url: '/logs',
+        caption: 'View Logs'
+      }
     },
     {
       check: (data: Array<SenseData>) => true,
       theme: 'danger',
       title: 'Service Outage',
       content: (data: Array<SenseData>) => `Data reporting system reporting ${_.round(data[0].report.rate, 2) * 100}% in the past hour.`,
-      icon: 'wrench'
+      icon: 'wrench',
+      anchor: {
+        url: '/logs',
+        caption: 'View Logs'
+      }
     }
   ]
 ];
@@ -165,13 +246,14 @@ export class AlertComponent {
     if (this.alerts) {
       AQI(this.alerts);
       _.forEach(ALERTS, ALERT_GROUP => {
-        _.forEach(ALERT_GROUP, ALERT => {
+        _.forEach(ALERT_GROUP, (ALERT: Alert) => {
           if (ALERT.check(this.alerts)) {
             this.__alerts.push({
               title: ALERT.title,
               theme: ALERT.theme,
               content: ALERT.content(this.alerts),
-              icon: ALERT.icon
+              icon: ALERT.icon,
+              anchor: ALERT.anchor
             });
             return false;
           }
