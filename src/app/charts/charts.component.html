@@ -64,7 +64,7 @@
         </div>
         <div class="col-12">
           <div class="card mt-3 px-1">
-            <h3 class="h4 text-muted text-center my-3"><span class="text-uppercase">Pressure</span> <small>(Pa)</small></h3>
+            <h3 class="h4 text-muted text-center my-3"><span class="text-uppercase">Barometric Pressure</span> <small>(Pa)</small></h3>
             <div class="wrapper-chart">
               <blue-chart [datasets]="(chart_pre$ | async) || [{data:[]}]" [labels]="(chart_labels$ | async) || []" [options]="chartOptions" class="d-block"></blue-chart>
             </div>
@@ -72,7 +72,7 @@
         </div>
         <div class="col-12">
           <div class="card mt-3 px-1">
-            <h3 class="h4 text-muted text-center my-3"><span class="text-uppercase">Air Pollutant</span> <small>(µg/m<sup>3</sup>)</small></h3>
+            <h3 class="h4 text-muted text-center my-3"><span class="text-uppercase">Air Pollutants</span> <small>(µg/m<sup>3</sup>)</small></h3>
             <div class="wrapper-chart">
               <blue-chart [datasets]="(chart_pm$ | async) || [{data:[]}]" [labels]="(chart_labels$ | async) || []" [options]="chartOptions" class="d-block"></blue-chart>
             </div>
