@@ -4,7 +4,6 @@ import * as _ from 'lodash';
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Observable } from 'rxjs';
-import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import { SenseService } from '../shared';
 
 import { RouteAnimation } from '../const/routeanimation';

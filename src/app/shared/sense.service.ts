@@ -3,7 +3,7 @@ import * as _ from 'lodash';
 
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Observable, ReplaySubject } from 'rxjs';
-import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
+import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 
 export interface SenseSummary {
   min: number;
@@ -28,7 +28,7 @@ export interface SenseData {
 export class SenseWrapper {
 
   private __duration: number;
-  private source$: FirebaseListObservable<any>;
+  private source$: AngularFireList<any>;
   private dataset$: Observable<Array<SenseData>>;
   private __query$: ReplaySubject<number>;
 
@@ -36,7 +36,7 @@ export class SenseWrapper {
     this.__query$ = new ReplaySubject<number>(1);
     this.source$ = this.db.list(this.source, {
       query: { limitToLast: this.__query$ }
-    });
+    }).snapshotChanges();
     this.dataset$ = this.source$.map(d => _.map(keys, key => <SenseData>{ data: _.map(d, key), key}));
   }
 

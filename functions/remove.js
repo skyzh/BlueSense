@@ -3,7 +3,7 @@ const moment = require('moment');
 const _ = require('lodash');
 
 module.exports = () => new Promise((resolve, reject) => {
-  let allData = admin.database().ref('/data');
+  let allData = admin.database().ref('/stat/hourly');
   allData.once('value').then(snapshot => {
     console.log(`fetching data...`);
     let __cnt = 0;
@@ -13,10 +13,7 @@ module.exports = () => new Promise((resolve, reject) => {
         delete _val.tc;
         delete _val.hum;
         delete _val.pressure;
-        admin.database().ref(`/data/${childSnapshot.key}`).set(_val).then(d => console.log(`${childSnapshot.key} updated`));
-      }
-      if (_val.time <= 1502920800) {
-        admin.database().ref(`/data/${childSnapshot.key}`).remove().then(d => console.log(`${childSnapshot.key} removed`));
+        admin.database().ref(`/stat/hourly/${childSnapshot.key}`).set(_val).then(d => console.log(`${childSnapshot.key} updated`));
       }
       ++__cnt;
       if (__cnt % 100 == 0) {
