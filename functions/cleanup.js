@@ -9,13 +9,7 @@ module.exports = () => new Promise((resolve, reject) => {
     let __cnt = 0;
     snapshot.forEach(childSnapshot => {
       let _val = childSnapshot.val();
-      if (_val.time >= 1505599200 && _val.time <= 1506074400) {
-        delete _val.tc;
-        delete _val.hum;
-        delete _val.pressure;
-        admin.database().ref(`/data/${childSnapshot.key}`).set(_val).then(d => console.log(`${childSnapshot.key} updated`));
-      }
-      if (_val.time <= 1502920800) {
+      if (_val.time <= (Date.now() - 7 * 24 * 60 * 60 * 1000) / 1000) {
         admin.database().ref(`/data/${childSnapshot.key}`).remove().then(d => console.log(`${childSnapshot.key} removed`));
       }
       ++__cnt;

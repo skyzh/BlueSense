@@ -28,15 +28,15 @@ export interface SenseData {
 export class SenseWrapper {
 
   private __duration: number;
-  private source$: AngularFireList<any>;
+  private source$: Observable<any>;
   private dataset$: Observable<Array<SenseData>>;
   private __query$: ReplaySubject<number>;
 
   constructor(private db: AngularFireDatabase, private source: string, private keys: Array<string>) {
     this.__query$ = new ReplaySubject<number>(1);
-    this.source$ = this.db.list(this.source, {
-      query: { limitToLast: this.__query$ }
-    }).snapshotChanges();
+    this.source$ = this.__query$.switchMap(limit => 
+      this.db.list(this.source, ref => ref.limitToLast(limit)).valueChanges()
+    );
     this.dataset$ = this.source$.map(d => _.map(keys, key => <SenseData>{ data: _.map(d, key), key}));
   }
 

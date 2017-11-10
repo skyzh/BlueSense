@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
 import { ApiService } from './shared';
-import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/database';
+import { AngularFireDatabase } from 'angularfire2/database';
 
 import '../style/app.scss';
 
@@ -10,13 +11,13 @@ import '../style/app.scss';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  private connected$: FirebaseObjectObservable<any>;
+  private connected$: Observable<any>;
   private ready: boolean = false;
   private debug: boolean = !(process.env.ENV === 'build');
   private __version: string = process.env.VERSION;
   
   constructor(private api: ApiService, private db: AngularFireDatabase) {
-    this.connected$ = db.object('/.info/connected');
+    this.connected$ = db.object('/.info/connected').valueChanges();
     this.connected$.subscribe(d => this.ready = this.ready || d.$value);
   }
 }

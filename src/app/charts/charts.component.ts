@@ -2,7 +2,7 @@ import * as moment from 'moment';
 import * as _ from 'lodash';
 
 import { Component, OnInit, AfterViewInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Observable } from 'rxjs';
 import { SenseService } from '../shared';
 
@@ -37,13 +37,16 @@ export class ChartsComponent implements OnInit, AfterViewInit {
   public chartOptions: any = CHART_OPTIONS;
 
   constructor(private sense: SenseService, private route: ActivatedRoute) {
-    this.dataset$ = route.params.switchMap((params: Params) => {
-      this.__sample = +(params['sample'] || 12);
-      let __duration = +(params['duration'] || 24 * 60);
-      this.__type = params['type'] || 'realtime';
+  }
+
+  ngOnInit() {
+    this.dataset$ = this.route.paramMap.switchMap((params: ParamMap) => {
+      this.__sample = +(params.get('sample') || 12);
+      let __duration = +(params.get('duration') || 24 * 60);
+      this.__type = params.get('type') || 'realtime';
       let __call = null;
-      if (this.__type == 'realtime') __call = sense.realtime(['time', 'tc', 'hum', 'pm01', 'pm25', 'pm10', 'pressure']);
-      if (this.__type == 'hourly') __call = sense.hourly(['time', 'tc', 'hum', 'pm01', 'pm25', 'pm10', 'pressure']);
+      if (this.__type == 'realtime') __call = this.sense.realtime(['time', 'tc', 'hum', 'pm01', 'pm25', 'pm10', 'pressure']);
+      if (this.__type == 'hourly') __call = this.sense.hourly(['time', 'tc', 'hum', 'pm01', 'pm25', 'pm10', 'pressure']);
       return __call
         .duration(__duration)
         .convertTimestamp()
@@ -63,9 +66,7 @@ export class ChartsComponent implements OnInit, AfterViewInit {
       { data: d[3].data, label: 'PM1.0' }
     ]);
     this.chart_labels$ = this.dataset$.map(d => _.map(d[0].data, d => moment(d).format(this.__type == 'realtime' ? 'LT' : 'MMM D LT')));
-  }
 
-  ngOnInit() {
   }
 
   ngAfterViewInit() {

@@ -12,9 +12,11 @@ admin.initializeApp(functions.config().firebase);
 
 exports.updateStat = functions.https.onRequest((req, res) => {
   if (req.query.key == functions.config().bluesense.key) {
-    require('./stat.js')().then(() => {
-      res.status(200).send('success');
-    });
+    require('./stat.js')()
+      .then(() => require('./cleanup.js')())
+      .then(() => {
+        res.status(200).send('success');
+      });
   } else {
     res.status(403).send('Invaild Key');
   }

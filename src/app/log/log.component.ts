@@ -2,7 +2,7 @@ import * as _ from 'lodash';
 import { Component, HostListener, OnInit, AfterViewInit } from '@angular/core';
 import { Observable, ReplaySubject } from 'rxjs';
 import { RouteAnimation } from '../const/routeanimation';
-
+import { AngularFireDatabase } from 'angularfire2/database';
 @Component({
   selector: 'my-log',
   templateUrl: './log.component.html',
@@ -21,12 +21,10 @@ export class LogComponent implements AfterViewInit {
 
   constructor(private db: AngularFireDatabase) {
     this.query$ = new ReplaySubject<number>(1);
-    this.logs$ = db.list(
-      '/error', {
-        query: {
-          limitToLast: this.query$
-        }
-    }).map(d => _.reverse(_.clone(d)));
+    this.logs$ = this.query$.switchMap(limit => db.list(
+        '/error', ref => ref.limitToLast(limit)
+      ).valueChanges().map(d => _.reverse(_.clone(d)))
+    );
     this.logs$.subscribe(d => this.ready = true);
   }
 
