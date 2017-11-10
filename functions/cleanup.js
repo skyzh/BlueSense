@@ -1,11 +1,13 @@
 const admin = require('firebase-admin');
 const moment = require('moment');
 const _ = require('lodash');
+const debug = require('debug')('bluesense:cleanup*');
 
 module.exports = () => new Promise((resolve, reject) => {
   let allData = admin.database().ref('/data');
+  debug(`fetching data...`);
   allData.once('value').then(snapshot => {
-    console.log(`fetching data...`);
+    debug(`processing data...`);
     let __cnt = 0;
     snapshot.forEach(childSnapshot => {
       let _val = childSnapshot.val();
@@ -14,10 +16,10 @@ module.exports = () => new Promise((resolve, reject) => {
       }
       ++__cnt;
       if (__cnt % 100 == 0) {
-        console.log(`processing ${childSnapshot.key}, ${__cnt}`);
+        debug(`processing ${childSnapshot.key}, ${__cnt}`);
       }
     });
-    console.log(`succeed`);
+    debug(`succeed`);
     resolve();
   });
 });

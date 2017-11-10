@@ -200,7 +200,7 @@ const ALERTS = [
       check: (data: Array<SenseData>) => data[3].summary.delta >= 15 && _.last(data[3].data) > data[3].summary.avg,
       theme: 'warning',
       title: 'PM2.5 Level Rising',
-      content: (data: Array<SenseData>) => `PM2.5 has risen from ${_.round(_.first(data[3].data), 2)} µg/m3 to ${_.round(_.last(data[3].data), 2)} µg/m3 in the past hour.`,
+      content: (data: Array<SenseData>) => `PM2.5 has risen from ${_.round(data[3].summary.min, 2)} µg/m3 to ${_.round(_.last(data[3].data), 2)} µg/m3 in the past hour.`,
       icon: 'industry',
       anchor: {
         url: '/charts/realtime',
@@ -211,7 +211,7 @@ const ALERTS = [
       check: (data: Array<SenseData>) => data[3].summary.delta >= 15 && _.last(data[3].data) <= data[3].summary.avg,
       theme: 'success',
       title: 'PM2.5 Level Falling',
-      content: (data: Array<SenseData>) => `PM2.5 has fallen from ${_.round(_.first(data[3].data), 2)} µg/m3 to ${_.round(_.last(data[3].data), 2)} µg/m3 in the past hour.`,
+      content: (data: Array<SenseData>) => `PM2.5 has fallen from ${_.round(data[3].summary.max, 2)} µg/m3 to ${_.round(_.last(data[3].data), 2)} µg/m3 in the past hour.`,
       icon: 'industry',
       anchor: {
         url: '/charts/realtime',
@@ -223,7 +223,7 @@ const ALERTS = [
       check: (data: Array<SenseData>) => data[4].summary.delta >= 15 && _.last(data[4].data) > data[4].summary.avg,
       theme: 'warning',
       title: 'PM10 Level Rising',
-      content: (data: Array<SenseData>) => `PM10 has risen from ${_.round(_.first(data[4].data), 2)} µg/m3 to ${_.round(_.last(data[4].data), 2)} µg/m3 in the past hour.`,
+      content: (data: Array<SenseData>) => `PM10 has risen from ${_.round(data[4].summary.min, 2)} µg/m3 to ${_.round(_.last(data[4].data), 2)} µg/m3 in the past hour.`,
       icon: 'industry',
       anchor: {
         url: '/charts/realtime',
@@ -234,7 +234,7 @@ const ALERTS = [
       check: (data: Array<SenseData>) => data[4].summary.delta >= 15 && _.last(data[3].data) <= data[4].summary.avg,
       theme: 'success',
       title: 'PM10 Level Falling',
-      content: (data: Array<SenseData>) => `PM10 has fallen from ${_.round(_.first(data[4].data), 2)} µg/m3 to ${_.round(_.last(data[4].data), 2)} µg/m3 in the past hour.`,
+      content: (data: Array<SenseData>) => `PM10 has fallen from ${_.round(data[4].summary.max, 2)} µg/m3 to ${_.round(_.last(data[4].data), 2)} µg/m3 in the past hour.`,
       icon: 'industry',
       anchor: {
         url: '/charts/realtime',
