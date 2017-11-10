@@ -18,6 +18,6 @@ export class AppComponent {
   
   constructor(private api: ApiService, private db: AngularFireDatabase) {
     this.connected$ = db.object('/.info/connected').valueChanges();
-    this.connected$.subscribe(d => this.ready = this.ready || d.$value);
+    this.connected$.subscribe(d => this.ready = this.ready || d);
   }
 }
