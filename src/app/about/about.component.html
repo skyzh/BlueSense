@@ -3,11 +3,12 @@
     <div class="col-md-8 col-lg-6">
       <h2 class="h3 text-muted text-uppercase">About</h2>
       <p class="small text-muted">
-        <img src="https://travis-ci.org/SkyZH/BlueSense.svg?branch=master">
-        Ver. {{ __version }} | with an uptime of {{ __duration | amDuration: 'milliseconds' }}
+        <a href="https://travis-ci.org/SkyZH/BlueSense"><img src="https://travis-ci.org/SkyZH/BlueSense.svg?branch=master"></a>
+        Ver. {{ __version }} | with an uptime of {{ __now | amDifference:__start:'days':false }} days ({{ __now | amDifference:__start:'months':false }} months)
       </p>
-      <p>Data are collected from Arduino at SkyZH's home.</p>
-      <p>Sensors &amp; Board:</p>
+      <h3 class="h4 text-muted">Introduction</h3>
+      <p>BlueSense is an open-source IoT platform for domestic environment monitoring. Data are collected from Arduino and Raspberry Pi in SkyZH's home.</p>
+      <h3 class="h4 text-muted">Sensors and Devices</h3>
       <ul class="about-list">
         <li><a href="https://www.raspberrypi.org/products/raspberry-pi-3-model-b/">Raspberry Pi 3 Model B</a></li>
         <li><i class="fa fa-arrows-v" aria-hidden="true"></i> Serial via <i class="fa fa-bluetooth" aria-hidden="true"></i> BLE</li>
@@ -16,24 +17,23 @@
         <li><a href="https://www.dfrobot.com/wiki/index.php/Gravity:_I2C_BME280_Environmental_Sensor_(Temperature,_Humidity,_Barometer)_SKU:_SEN0236">Gravity: I2C BME280 Environmental Sensor (Temperature, Humidity, Barometer)</a></li>
         <li><a href="https://www.dfrobot.com/wiki/index.php/PM2.5_laser_dust_sensor_SKU:SEN0177">PM2.5 Laser Dust Sensor</a></li>
       </ul>
-      <p>Data are refreshed every minute and are displayed realtime.</p>
-      <p>BlueSense is built with <a href="https://www.firebase.com/">Firebase</a> and <a href="https://angular.io/">Angular</a>.</p>
+      <h3 class="h4 text-muted">Building of BlueSense</h3>
+      <p>BlueSense is built with <a href="https://www.firebase.com/">Firebase</a> and <a href="https://angular.io/">Angular</a>. Realtime data are refreshed every minute.</p>
       <p>
-        Follow SkyZH on <a href="https://twitter.com/iSkyZH"><i class="fa fa-twitter" aria-hidden="true"></i> Twitter</a> and <a href="https://github.com/SkyZH"><i class="fa fa-github" aria-hidden="true"></i> GitHub</a>.
+        You can follow SkyZH on <a href="https://twitter.com/iSkyZH"><i class="fa fa-twitter" aria-hidden="true"></i> Twitter</a> and <a href="https://github.com/SkyZH"><i class="fa fa-github" aria-hidden="true"></i> GitHub</a>.
       </p>
-      <p>This project is available on GitHub:</p>
+      <p>Sources of this project are available on GitHub:</p>
       <ul>
         <li><a href="https://github.com/SkyZH/BlueSensor">BlueSensor</a></li>
         <li><a href="https://github.com/SkyZH/BlueMarine">BlueMarine</a></li>
         <li><a href="https://github.com/SkyZH/BlueMonitor">BlueMonitor (deprecated)</a></li>
         <li><a href="https://github.com/SkyZH/BlueSense">BlueSense</a></li>
       </ul>
-      <h2 class="h3 text-muted text-uppercase">Milestone</h2>
-      <div class="embed-responsive embed-responsive-1by1">
-        <iframe class="embed-responsive-item" src="https://twitframe.com/show?url=https%3A%2F%2Ftwitter.com%2Fiskyzh%2Fstatus%2F893290101203099648"></iframe>
-      </div>
+      <h3 class="h4 text-muted">Milestone</h3>
+      <p><a href="https://twitter.com/iskyzh/status/893290101203099648">Tweet about BlueSense by SkyZH</a></p>
       <ul>
-        <li>On August 4, BlueSense was back with new sensor devices and new design.</li>
+        <li>On November 11 2017, BlueSense got a new font applied to all pages and was upgraded to Angular 5.</li>
+        <li>On August 4 2017, BlueSense was back with new sensor devices and new design.</li>
         <li>On July 26 2017, BlueSense was under maintenance due to constant sensor failure.</li>
         <li>On May 28 2017, BlueSense was set up.</li>
         <li>On Apr 2 2016, EnvMonitor was set up but the service ended one month later.</li>

@@ -1,5 +1,8 @@
-<li class="list-group-item"
-    [ngClass]="{'list-group-item-light': error.level == 1, 'list-group-item-danger': error.level == 0,  'list-group-item-info': error.level == 2}"
-    *ngFor="let error of errors">
-  <small><samp>{{ error.time * 1000 | amDateFormat: "lll" }}</samp> | {{ error.stage }} - {{ error.message }}</small>
+<li class="list-group-item list-group-item-light" *ngFor="let error of errors">
+    <samp class="badge"
+      [ngClass]="{'badge-danger': error.level == 0,  'badge-info': error.level == 2,  'badge-secondary': error.level == 1}">
+      {{ error.time * 1000 | amDateFormat: "lll" }}
+    </samp> 
+    <span class="badge badge-light">{{ error.stage }}</span>
+    {{ error.message }}
 </li>

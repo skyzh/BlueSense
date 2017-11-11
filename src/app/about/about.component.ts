@@ -12,8 +12,10 @@ import { RouteAnimation } from '../const/routeanimation';
 })
 export class AboutComponent {
   private __version: string = process.env.VERSION;
-  private __duration: number;
+  private __start: number;
+  private __now: number;
   constructor() {
-    this.__duration = Date.now() - (new Date("2017-05-28")).getTime();
+    this.__start = (new Date("2017-05-28")).getTime();
+    this.__now = Date.now();
   }
 }
