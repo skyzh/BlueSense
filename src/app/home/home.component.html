@@ -5,8 +5,7 @@
         <div class="card-body">
           <div class="row">
             <div class="col">
-              <h3 class="text-muted"><i class="fa fa-compass" aria-hidden="true"></i> Changning, Shanghai</h3>
-              <h1 class="mt-0 mb-3">
+              <h1 class="mb-3">
                 <span><i class="fa fa-thermometer-full" aria-hidden="true"></i> <blue-pending [ready]="realtime$ | async" [data]="current.temperature"></blue-pending>°C</span>
                 <trend class="mx-2 small" [trend]="current_trend.temperature" simple="true"></trend>
               </h1>

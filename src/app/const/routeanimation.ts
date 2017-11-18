@@ -3,28 +3,60 @@ import {
   state,
   style,
   animate,
-  transition
+  transition,
+  keyframes
 } from '@angular/animations';
 
 export const RouteAnimation = trigger('routeAnimation', [
   state('*', style({ 
     opacity: 1,
     display: 'block',
-    position: 'absolute',
+    position: 'relative',
     width: '100%',
     transform: 'translateY(0px)'
   })),
   transition(':enter', [
-    style({ 
-      opacity: 0,
-      transform: 'translateY(-20px)'
-    }),
-    animate('300ms ease-out')
+    animate('300ms ease-out', keyframes([
+      style({ 
+        opacity: 0,
+        transform: 'translateY(-20px)',
+        position: 'absolute',
+        offset: 0
+      }),
+      style({ 
+        opacity: 1,
+        transform: 'translateY(0px)',
+        position: 'absolute',
+        offset: 0.99
+      }),
+      style({ 
+        opacity: 1,
+        transform: 'translateY(0px)',
+        position: 'relative',
+        offset: 1
+      })
+    ]))
   ]),
   transition(':leave', [
-    animate('300ms ease-out', style({ 
-      opacity: 0,
-      transform: 'translateY(20px)'
-    }))
+    animate('300ms ease-out', keyframes([
+      style({ 
+        opacity: 1,
+        transform: 'translateY(0px)',
+        position: 'absolute',
+        offset: 0
+      }),
+      style({ 
+        opacity: 0,
+        transform: 'translateY(20px)',
+        position: 'absolute',
+        offset: 0.99
+      }),
+      style({ 
+        opacity: 0,
+        transform: 'translateY(20px)',
+        position: 'relative',
+        offset: 1
+      })
+    ]))
   ])
 ]);
