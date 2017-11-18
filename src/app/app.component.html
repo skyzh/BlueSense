@@ -61,8 +61,8 @@
   <router-outlet></router-outlet>
   <div class="blue-loading-overlay d-flex flex-column justify-content-center align-items-center" *ngIf="!ready && !debug">
     <h1 class="display-3"><span class="text-bluesense">Blue</span>Sense</h1>
-    <p><em>Sense of the <span class="text-bluesense-sub">Blue</span> Sky.</em></p>
-    <p class="small"><i class="fa fa-circle-o-notch fa-spin fa-fw"></i> Establishing connection...</p>
+    <p>Sense of the <span class="text-bluesense-sub">Blue</span> Sky.</p>
     <p class="small text-muted">Ver. {{ __version }}</p>
+    <p class="small fixed-bottom text-center"><i class="fa fa-circle-o-notch fa-spin fa-fw"></i> Establishing connection...</p>
   </div>
 </main>
