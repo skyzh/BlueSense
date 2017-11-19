@@ -4,10 +4,10 @@ const _ = require('lodash');
 const debug = require('debug')('bluesense:cleanup*');
 
 module.exports = () => new Promise((resolve, reject) => {
-  let allData = admin.database().ref('/data');
-  debug(`fetching data...`);
+  let allData = admin.database().ref('/data').orderByChild('time').endAt((Date.now() - 7 * 24 * 60 * 60 * 1000) / 1000);
+  console.info(`fetching data...`);
   allData.once('value').then(snapshot => {
-    debug(`processing data...`);
+    console.info(`processing data...`);
     let __cnt = 0;
     snapshot.forEach(childSnapshot => {
       let _val = childSnapshot.val();
@@ -16,10 +16,10 @@ module.exports = () => new Promise((resolve, reject) => {
       }
       ++__cnt;
       if (__cnt % 100 == 0) {
-        debug(`processing ${childSnapshot.key}, ${__cnt}`);
+        console.info(`processing ${childSnapshot.key}, ${__cnt}`);
       }
     });
-    debug(`succeed`);
+    console.info(`succeed`);
     resolve();
   });
 });
