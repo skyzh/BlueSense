@@ -7,4 +7,4 @@ var config = {
 
 admin.initializeApp(config);
 
-require('./cleanup')().then(() => console.log('terminated'));
+require('./stat')().then(() => console.log('terminated'));

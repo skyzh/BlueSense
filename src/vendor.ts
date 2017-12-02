@@ -16,6 +16,7 @@ import 'lodash';
 import 'font-awesome/css/font-awesome.css';
 import 'moment';
 import 'angular2-moment';
+import 'firebase';
 import 'angularfire2';
 import 'chart.js';
 import 'ng2-charts';

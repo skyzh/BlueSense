@@ -20,4 +20,16 @@ export class AppComponent {
     this.connected$ = db.object('/.info/connected').valueChanges();
     this.connected$.subscribe(d => this.ready = this.ready || d);
   }
+
+  checkLongPolling() {
+    return localStorage.getItem("FORCE_LONGPOLLING") === "";
+  }
+
+  enableLongPolling(enable: boolean) {
+    if (enable)
+      localStorage.setItem('FORCE_LONGPOLLING', "");
+    else
+      localStorage.removeItem('FORCE_LONGPOLLING');
+    window.location.reload();
+  }
 }

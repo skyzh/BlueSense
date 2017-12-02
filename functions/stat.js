@@ -17,9 +17,10 @@ module.exports = () => new Promise((resolve, reject) => {
       if (lstObject) data.shift();
       console.info(`filtering data...`);
       _.chain(data).chunk(60).filter(d => d.length == 60).value().forEach(v => {
-        let _p = {};
+        let _p = { };
         _.forEach(['hum', 'pm01', 'pm10', 'pm25', 'tc', 'pressure'], k => {
-          _p[k] = _.chain(v).map(d => d[1]).map(k).mean().value();
+          let __tmp = _.chain(v).map(d => d[1]).map(k).mean().value();
+          if (__tmp) _p[k] = __tmp;
         })
         _p.time = _.last(v)[1].time;
         lstObject = _.last(v)[0];
