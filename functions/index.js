@@ -12,8 +12,8 @@ admin.initializeApp(functions.config().firebase);
 
 exports.updateStat = functions.https.onRequest((req, res) => {
   if (req.query.key == functions.config().bluesense.key) {
-    require('./stat.js')()
-      .then(() => require('./cleanup.js')())
+    require('./stat')()
+      .then(() => require('./cleanup')())
       .then(() => {
         res.status(200).send('success');
       });
@@ -24,10 +24,16 @@ exports.updateStat = functions.https.onRequest((req, res) => {
 
 exports.cleanUp = functions.https.onRequest((req, res) => {
   if (req.query.key == functions.config().bluesense.key) {
-    require('./cleanup.js')().then(() => {
+    require('./cleanup')().then(() => {
       res.status(200).send('success');
     });
   } else {
     res.status(403).send('Invaild Key');
   }
+});
+
+exports.feed = functions.https.onRequest((req, res) => {
+  require('./rss')().then((xml) => {
+    res.status(200).send(xml);
+  });
 });

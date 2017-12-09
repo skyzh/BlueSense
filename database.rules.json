@@ -1,6 +1,14 @@
 {
   "rules": {
     ".read": "true",
-    ".write": "auth != null"
+    ".write": "auth != null",
+    "data": {
+      ".indexOn": "time"
+    },
+    "stat": {
+      "hourly": {
+        ".indexOn": "time"
+      }
+    }
   }
 }
