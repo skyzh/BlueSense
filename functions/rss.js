@@ -22,16 +22,15 @@ module.exports = () => new Promise((resolve, reject) => {
   });
   
   const feed_item = (key, data) => {
-    let title = `Reported on ${moment(data.time * 1000).tz('Asia/Shanghai').format('LLLL')} | 
-    Temperature: ${_.round(data.tc, 2)}°C, 
-    Humidity: ${_.round(data.hum, 2)}%, 
-    Pressure: ${_.round(data.pressure)} Pa, 
-    PM10: ${_.round(data.pm10, 2)} µg/m3, 
-    PM2.5: ${_.round(data.pm25, 2)} µg/m3`;
-  
     feed.item({
-      title:  title,
-      description: title,
+      title:  `Reported on ${moment(data.time * 1000).tz('Asia/Shanghai').format('LLLL')}`,
+      description: `
+        <b>Temperature</b>: ${_.round(data.tc, 2)}°C, 
+        <b>Humidity</b>: ${_.round(data.hum, 2)}%, 
+        <b>Pressure</b>: ${_.round(data.pressure)} Pa, 
+        <b>PM10</b>: ${_.round(data.pm10, 2)} µg/m3, 
+        <b>PM2.5</b>: ${_.round(data.pm25, 2)} µg/m3
+       `,
       url: `https://bluesense.skyzh.xyz/charts/hourly/?data=${key}`, // link to the item
       guid: `https://bluesense.skyzh.xyz/charts/hourly/?data=${key}`, // optional - defaults to url
   //  categories: ['Category 1','Category 2','Category 3','Category 4'], // optional - array of item categories
