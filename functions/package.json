@@ -8,6 +8,7 @@
     "firebase-functions": "^0.5.7",
     "lodash": "^4.17.4",
     "moment": "^2.18.1",
+    "moment-timezone": "^0.5.14",
     "rss": "^1.2.2"
   },
   "private": true

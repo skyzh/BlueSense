@@ -1,5 +1,5 @@
 const admin = require('firebase-admin');
-const moment = require('moment');
+const moment = require('momenttimezone');
 const _ = require('lodash');
 const RSS = require('rss');
 const debug = require('debug')('bluesense:rss*');
@@ -21,7 +21,7 @@ let feed = new RSS({
 });
 
 const feed_item = (key, data) => {
-  let title = `Reported at ${moment(data.time * 1000).format('LLLL')} | 
+  let title = `Reported at ${moment(data.time * 1000).tz('Asia/Shanghai').format('LLLL')} | 
   Temperature: ${_.round(data.tc, 2)}°C, 
   Humidity: ${_.round(data.hum, 2)}%, 
   Pressure: ${_.round(data.pressure)} Pa, 
@@ -35,7 +35,7 @@ const feed_item = (key, data) => {
     guid: key, // optional - defaults to url
 //  categories: ['Category 1','Category 2','Category 3','Category 4'], // optional - array of item categories
     author: 'iskyzh@gmail.com (Sky Zhang)', // optional - defaults to feed author property
-    date: moment(data.time * 1000).format('LLLL'), // any format that js Date can parse.
+    date: moment(data.time * 1000).tz('Asia/Shanghai').format('LLLL'), // any format that js Date can parse.
   });
 };
 
