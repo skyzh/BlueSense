@@ -1,5 +1,5 @@
 const admin = require('firebase-admin');
-const moment = require('momenttimezone');
+const moment = require('moment-timezone');
 const _ = require('lodash');
 const RSS = require('rss');
 const debug = require('debug')('bluesense:rss*');
@@ -21,7 +21,7 @@ let feed = new RSS({
 });
 
 const feed_item = (key, data) => {
-  let title = `Reported at ${moment(data.time * 1000).tz('Asia/Shanghai').format('LLLL')} | 
+  let title = `Reported on ${moment(data.time * 1000).tz('Asia/Shanghai').format('LLLL')} | 
   Temperature: ${_.round(data.tc, 2)}°C, 
   Humidity: ${_.round(data.hum, 2)}%, 
   Pressure: ${_.round(data.pressure)} Pa, 
