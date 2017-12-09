@@ -34,6 +34,6 @@ exports.cleanUp = functions.https.onRequest((req, res) => {
 
 exports.feed = functions.https.onRequest((req, res) => {
   require('./rss')().then((xml) => {
-    res.status(200).set('Content-Type', 'application/rss+xml').send(xml);
+    res.status(200).set('Content-Type', 'application/xml').send(xml);
   });
 });
