@@ -39,7 +39,7 @@ module.exports = () => new Promise((resolve, reject) => {
     });
   };
   
-  let feed_data = admin.database().ref('/stat/hourly').orderByKey().limitToLast(100);
+  let feed_data = admin.database().ref('/stat/hourly').orderByKey().limitToLast(168);
   feed_data.once('value').then(snapshot => {
     let __data = [];
     snapshot.forEach(childSnapshot => { __data.push([childSnapshot.key, childSnapshot.val()]); });
