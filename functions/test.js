@@ -7,4 +7,4 @@ var config = {
 
 admin.initializeApp(config);
 
-require('./rss')().then(() => console.log('terminated'));
+require('./rss')().then((data) => console.log(data));

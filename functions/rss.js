@@ -44,7 +44,23 @@ module.exports = () => new Promise((resolve, reject) => {
     let __data = [];
     snapshot.forEach(childSnapshot => { __data.push([childSnapshot.key, childSnapshot.val()]); });
     _.reverse(__data);
-    _.forEach(__data, child => { feed_item(child[0], child[1]); });
-    resolve(feed.xml());
+
+    let outage = admin.database().ref('/data').orderByKey().limitToLast(1);
+    outage.once('value').then(outage => {
+      let __outage = null;
+      outage.forEach(childSnapshot => { __outage = childSnapshot; });
+      if (Date.now() - __outage.val().time * 1000 >= 1000 * 60 * 2) {
+        feed.item({
+          title:  `Service Outage Since ${moment(__outage.val().time * 1000).tz('Asia/Shanghai').format('LLLL')}`,
+          description: ``,
+          url: `https://bluesense.skyzh.xyz/logs/?data=${__outage.key}`, // link to the item
+          guid: `https://bluesense.skyzh.xyz/logs/?data=${__outage.key}`, // optional - defaults to url
+          author: 'iskyzh@gmail.com (Sky Zhang)', // optional - defaults to feed author property
+          date: moment(__outage.val().time * 1000).tz('Asia/Shanghai').format('LLLL'), // any format that js Date can parse.
+        });
+      }
+      _.forEach(__data, child => { feed_item(child[0], child[1]); });
+      resolve(feed.xml());
+    });
   });
 });

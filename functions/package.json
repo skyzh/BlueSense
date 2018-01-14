@@ -3,6 +3,11 @@
   "description": "Cloud Functions for Firebase",
   "dependencies": {
     "@google-cloud/debug-agent": "^2.0.0",
+    "canvas-prebuilt": "^1.6.5-prerelease.1",
+    "d3": "^4.12.0",
+    "d3-axis": "^1.0.8",
+    "d3-node": "^1.1.2",
+    "d3.chart": "^0.3.0",
     "debug": "^3.1.0",
     "firebase-admin": "~4.2.1",
     "firebase-functions": "^0.5.7",
