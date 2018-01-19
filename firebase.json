@@ -8,8 +8,6 @@
       {
         "source": "/feed", "function": "feed"
       }, {
-        "source": "/thumbnail/**", "function": "report"
-      }, {
         "source": "**",
         "destination": "/index.html"
       }

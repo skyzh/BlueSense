@@ -25,7 +25,7 @@ module.exports = () => new Promise((resolve, reject) => {
     feed.item({
       title:  `Reported on ${moment(data.time * 1000).tz('Asia/Shanghai').format('LLLL')}`,
       description: `
-        <img src="https://bluesense.skyzh.xyz/thumbnail/${key}" alt="" />
+        <img src="https://us-central1-bluesense-9e31b.cloudfunctions.net/report/${key}" alt="" />
         <b>Temperature</b>: ${_.round(data.tc, 2)}°C, &nbsp;<br>
         <b>Humidity</b>: ${_.round(data.hum, 2)}%, &nbsp;<br>
         <b>Pressure</b>: ${_.round(data.pressure)} Pa, &nbsp;<br>
