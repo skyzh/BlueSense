@@ -1,9 +1,6 @@
 {
   "name": "functions",
   "description": "Cloud Functions for Firebase",
-  "scripts": {
-    "preinstall": "sudo apt-get update && sudo apt-get -y install libfontconfig1"
-  },
   "dependencies": {
     "@google-cloud/debug-agent": "^2.0.0",
     "canvas-prebuilt": "next",
