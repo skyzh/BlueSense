@@ -37,3 +37,21 @@ exports.feed = functions.https.onRequest((req, res) => {
     res.status(200).set('Content-Type', 'application/xml').send(xml);
   });
 });
+
+exports.feed = functions.https.onRequest((req, res) => {
+  require('./rss')().then((xml) => {
+    res.status(200).set('Content-Type', 'application/xml').send(xml);
+  });
+});
+
+const report = require('express')();
+
+report.get('/:id', (req, res) => {
+  require('./canvas')(req.params.id).then(stream => {
+    res.set('Cache-Control', 'public, max-age=60, s-maxage=31536000');
+    res.writeHead(200, { 'Content-Type': 'image/png' });
+    stream.pipe(res);
+  });
+});
+
+exports.report = functions.https.onRequest(report);

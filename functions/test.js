@@ -7,4 +7,9 @@ var config = {
 
 admin.initializeApp(config);
 
-require('./rss')().then((data) => console.log(data));
+// require('./rss')().then((data) => console.log(data));
+require('./canvas')().then((stream) => {
+  out = require('fs').createWriteStream(__dirname + '/test.png');
+  stream.on('data', (chunk) => out.write(chunk));
+  stream.on('end', () => console.log('complete'));
+});
