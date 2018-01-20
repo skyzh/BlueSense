@@ -25,12 +25,12 @@ module.exports = () => new Promise((resolve, reject) => {
     feed.item({
       title:  `Reported on ${moment(data.time * 1000).tz('Asia/Shanghai').format('LLLL')}`,
       description: `
-        <img src="https://us-central1-bluesense-9e31b.cloudfunctions.net/report/${key}" alt="" />
         <b>Temperature</b>: ${_.round(data.tc, 2)}°C, &nbsp;<br>
         <b>Humidity</b>: ${_.round(data.hum, 2)}%, &nbsp;<br>
         <b>Pressure</b>: ${_.round(data.pressure)} Pa, &nbsp;<br>
         <b>PM10</b>: ${_.round(data.pm10, 2)} µg/m3, &nbsp;<br>
-        <b>PM2.5</b>: ${_.round(data.pm25, 2)} µg/m3
+        <b>PM2.5</b>: ${_.round(data.pm25, 2)} µg/m3<br>
+        <img src="https://us-central1-bluesense-9e31b.cloudfunctions.net/report/${key}" alt="" />
        `,
       url: `https://bluesense.skyzh.xyz/charts/hourly/?data=${key}`, // link to the item
       guid: `https://bluesense.skyzh.xyz/charts/hourly/?data=${key}`, // optional - defaults to url
