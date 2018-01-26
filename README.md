@@ -6,7 +6,7 @@ BlueSense is an open-source IoT platform for domestic environment monitoring. Da
 
 ## Data collected by SkyZH
 
-Visit [BlueSense by SkyZH](https://bluesense.skyzh.xyz/)
+Visit [BlueSense](https://bluesense.skyzh.xyz/)
 
 Subscribe via [RSS Feed](https://bluesense.skyzh.xyz/feed)
 
