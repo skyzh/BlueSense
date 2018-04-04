@@ -1,7 +1,7 @@
 language: node_js
 script: npm run build
 node_js:
-- '7'
+- '8'
 before_script:
 - npm install -g node-gyp
 - cd functions && yarn && cd ..
