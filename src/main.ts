@@ -1,14 +1,14 @@
 import { enableProdMode } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { AppModule } from './app/app.module';
-import * as Firebase from 'firebase';
+import * as firebase from 'firebase/app';
 // depending on the env mode, enable prod mode or add debugging modules
 if (process.env.ENV === 'build') {
   enableProdMode();
 }
 
 if (localStorage.getItem('FORCE_LONGPOLLING')) {
-  Firebase.database['INTERNAL'].forceLongPolling();  
+  firebase.database['INTERNAL'].forceLongPolling();  
 }
 
 export function main() {

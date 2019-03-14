@@ -20,8 +20,8 @@ import { TrendComponent, ChartComponent, ReportComponent, LoadingComponent, Aler
 import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
 
 import { ChartsModule } from 'ng2-charts';
-import { AngularFireModule } from 'angularfire2';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { MomentModule } from 'angular2-moment';
 import { FIREBASE_CONFIG } from './config/firebase';

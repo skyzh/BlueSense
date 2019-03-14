@@ -11,7 +11,7 @@
 }
 
 body {
-  font-family: "Roboto Slab", "Noto Serif", $font-family-sans-serif;
+  font-family: 'Merriweather', $font-family-sans-serif;
 }
 
 .text-bluesense-sub {
@@ -19,5 +19,7 @@ body {
 }
 
 .text-bluesense {
-  color: #1565C0 !important;
+  background-color: #1565C0 !important;
+  color: white !important;
+  padding: 0 1rem;
 }

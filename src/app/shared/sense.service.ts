@@ -3,7 +3,7 @@ import * as _ from 'lodash';
 
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Observable, ReplaySubject } from 'rxjs';
-import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
+import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 
 export interface SenseSummary {
   min: number;

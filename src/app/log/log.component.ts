@@ -2,7 +2,7 @@ import * as _ from 'lodash';
 import { Component, HostListener, OnInit, AfterViewInit } from '@angular/core';
 import { Observable, ReplaySubject } from 'rxjs';
 import { RouteAnimation } from '../const/routeanimation';
-import { AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireDatabase } from '@angular/fire/database';
 @Component({
   selector: 'my-log',
   templateUrl: './log.component.html',

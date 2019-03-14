@@ -1,6 +1,6 @@
 # BlueSense
 
-[![Build Status](https://travis-ci.org/SkyZH/BlueSense.svg?branch=master)](https://travis-ci.org/SkyZH/BlueSense)
+[![Build Status](https://travis-ci.com/SkyZH/BlueSense.svg?branch=master)](https://travis-ci.com/SkyZH/BlueSense)
 
 BlueSense is an open-source IoT platform for domestic environment monitoring. Data are collected from Arduino and Raspberry Pi in SkyZH's home.
 
