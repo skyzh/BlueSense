@@ -38,7 +38,7 @@ const AQI = (data: Array<SenseData>) => {
 };
 
 interface Alert {
-  check: (SenseData) => number;
+  check: (SenseData) => boolean;
   theme: string;
   title: string;
   content: (SenseData) => string;
@@ -303,7 +303,8 @@ export class AlertComponent {
     if (this.alerts) {
       AQI(this.alerts);
       _.forEach(ALERTS, ALERT_GROUP => {
-        _.forEach(ALERT_GROUP, (ALERT: Alert) => {
+        _.forEach(ALERT_GROUP, (alert) => {
+          const ALERT = alert as Alert;
           if (ALERT.check(this.alerts)) {
             this.__alerts.push({
               title: ALERT.title,

@@ -4,6 +4,8 @@ import * as _ from 'lodash';
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Observable, ReplaySubject } from 'rxjs';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/switchMap';
 
 export interface SenseSummary {
   min: number;
@@ -79,12 +81,14 @@ export class SenseWrapper {
 
   public sample(split: number, func?: (data: Array<number>) => number): SenseWrapper {
     this.dataset$ = this.dataset$.map((d => _.map(d, (data: SenseData) => {
-      const __func = func || (data.key == 'time' ? _.last : _.mean);
       data.data = _
         .chain(data.data)
         .chunk(split)
         .map(d => _.filter(d, _.isNumber))
-        .map(v => __func(v))
+        .map(v => {
+          if (func) return func(v);
+          return data.key == 'time' ? _.last(v) : _.mean(v);
+        })
         .value()
       return data;
     })));

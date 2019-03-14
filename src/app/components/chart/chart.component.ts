@@ -1,7 +1,7 @@
 import * as _ from 'lodash';
 
 import { Component, Input, OnChanges, ViewChild, SimpleChanges } from '@angular/core';
-import { Observable } from 'rxjs';
+import { timer } from 'rxjs';
 import { BaseChartDirective } from 'ng2-charts';
 @Component({
   selector: 'blue-chart',
@@ -23,7 +23,7 @@ export class ChartComponent implements OnChanges {
   }
 
   ngOnChanges() {
-    Observable.timer(0).subscribe(d => {
+    timer(0).subscribe(d => {
       this.chart.ngOnChanges({} as SimpleChanges);
       this.chart.chart.update();
     });
