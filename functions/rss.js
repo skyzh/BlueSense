@@ -12,9 +12,9 @@ module.exports = () => new Promise((resolve, reject) => {
     site_url: 'https://bluesense.skyzh.xyz',
   //image_url: 'http://example.com/icon.png',
   //docs: 'http://example.com/rss/docs.html',
-    managingEditor: 'iskyzh@gmail.com (Sky Zhang)',
-    webMaster: 'iskyzh@gmail.com (Sky Zhang)',
-    copyright: '2017 Sky Zhang',
+    managingEditor: 'iskyzh@gmail.com (Alex Chi)',
+    webMaster: 'iskyzh@gmail.com (Alex Chi)',
+    copyright: '2019 Alex Chi',
     language: 'en',
   //categories: [],
     pubDate: new Date(Date.now()),
@@ -35,7 +35,7 @@ module.exports = () => new Promise((resolve, reject) => {
       url: `https://bluesense.skyzh.xyz/charts/hourly/?data=${key}`, // link to the item
       guid: `https://bluesense.skyzh.xyz/charts/hourly/?data=${key}`, // optional - defaults to url
   //  categories: ['Category 1','Category 2','Category 3','Category 4'], // optional - array of item categories
-      author: 'iskyzh@gmail.com (Sky Zhang)', // optional - defaults to feed author property
+      author: 'iskyzh@gmail.com (Alex Chi)', // optional - defaults to feed author property
       date: moment(data.time * 1000).tz('Asia/Shanghai').format('LLLL'), // any format that js Date can parse.
     });
   };
@@ -56,7 +56,7 @@ module.exports = () => new Promise((resolve, reject) => {
           description: ``,
           url: `https://bluesense.skyzh.xyz/logs/?data=${__outage.key}`, // link to the item
           guid: `https://bluesense.skyzh.xyz/logs/?data=${__outage.key}`, // optional - defaults to url
-          author: 'iskyzh@gmail.com (Sky Zhang)', // optional - defaults to feed author property
+          author: 'iskyzh@gmail.com (Alex Chi)', // optional - defaults to feed author property
           date: moment(__outage.val().time * 1000).tz('Asia/Shanghai').format('LLLL'), // any format that js Date can parse.
         });
       }
