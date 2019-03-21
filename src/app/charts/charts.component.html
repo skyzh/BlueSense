@@ -18,6 +18,9 @@
       </ul>
       <ul *ngIf="(type$ | async) == 'hourly'" class="nav nav-pills justify-content-start mb-3">
         <li class="nav-item">
+          <a class="nav-link" routerLink="/charts/hourly/2976/24" routerLinkActive="active">120days</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" routerLink="/charts/hourly/744/6" routerLinkActive="active">30days</a>
         </li>
         <li class="nav-item">
@@ -30,21 +33,10 @@
           <a class="nav-link" routerLink="/charts/hourly/72/1" routerLinkActive="active">3days</a>
         </li>
       </ul>
-      <!--<ul class="nav nav-pills mt-2">
-        <li class="nav-item">
-          <a class="nav-link" (click)="getLast(60 * 24, 12)" href="javascript:">24hrs</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" (click)="getLast(60 * 12, 6)" href="javascript:">12hrs</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" (click)="getLast(60 * 2, 1)" href="javascript:">2hrs</a>
-        </li>
-      </ul>-->
       <span class="text-info"><blue-loading *ngIf="!(dataset$ | async)" text="Retrieving latest data..."></blue-loading></span>
-      <p class="text-muted" *ngIf="lastRefresh$ | async">Reported {{ lastRefresh$ | async | amTimeAgo }} <small>({{ lastRefresh$ | async | amDateFormat: "LLLL" }})</small></p>
-      <p class="text-muted" *ngIf="lastData$ | async">From {{ lastData$ | async | amTimeAgo }} <small>({{ lastData$ | async | amDateFormat: "LLLL" }})</small> to now every {{ sample$ | async }} samples</p>
-
+      <p *ngIf="lastRefresh$ | async">Updated {{ lastRefresh$ | async | amTimeAgo }}</p>
+      <p *ngIf="lastData$ | async">Every {{ sample$ | async }} samples Since {{ lastData$ | async | amTimeAgo }}</p>
+      <p class="text-muted"><small>{{ lastData$ | async | amDateFormat: "L LT" }} ~ {{ lastRefresh$ | async | amDateFormat: "L LT" }}</small></p>
       <div class="row">
         <div class="col-12">
           <div class="card mt-3 px-1">

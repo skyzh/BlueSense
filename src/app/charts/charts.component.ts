@@ -65,7 +65,7 @@ export class ChartsComponent implements OnInit, AfterViewInit {
       { data: d[4].data, label: 'PM2.5' },
       { data: d[3].data, label: 'PM1.0' }
     ]);
-    this.chart_labels$ = this.dataset$.map(d => _.map(d[0].data, d => moment(d).format(this.__type == 'realtime' ? 'LT' : 'MMM D LT')));
+    this.chart_labels$ = this.dataset$.map(d => _.map(d[0].data, d => moment(d).format(this.__type == 'realtime' ? 'LT' : 'M/D LT')));
 
   }
 
