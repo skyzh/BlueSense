@@ -42,7 +42,7 @@
     "firebase": "^5.8.6",
     "font-awesome": "^4.7.0",
     "heat-index": "0.0.3",
-    "lodash": "^4.17.4",
+    "lodash": "^4.17.13",
     "moment": "^2.18.1",
     "ng2-charts": "^1.5.0",
     "ngx-infinite-scroll": "^0.7.2",
