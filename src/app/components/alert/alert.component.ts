@@ -287,6 +287,18 @@ const ALERTS = [
         caption: 'View Logs'
       }
     }
+  ], [
+    {
+      check: (data: Array<SenseData>) => true,
+      theme: 'primary',
+      title: 'Maintenance Mode',
+      content: (data: Array<SenseData>) => `Fatal service interruption was observed a few days ago. There may be problematic data.`,
+      icon: 'wrench',
+      anchor: {
+        url: '/logs',
+        caption: 'View Logs'
+      }
+    }
   ]
 ];
 
