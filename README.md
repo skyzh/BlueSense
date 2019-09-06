@@ -2,9 +2,11 @@
 
 [![Build Status](https://travis-ci.org/SkyZH/BlueSense.svg?branch=master)](https://travis-ci.org/SkyZH/BlueSense)
 
-BlueSense is an open-source IoT platform for domestic environment monitoring. Data are collected from Arduino and Raspberry Pi in SkyZH's home.
+🌈 BlueSense is a low-cost IoT platform for collecting and visualizing environment data. It has been collecting climate data in Shanghai for over 2 years.
 
-## Data collected by SkyZH
+## Demo site
+
+Data are collected in my home in Shanghai, China. Note that since Firebase Realtime Database may not always be available in mainland China, it may take a long time to load the page.
 
 Visit [BlueSense](https://bluesense.skyzh.xyz/)
 
@@ -14,6 +16,4 @@ Subscribe via [Telegram Channel](https://t.me/thebluesense)
 
 ## Screenshots
 
-Find more screenshots of v2.9 in [this issue](https://github.com/SkyZH/BlueSense/issues/5)
-
-![1437c991-1059-4739-a4a3-56a365e26235](https://user-images.githubusercontent.com/4198311/32688348-0a0a7d5e-c70a-11e7-990f-ae909532f02b.PNG)
+<img width="1191" alt="Screen Shot 2019-09-06 at 10 19 23 AM" src="https://user-images.githubusercontent.com/4198311/64396339-e86eff80-d08f-11e9-936b-967ee2ea5069.png">
