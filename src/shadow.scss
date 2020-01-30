@@ -1,0 +1,24 @@
+@import "node_modules/compass-mixins/lib/compass/css3";
+@import "node_modules/bootstrap/scss/bootstrap";
+
+@function makelongshadow($color) {
+  $val: 0px 0px $color;
+  @for $i from 1 through 350 {
+    $val: #{$val}, -#{$i}px #{$i}px #{$color};
+  }
+  @return $val;
+}
+
+@mixin longshadow($color) {
+  text-shadow: makelongshadow($color);
+}
+
+.bs-logo-text {
+  @extend .text-center;
+  font-size: 10vw;
+  @include longshadow(#fff);
+}
+
+.bs-logo-container {
+  background-color: #1565C0;
+}
