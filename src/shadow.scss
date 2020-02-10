@@ -3,8 +3,8 @@
 
 @function makelongshadow($color) {
   $val: 0px 0px $color;
-  @for $i from 1 through 350 {
-    $val: #{$val}, -#{$i}px #{$i}px #{$color};
+  @for $i from 1 through 400 {
+    $val: #{$val}, #{$i}px #{$i}px #{$color};
   }
   @return $val;
 }
@@ -13,12 +13,13 @@
   text-shadow: makelongshadow($color);
 }
 
-.bs-logo-text {
-  @extend .text-center;
-  font-size: 10vw;
-  @include longshadow(#fff);
+body {
+  font-family: 'Bree Serif', serif;
 }
 
-.bs-logo-container {
+.bs-logo-blue {
+  padding: 0 1rem;
+  margin: 0;
   background-color: #1565C0;
+  color: $white;
 }

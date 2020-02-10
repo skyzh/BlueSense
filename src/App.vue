@@ -1,13 +1,8 @@
 <template>
   <div id="app">
-    <div class="col-6">
-      <div class="embed-responsive embed-responsive-1by1">
-        <div
-          class="bs-logo-container embed-responsive-item d-flex flex-column align-item-center justify-content-center"
-        >
-          <h1 class="bs-logo-text">Sense</h1>
-        </div>
-      </div>
+    <div class="text-center" style="margin: 10rem 0">
+      <h1 class="display-2"><span class="bs-logo-blue">Blue</span>Sense</h1>
+      Sense of the Blue Sky
     </div>
   </div>
 </template>
