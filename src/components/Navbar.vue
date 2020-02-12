@@ -45,6 +45,7 @@
         <div class="row justify-content-center">
           <div class="col-md-8 col-lg-6">
             <p class="text-muted small text-center">An open-source project by Alex Chi</p>
+            <p class="text-muted small text-center">We're actively working on this next generation of BlueSense.</p>
             <hr class="mx-1">
           </div>
         </div>
@@ -58,7 +59,7 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 
 @Component
 export default class Navbar extends Vue {
-  @Prop() readonly route: string = ""
+  @Prop({ default: "" }) readonly route!: string
 }
 </script>
 

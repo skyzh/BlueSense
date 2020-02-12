@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Navbar v-bind:route="route" />
-    <RealtimeReport v-bind:realtimeReport="realtimeReport" />
+    <RealtimeReport v-bind:realtimeReport="realtimeReport" v-bind:reportTime="reportTime" />
   </div>
 </template>
 
@@ -20,6 +20,7 @@ import { roundDigit } from "./utils";
 })
 export default class App extends Vue {
   realtimeReport = [0, 0, 0, 0, 0];
+  reportTime = ""
   route = "realtime";
 
   mounted() {
@@ -29,14 +30,15 @@ export default class App extends Vue {
       .limitToLast(1)
       .on("value", snapshot => {
         snapshot.forEach(child => {
-          let val = child.val();
+          const val = child.val();
           this.realtimeReport = [
             roundDigit(val.temp, 2),
             roundDigit(val.hum, 2),
-            roundDigit(val.pa, 0),
+            roundDigit(val.pa, 0) / 1000,
             roundDigit(val.pm25, 2),
             roundDigit(val.pm10, 2)
           ];
+          this.reportTime = (new Date(val.time * 1000)).toString()
         });
       });
   }

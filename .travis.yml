@@ -1,0 +1,15 @@
+language: node_js
+node_js:
+- '13'
+before_script: npm i
+script: npm run build
+before_deploy: rm -rf dist/**/*.map 
+branches:
+  only:
+  - master
+deploy:
+  provider: firebase
+  token:
+    secure: KvlGiNcS9sScag9nEvmko1bi04hVSz3XLISfamg4TL4ti1i1St3q7HlHrYK+8i7erv6jSVEZpEpqJpDMf2c7FngX3qEDMZa5oePuipDfk7ar3++lLf1J7ctodfSQ+bFQldjoIHmmcDuW3n8NSH2iOTVyWqvKr2jT+KoPTXiOPRjNRPwLwUO5rtjcfOxl39YYNkuCZDWFL7ysN/c7H/4aRfCHpBtqqd/FcyIT+ShLNIfs/YOsrcP1a6bApA9yHVcHfCbJFheYqpNOyCsr1vYl51XkFL+ZU7zxz5DV+TKKi9l6Fgq4nGgfWbjM24OGRZ3CRZIGXDjmEOSali9A6vRgYtSbwrC6rVuFzBpz8Uwj22fZ5w2m1WbcYJwiXFODQ2+oO0CZXYzFXMps61xFdwXbUUXR/9AdIzPsWoOqJyl24W2gYlVX/kg/GVQPVI4fFhpkGVKe7xJHvJ+/5Bcj9bgYXX/BSmhcKYUUJWyLK/C2dVf8WGumLvaO1YVfZIRsVuZaEEM3cnVScsqqYbH7YxOO9lrGBQ0U8YLmFcOms1LAobDjWpqLmD7Msp0yyYU0ivueBQTgKb6AHs4LBAtGrajpfJTapEzOMkqMCVX2RRga1rd8u8nnJdXCQ9VLcX5CXgewHLXlVf387AUH0I6vUxB4LJuA9VrB9dp4W8B66bnbOmg=
+  message: Deployed via Travis CI
+  skip_cleanup: true
