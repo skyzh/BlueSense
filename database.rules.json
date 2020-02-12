@@ -1,0 +1,49 @@
+{
+  "rules": {
+    ".read": "true",
+    ".write": "auth != null",
+    "data": {
+      ".indexOn": "time"
+    },
+    "stat": {
+      "hourly": {
+        ".indexOn": "time"
+      }
+    },
+    "checkpoint": {
+      "changning": {
+        "minute": {
+          ".indexOn": "time"
+        },
+        "hour": {
+          ".indexOn": "time"
+        },
+        "day": {
+          ".indexOn": "time"
+        }
+      },
+      "test": {
+        "minute": {
+          ".indexOn": "time"
+        },
+        "hour": {
+          ".indexOn": "time"
+        },
+        "day": {
+          ".indexOn": "time"
+        }
+      },
+      "minhang": {
+        "minute": {
+          ".indexOn": "time"
+        },
+        "hour": {
+          ".indexOn": "time"
+        },
+        "day": {
+          ".indexOn": "time"
+        }
+      }
+    }
+  }
+}

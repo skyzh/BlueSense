@@ -3,15 +3,25 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-    <title><%= htmlWebpackPlugin.options.title %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no, user-scalable=no">
+    <meta name="description" content="BlueSense is a low-cost IoT platform for collecting and visualizing environment data. This is an open-source project by Alex Chi.">
+    <meta name="keywords" Content="bluesense,monitor,report,analytics,opensource,environment,air quality">
+    <title>BlueSense: Sense of Blue Sky</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
   </head>
   <body>
-    <noscript>
-      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
-    </noscript>
-    <div id="app"></div>
+    <div id="app">
+      <div class="sense-overlay d-flex flex-column justify-content-center align-items-center">
+        <h1 class="display-3"><span class="text-bluesense">Blue</span>Sense</h1>
+        <p>Sense of the <span class="text-bluesense-sub">Blue</span> Sky.</p>
+        <p class="small text-muted">An IoT Platform for Visualizing Environment Data</p>
+        <p class="small">&gt; Initializing Application...</p>
+      </div>
+    </div>
     <!-- built files will be auto injected -->
   </body>
 </html>
