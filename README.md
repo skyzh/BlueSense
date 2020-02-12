@@ -1,5 +1,7 @@
 # The BlueSense Project and Mr. Sans
 
+[![Build Status](https://travis-ci.org/skyzh/BlueSense.svg?branch=master)](https://travis-ci.org/skyzh/BlueSense)
+
 🌈 BlueSense is a low-cost IoT platform for collecting and visualizing
 environment data. It has been collecting climate data in Shanghai for over 2 years.
 
@@ -21,7 +23,9 @@ This branch is the next generation of BlueSense. For previous versions,
 refer to [legacy](https://github.com/skyzh/BlueSense/tree/legacy) branch.
 We're still working on this project.
 
-This repo contains frontend of the BlueSense projet.
+This repo contains frontend of the BlueSense project. The next generation of
+BlueSense is built with Vue, which builds and deploys significantly faster
+and has a smaller packaged size than the legacy version using Angular.
 
 ## Related Projects
 

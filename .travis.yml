@@ -1,7 +1,6 @@
 language: node_js
 node_js:
 - '13'
-before_script: npm i
 script: npm run build
 before_deploy: rm -rf dist/**/*.map 
 branches:
