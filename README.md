@@ -41,10 +41,34 @@ It collects data from sensors.
 
 ## Devices required for runnning BlueSense
 
+### Legacy
+<li><a href="https://www.raspberrypi.org/products/raspberry-pi-3-model-b/">Raspberry Pi 3 Model B</a></li>
+<li><i class="fa fa-arrows-v" aria-hidden="true"></i> Serial via <i class="fa fa-bluetooth" aria-hidden="true"></i> BLE</li>
+<li><a href="https://www.dfrobot.com/wiki/index.php/Bluno_Mega_2560_(SKU:DFR0323)">DFRobot Bluno Mega 2560</a></li>
+<li><i class="fa fa-arrows-v" aria-hidden="true"></i> Serial &amp; I2C</li>
+<li><a href="https://www.dfrobot.com/wiki/index.php/Gravity:_I2C_BME280_Environmental_Sensor_(Temperature,_Humidity,_Barometer)_SKU:_SEN0236">Gravity: I2C BME280 Environmental Sensor (Temperature, Humidity, Barometer)</a></li>
+<li><a href="https://www.dfrobot.com/wiki/index.php/PM2.5_laser_dust_sensor_SKU:SEN0177">PM2.5 Laser Dust Sensor</a></li>
+
+### Next Generation
 * Arduino Uno or Arduino Mega: collecting data
-* Raspberry Pi: collecting and analyzing data, running Mr. Sans
+* Raspberry Pi 4B: collecting and analyzing data, running Mr. Sans
 * Sensors: BME280, PM2.5 Sensor
 * HC-42: trasmitting data to Raspberry Pi with Bluetooth Low Energy
+
+## Milestones
+* On February 13 2020, new BlueSense website built with Vue was setup.
+* On February 10 2020, I developed Mr. Sans bot in one day. The Telegram reporting service recovered and
+  came with a new plot design.
+* On February 9 2020, the next generation BlueSense service was set up.
+* On November 29 2019, constant device failure drives me mad, and I decided to stop the BlueSense service.
+* On October 16 2019, I started to work on the next generation of BlueSense.
+* On December 10 2017, Telegram bot and RSS feed were introduced to provide easier access to data.
+* On November 11 2017, BlueSense got a new font applied to all pages and was upgraded to Angular 5.
+* On August 4 2017, BlueSense was back with new sensor devices and new design.
+* On July 26 2017, BlueSense was under maintenance due to constant sensor failure.
+* On May 28 2017, BlueSense was set up.
+* On Apr 2 2016, EnvMonitor was set up, but the service ended one month later. The development of
+  EnvMonitor inspired me to develop the BlueSense project.
 
 ## Chinese Intro
 
