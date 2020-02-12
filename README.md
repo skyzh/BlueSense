@@ -43,9 +43,9 @@ It collects data from sensors.
 
 ### Legacy
 <li><a href="https://www.raspberrypi.org/products/raspberry-pi-3-model-b/">Raspberry Pi 3 Model B</a></li>
-<li><i class="fa fa-arrows-v" aria-hidden="true"></i> Serial via <i class="fa fa-bluetooth" aria-hidden="true"></i> BLE</li>
+<li> ↕️ Serial via BLE</li>
 <li><a href="https://www.dfrobot.com/wiki/index.php/Bluno_Mega_2560_(SKU:DFR0323)">DFRobot Bluno Mega 2560</a></li>
-<li><i class="fa fa-arrows-v" aria-hidden="true"></i> Serial &amp; I2C</li>
+<li> ↕️ Serial & I2C</li>
 <li><a href="https://www.dfrobot.com/wiki/index.php/Gravity:_I2C_BME280_Environmental_Sensor_(Temperature,_Humidity,_Barometer)_SKU:_SEN0236">Gravity: I2C BME280 Environmental Sensor (Temperature, Humidity, Barometer)</a></li>
 <li><a href="https://www.dfrobot.com/wiki/index.php/PM2.5_laser_dust_sensor_SKU:SEN0177">PM2.5 Laser Dust Sensor</a></li>
 
