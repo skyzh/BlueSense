@@ -1,6 +1,8 @@
 <template>
   <div id="data-archive">
-    Data Archive
+    <div class="container">
+        Working in Progress...
+    </div>
   </div>
 </template>
 

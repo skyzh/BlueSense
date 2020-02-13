@@ -7,7 +7,7 @@ environment data. It has been collecting climate data in Shanghai for over 2 yea
 
 [Mr. Sans](https://github.com/skyzh/MrSans/) is the climate reporter 
 of BlueSense. He makes regular report in Telegram channel 
-[Sans loves Monitoring](https://t.me/thebluesense), alerts 
+[Sans loves Monitoring](https://t.me/s/thebluesense), alerts 
 incidents and helps maintain firebase database.
 
 This repo contains frontend part of the BlueSense project, and serves as
@@ -16,7 +16,7 @@ the main portal of issues and wikis for the whole BlueSense project.
 Data on [BlueSense site](https://bluesense.skyzh.xyz) and from Mr. Sans are
 collected from Alex Chi's home.
 
-You may subscribe to [Sans loves Monitoring](https://t.me/thebluesense)
+You may subscribe to [Sans loves Monitoring](https://t.me/s/thebluesense)
 or visit [BlueSense site](https://bluesense.skyzh.xyz) for realtime
 climate data.
 
@@ -102,7 +102,7 @@ Google Firebase 数据库，您就可以搭建属于自己的环境监测平台�
 已经持续监测了两年上海气象情况。
 
 小蓝 (Mr. Sans) 是一个气象数据播报机器人。他每个小时都会把实时气象数据推送到
-[小蓝和他的 BlueSense](https://t.me/thebluesense) 这个 Telegram 频道里。
+[小蓝和他的 BlueSense](https://t.me/s/thebluesense) 这个 Telegram 频道里。
 
 BlueSense 网站上的数据和小蓝在频道中推送的数据都是在 Alex Chi 家里收集的。
 

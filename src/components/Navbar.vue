@@ -25,12 +25,12 @@
               <li>
                 <ul class="list-inline">
                   <li class="list-inline-item"><a href="javascript:" v-on:click="syncedRoute='realtime'" v-bind:class="{ active: syncedRoute == 'realtime' }">&gt; Realtime</a></li>
-                  <li class="list-inline-item"><a href="javascript:" v-on:click="syncedRoute='archive'" v-bind:class="{ active: syncedRoute == 'archive' }">&gt; Archive (WIP)</a></li>
+                  <li class="list-inline-item"><a href="javascript:" v-on:click="syncedRoute='archive'" v-bind:class="{ active: syncedRoute == 'archive' }">&gt; Archive</a></li>
                 </ul>
               </li>
               <li>
                 <ul class="list-inline">
-                  <li class="list-inline-item"><a href="https://t.me/thebluesense">&gt; Mr. Sans on Telegram</a></li>
+                  <li class="list-inline-item"><a href="https://t.me/s/thebluesense">&gt; Mr. Sans on Telegram</a></li>
                 </ul>
               </li>
               <li>
