@@ -1,6 +1,6 @@
 # The BlueSense Project and Mr. Sans
 
-[![Build Status](https://travis-ci.com/skyzh/BlueSense.svg?branch=master)](https://travis-ci.org/skyzh/BlueSense)
+[![Build Status](https://travis-ci.com/skyzh/BlueSense.svg?branch=master)](https://travis-ci.com/skyzh/BlueSense)
 
 🌈 BlueSense is a low-cost IoT platform for collecting and visualizing
 environment data. It has been collecting climate data in Shanghai for over 2 years.
@@ -22,8 +22,8 @@ climate data.
 
 ## Any Question?
 
-Feel free to create any issue regarding the BlueSense project,
-Mr. Sans and the Telegram channel [here](https://github.com/skyzh/BlueSense/issues).
+Feel free to create any issue [here](https://github.com/skyzh/BlueSense/issues) 
+regarding the BlueSense project, Mr. Sans and the Telegram channel.
 We're glad to help and will help sort your issues into related
 projects including Mr. Sans, BlueMarine, BlueSensor.
 

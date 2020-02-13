@@ -28,7 +28,7 @@ import DataArchive from "./components/DataArchive.vue";
 export default class App extends Vue {
   realtimeReport = [0, 0, 0, 0, 0];
   reportTime = "Fetching data...";
-  route = "archive";
+  route = "realtime";
 
   doUpdate() {
     getRealtimeReport().then(result => {
