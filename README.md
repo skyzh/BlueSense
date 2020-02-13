@@ -25,7 +25,11 @@ We're still working on this project.
 
 This repo contains frontend of the BlueSense project. The next generation of
 BlueSense is built with Vue, which builds and deploys significantly faster
-and has a smaller packaged size than the legacy version using Angular.
+and has a smaller bundle size than the legacy version using Angular.
+BlueSense site in this generation focuses on two functionalities: real-time report
+and historical data archive. It's is aimed at reducing bundle size and speeding up loading.
+Therefore, I substitute dependencies such as Angular, firebase and chart.js for
+Vue, firebase REST API and hand-made chart component.
 
 ## Related Projects
 
@@ -60,7 +64,7 @@ It collects data from sensors.
 * On February 10 2020, I developed Mr. Sans bot in one day. The Telegram reporting service recovered and
   came with a new plot design.
 * On February 9 2020, the next generation BlueSense service was set up.
-* On November 29 2019, constant device failure drives me mad, and I decided to stop the BlueSense service.
+* On November 29 2019, constant device failure drived me mad, and I decided to stop the BlueSense service.
 * On October 16 2019, I started to work on the next generation of BlueSense.
 * On December 10 2017, Telegram bot and RSS feed were introduced to provide easier access to data.
 * On November 11 2017, BlueSense got a new font applied to all pages and was upgraded to Angular 5.

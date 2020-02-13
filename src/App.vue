@@ -11,6 +11,7 @@ import Navbar from "./components/Navbar.vue";
 import RealtimeReport from "./components/RealtimeReport.vue";
 import { getRealtimeReport } from "./sense";
 import { roundDigit } from "./utils";
+import * as d3 from "d3";
 
 @Component({
   components: {
@@ -20,7 +21,7 @@ import { roundDigit } from "./utils";
 })
 export default class App extends Vue {
   realtimeReport = [0, 0, 0, 0, 0];
-  reportTime = "";
+  reportTime = "Fetching data...";
   route = "realtime";
 
   doUpdate() {
@@ -40,7 +41,7 @@ export default class App extends Vue {
 
   mounted() {
     this.doUpdate()
-    setInterval(() => this.doUpdate(), 1000 * 30);
+    setInterval(() => this.doUpdate(), 1000 * 10);
   }
 }
 </script>
