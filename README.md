@@ -1,6 +1,6 @@
 # The BlueSense Project and Mr. Sans
 
-[![Build Status](https://travis-ci.org/skyzh/BlueSense.svg?branch=master)](https://travis-ci.org/skyzh/BlueSense)
+[![Build Status](https://travis-ci.com/skyzh/BlueSense.svg?branch=master)](https://travis-ci.org/skyzh/BlueSense)
 
 🌈 BlueSense is a low-cost IoT platform for collecting and visualizing
 environment data. It has been collecting climate data in Shanghai for over 2 years.
