@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Navbar v-bind:route="route" />
+    <Navbar :route.sync="route" />
     <RealtimeReport v-bind:realtimeReport="realtimeReport" v-bind:reportTime="reportTime" v-if="route == 'realtime'"/>
     <DataArchive v-if="route == 'archive'" />
   </div>

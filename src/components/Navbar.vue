@@ -24,8 +24,8 @@
             <ul class="list-unstyled">
               <li>
                 <ul class="list-inline">
-                  <li class="list-inline-item"><a href="#" v-bind:class="{ active: route == 'realtime' }">&gt; Realtime</a></li>
-                  <li class="list-inline-item"><a href="#" v-bind:class="{ active: route == 'archive' }">&gt; Archive (WIP)</a></li>
+                  <li class="list-inline-item"><a href="javascript:" v-on:click="syncedRoute='realtime'" v-bind:class="{ active: syncedRoute == 'realtime' }">&gt; Realtime</a></li>
+                  <li class="list-inline-item"><a href="javascript:" v-on:click="syncedRoute='archive'" v-bind:class="{ active: syncedRoute == 'archive' }">&gt; Archive (WIP)</a></li>
                 </ul>
               </li>
               <li>
@@ -55,11 +55,11 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import { Component, PropSync, Vue } from 'vue-property-decorator';
 
 @Component
 export default class Navbar extends Vue {
-  @Prop({ default: "" }) readonly route!: string
+  @PropSync('route', {type: String}) syncedRoute!: string
 }
 </script>
 
