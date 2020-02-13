@@ -42,9 +42,7 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 
 @Component
 export default class RealtimeReport extends Vue {
-  @Prop({ default: [null, null, null, null, null] }) readonly realtimeReport!: [
-    number
-  ];
+  @Prop({ default: [null, null, null, null, null] }) readonly realtimeReport!: number[];
   @Prop({ default: "" }) readonly reportTime!: string;
 }
 </script>
