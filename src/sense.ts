@@ -1,9 +1,6 @@
 import { FIREBASE_CONFIG } from './config/firebase'
-import * as firebase from "firebase/app"
-import "firebase/database"
 
-firebase.initializeApp(FIREBASE_CONFIG)
-
-const sense = firebase.database()
-
-export default sense
+export function getRealtimeReport() {
+    return fetch(`${FIREBASE_CONFIG.databaseURL}/checkpoint/changning/minute.json?orderBy="time"&limitToLast=1`)
+        .then(result => result.json())
+}

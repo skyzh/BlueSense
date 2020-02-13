@@ -9,7 +9,7 @@
 import { Component, Vue } from "vue-property-decorator";
 import Navbar from "./components/Navbar.vue";
 import RealtimeReport from "./components/RealtimeReport.vue";
-import sense from "./sense";
+import { getRealtimeReport } from "./sense";
 import { roundDigit } from "./utils";
 
 @Component({
@@ -20,27 +20,27 @@ import { roundDigit } from "./utils";
 })
 export default class App extends Vue {
   realtimeReport = [0, 0, 0, 0, 0];
-  reportTime = ""
+  reportTime = "";
   route = "realtime";
 
-  mounted() {
-    sense
-      .ref(`checkpoint/changning/minute/`)
-      .orderByChild("time")
-      .limitToLast(1)
-      .on("value", snapshot => {
-        snapshot.forEach(child => {
-          const val = child.val();
-          this.realtimeReport = [
-            roundDigit(val.temp, 2),
-            roundDigit(val.hum, 2),
-            roundDigit(val.pa, 0) / 1000,
-            roundDigit(val.pm25, 2),
-            roundDigit(val.pm10, 2)
-          ];
-          this.reportTime = (new Date(val.time * 1000)).toString()
-        });
+  doUpdate() {
+    getRealtimeReport().then(result => {
+        const key = Object.keys(result)
+        const val = result[key[0]]
+        this.realtimeReport = [
+          roundDigit(val.temp, 2),
+          roundDigit(val.hum, 2),
+          roundDigit(val.pa, 0) / 1000,
+          roundDigit(val.pm25, 2),
+          roundDigit(val.pm10, 2)
+        ];
+        this.reportTime = new Date(val.time * 1000).toString();
       });
+  }
+
+  mounted() {
+    this.doUpdate()
+    setInterval(() => this.doUpdate(), 1000 * 30);
   }
 }
 </script>

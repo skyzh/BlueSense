@@ -30,7 +30,7 @@
           </dl>
           <div class="row">
             <div class="col">
-              <div class="text-muted small">Updated <timeago :datetime="reportTime"></timeago></div>
+              <div class="text-muted small">{{ reportTime }} </div>
             </div>
           </div>
         </div>
