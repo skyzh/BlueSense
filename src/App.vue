@@ -1,7 +1,8 @@
 <template>
   <div id="app">
     <Navbar v-bind:route="route" />
-    <RealtimeReport v-bind:realtimeReport="realtimeReport" v-bind:reportTime="reportTime" />
+    <RealtimeReport v-bind:realtimeReport="realtimeReport" v-bind:reportTime="reportTime" v-if="route == 'realtime'"/>
+    <DataArchive v-if="route == 'archive'" />
   </div>
 </template>
 
@@ -11,12 +12,13 @@ import Navbar from "./components/Navbar.vue";
 import RealtimeReport from "./components/RealtimeReport.vue";
 import { getRealtimeReport } from "./sense";
 import { roundDigit } from "./utils";
-import * as d3 from "d3";
+import DataArchive from "./components/DataArchive.vue";
 
 @Component({
   components: {
     Navbar,
-    RealtimeReport
+    RealtimeReport,
+    DataArchive
   }
 })
 export default class App extends Vue {

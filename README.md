@@ -29,7 +29,8 @@ and has a smaller bundle size than the legacy version using Angular.
 BlueSense site in this generation focuses on two functionalities: real-time report
 and historical data archive. It's is aimed at reducing bundle size and speeding up loading.
 Therefore, I substitute dependencies such as Angular, firebase and chart.js for
-Vue, firebase REST API and hand-made chart component.
+Vue, firebase REST API and hand-made chart component. Meanwhile I only import
+a small part of Bootstrap.
 
 ## Related Projects
 
