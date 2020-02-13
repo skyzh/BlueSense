@@ -10,6 +10,9 @@ of BlueSense. He makes regular report in Telegram channel
 [Sans loves Monitoring](https://t.me/thebluesense), alerts 
 incidents and helps maintain firebase database.
 
+This repo contains frontend part of the BlueSense project, and serves as
+the main portal of issues and wikis for the whole BlueSense project.
+
 Data on [BlueSense site](https://bluesense.skyzh.xyz) and from Mr. Sans are
 collected from Alex Chi's home.
 
@@ -17,22 +20,31 @@ You may subscribe to [Sans loves Monitoring](https://t.me/thebluesense)
 or visit [BlueSense site](https://bluesense.skyzh.xyz) for realtime
 climate data.
 
+## Any Question?
+
+Feel free to create any issue regarding the BlueSense project,
+Mr. Sans and the Telegram channel [here](https://github.com/skyzh/BlueSense/issues).
+We're glad to help and will help sort your issues into related
+projects including Mr. Sans, BlueMarine, BlueSensor.
+
 ## Legacy Branch
 
 This branch is the next generation of BlueSense. For previous versions,
 refer to [legacy](https://github.com/skyzh/BlueSense/tree/legacy) branch.
 We're still working on this project.
 
-This repo contains frontend of the BlueSense project. The next generation of
+This repo contains frontend part of the BlueSense project. The next generation of
 BlueSense is built with Vue, which builds and deploys significantly faster
 and has a smaller bundle size than the legacy version using Angular.
-BlueSense site in this generation focuses on two functionalities: real-time report
+BlueSense site in this generation serves two main purposes: real-time report
 and historical data archive. It's is aimed at reducing bundle size and speeding up loading.
 Therefore, I substitute dependencies such as Angular, firebase and chart.js for
 Vue, firebase REST API and hand-made chart component. Meanwhile I only import
 a small part of Bootstrap.
 
-## Related Projects
+## The BlueSense Project
+
+The BlueSense Project includes multiple parts.
 
 [Mr. Sans](https://github.com/skyzh/MrSans/) is the climate reporter 
 of BlueSense.
@@ -43,6 +55,14 @@ Prometheus.
 
 [BlueSensor](https://github.com/skyzh/BlueSensor) runs on Arduino. 
 It collects data from sensors.
+
+## Related Works
+
+[BrownSense](https://github.com/PhotonQuantum/BrownSense)
+is yet another environment monitoring tool made by a group
+of students in our school. According to their intro, this is
+a "distributed IoT platform for monitoring and improving
+toilet's indoor air quality."
 
 ## Devices required for runnning BlueSense
 
@@ -61,7 +81,7 @@ It collects data from sensors.
 * HC-42: trasmitting data to Raspberry Pi with Bluetooth Low Energy
 
 ## Milestones
-* On February 13 2020, new BlueSense website built with Vue was setup.
+* On February 13 2020, new BlueSense website built with Vue was set up.
 * On February 10 2020, I developed Mr. Sans bot in one day. The Telegram reporting service recovered and
   came with a new plot design.
 * On February 9 2020, the next generation BlueSense service was set up.
