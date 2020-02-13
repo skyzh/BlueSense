@@ -1,25 +1,51 @@
 <template>
   <div id="data-archive">
-    <div class="container-fluid text-center">
+    <div class="container-fluid d-flex flex-column align-items-center">
+      <div>
+        <DatetimeControl :datetime.sync="fromTime" />~
+        <DatetimeControl :datetime.sync="toTime" />
+      </div>
       <canvas id="chart-canvas" ref="chart-canvas"></canvas>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Ref, Vue } from "vue-property-decorator";
+import { Component, Ref, Vue, Watch } from "vue-property-decorator";
 import { setupCanvas, drawCall } from "../chart";
 import { queryRange } from "../sense";
-
-@Component
+import DatetimeControl from "./DatetimeControl.vue";
+@Component({
+  components: {
+    DatetimeControl
+  }
+})
 export default class DataArchive extends Vue {
   @Ref("chart-canvas") readonly canvas!: HTMLCanvasElement;
+  fromTime = new Date(Date.now() - 86400 * 1000);
+  toTime = new Date(Date.now());
+  ctx!: CanvasRenderingContext2D;
 
   mounted() {
-    const ctx = setupCanvas(this.canvas)
-    const endTime = new Date(Date.now())
-    const startTime = new Date(Date.now() - 86400 * 1000)
-    queryRange(startTime, endTime).then(d => drawCall(ctx, 800, 800, d))
+    this.ctx = setupCanvas(this.canvas);
+    this.onTimeChanged()
+  }
+
+  onTimeChanged() {
+    
+    queryRange(this.fromTime, this.toTime).then(d =>
+      drawCall(this.ctx, 800, 800, d)
+    );
+  }
+
+  @Watch("fromTime")
+  onFromTimeChanged(val: Date, oldVal: Date) {
+    this.onTimeChanged();
+  }
+
+  @Watch("toTime")
+  onToTimeChanged(val: Date, oldVal: Date) {
+    this.onTimeChanged();
   }
 }
 </script>

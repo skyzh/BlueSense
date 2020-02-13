@@ -77,7 +77,7 @@ function drawSeries(ctx: CanvasRenderingContext2D, offsetX: number, offsetY: num
 }
 
 export function drawCall(ctx: CanvasRenderingContext2D, width: number, height: number, data: SenseCheckpoint[]) {
-    console.log(data)
+    ctx.clearRect(0, 0, width, height)
     const seriesHeight = height / 5
     const time = data.map(d => d.time)
     drawSeries(ctx, 0, 0, width, seriesHeight, data.map(d => d.temp), time, "temp")
