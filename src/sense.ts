@@ -13,7 +13,7 @@ export function queryRange(from: Date, to: Date): Promise<SenseCheckpoint[]> {
     return fetch(`${FIREBASE_CONFIG.databaseURL}/checkpoint/changning/minute.json?orderBy="time"&startAt=${fromTimestamp}&endAt=${toTimestamp}`)
         .then(result => result.json())
         .then(result => {
-            return new Promise((resolve, _reject) => {
+            return new Promise(resolve => {
                 const keys = Object.keys(result)
                 const checkpoints: SenseCheckpoint[] = []
                 keys.forEach(key => {

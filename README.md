@@ -8,7 +8,7 @@ environment data. It has been collecting climate data in Shanghai for over 2 yea
 [Mr. Sans](https://github.com/skyzh/MrSans/) is the climate reporter 
 of BlueSense. He makes regular report in Telegram channel 
 [Sans loves Monitoring](https://t.me/s/thebluesense), alerts 
-incidents and helps maintain firebase database.
+incidents and helps maintain Firebase database.
 
 This repo contains frontend part of the BlueSense project, and serves as
 the main portal of issues and wikis for the whole BlueSense project.
@@ -38,8 +38,8 @@ BlueSense is built with Vue, which builds and deploys significantly faster
 and has a smaller bundle size than the legacy version using Angular.
 BlueSense site in this generation serves two main purposes: real-time report
 and historical data archive. It's is aimed at reducing bundle size and speeding up loading.
-Therefore, I substitute dependencies such as Angular, firebase and chart.js for
-Vue, firebase REST API and hand-made chart component. Meanwhile I only import
+Therefore, I substitute dependencies such as Angular, Firebase and chart.js for
+Vue, Firebase REST API and hand-made chart component. Meanwhile I only import
 a small part of Bootstrap.
 
 ## The BlueSense Project
@@ -80,6 +80,18 @@ toilet's indoor air quality."
 * Sensors: BME280, PM2.5 Sensor
 * HC-42: trasmitting data to Raspberry Pi with Bluetooth Low Energy
 
+## Roadmap
+
+The main goal of this project is to create an all-in-one platform for collecting, storing,
+persisting and visualizing any time series. BlueSensor, BlueMarine, Mr. Sans and BlueSense,
+these four projects fulfill those purposes.
+
+- [ ] Polish BlueSense website
+- [ ] Documentation on how data is stored
+- [ ] Data migration from legacy BlueSense
+- [ ] Documentation for self-hosting BlueSense
+- [ ] Sense Config specification. One Sense Config can be deployed to all four projects, specifying which data to monitor and how to analyze.
+
 ## Milestones
 * On February 13 2020, new BlueSense website built with Vue was set up.
 * On February 10 2020, I developed Mr. Sans bot in one day. The Telegram reporting service recovered and
@@ -94,6 +106,20 @@ toilet's indoor air quality."
 * On May 28 2017, BlueSense was set up.
 * On Apr 2 2016, EnvMonitor was set up, but the service ended one month later. The development of
   EnvMonitor inspired me to develop the BlueSense project.
+
+## Notice on Data Usage
+
+Data on [BlueSense site](https://bluesense.skyzh.xyz) and from Mr. Sans are
+collected from Alex Chi's home. You're free to use these data for any purpose.
+I'll later add documentation on how to export data from BlueSense and Firebase.
+
+To be clear, sensors are installed indoor, which means those collected data
+may not reflect real climate situation of Shanghai. There're two main
+causes of data incredibility. 
+
+* Air-purifier may cause lower PM2.5 and PM10 data.
+* Air-conditioner may cause inaccurate temperature data. Generally air-condition is only
+  turned on in summer, so the temperature collected might seem lower than outdoor.
 
 ## Chinese Intro
 

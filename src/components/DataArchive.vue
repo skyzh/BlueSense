@@ -39,12 +39,12 @@ export default class DataArchive extends Vue {
   }
 
   @Watch("fromTime")
-  onFromTimeChanged(val: Date, oldVal: Date) {
+  onFromTimeChanged() {
     this.onTimeChanged();
   }
 
   @Watch("toTime")
-  onToTimeChanged(val: Date, oldVal: Date) {
+  onToTimeChanged() {
     this.onTimeChanged();
   }
 }
