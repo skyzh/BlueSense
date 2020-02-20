@@ -1,4 +1,4 @@
-<img src="https://user-images.githubusercontent.com/4198311/74931440-90983b00-541a-11ea-9f48-132daab67146.png" style="display: block; margin-left: auto; margin-right: auto; width: 50%;">
+<p align="center"><img src="https://user-images.githubusercontent.com/4198311/74931440-90983b00-541a-11ea-9f48-132daab67146.png" width="50%"></p>
 
 # The BlueSense Project and Mr. Sans
 
