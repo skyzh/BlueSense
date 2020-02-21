@@ -31,7 +31,6 @@ projects including Mr. Sans, BlueMarine, BlueSensor.
 
 This branch is the next generation of BlueSense. For previous versions,
 refer to [legacy](https://github.com/skyzh/BlueSense/tree/legacy) branch.
-We're still working on this project.
 
 This repo contains frontend part of the BlueSense project. The next generation of
 BlueSense is built with Vue, which builds and deploys significantly faster
