@@ -57,6 +57,8 @@ Prometheus.
 [BlueSensor](https://github.com/skyzh/BlueSensor) runs on Arduino. 
 It collects data from sensors.
 
+You may set up your own self-hosted BlueSense! Follow instructions [here](BlueSense.org).
+
 ## Related Works
 
 [BrownSense](https://github.com/PhotonQuantum/BrownSense)

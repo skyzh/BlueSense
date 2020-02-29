@@ -1,0 +1,39 @@
+#+title:  Self-hosted BlueSense
+
+
+* The Components of the BlueSense Project
+
+The BlueSense Project has evolved more and more complex from its initial release.
+
+** BlueSense
+
+BlueSense is the web frontend part of the BlueSense Project. It now serves as:
+
+1. Real-time (minute) report 
+2. A data archive and visualization tool
+
+** BlueSensor
+
+BlueSense uses Arduino to grab data from sensors. In Changning station, we use Arduino MEGA2560. In Minhang Station, we use Arduino Uno.
+
+** BlueMarine
+
+BlueMarine runs on Raspberry Pi or other systems with Internet connection and necessary tools. It connects to Arduino with Bluetooth Low Energy technology, reads data from Arduino, and summarizes and processes them. Currently this part is done with Python.
+
+BlueMarine requires many other applications to run on system. Prometheus is required to temporarily store data.
+
+** MrSans
+
+Mr. Sans is an all-in-one utility for notification and data archive. This part of work is done with golang. Currently it achieves the following functionalities:
+
+1. Send log to Telegram channel
+2. Plot
+3. Send hourly and daily report to Telegram Channel
+4. Automatically reset BlueMarine on failure with Grafana webhook
+5. Checkpoint to Google Firebase for long-term data archive
+
+* Setting up self-hosted BlueSense
+
+** Shopping List
+
+- Arduino MEGA2560 (recommended) or Arduino Uno
