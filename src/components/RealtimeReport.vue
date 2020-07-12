@@ -69,6 +69,10 @@ export default class RealtimeReport extends Vue {
   @Prop({ default: false }) readonly ready!: boolean;
   initialized = false;
 
+  mounted() {
+    this.initialized = this.ready;
+  }
+
   @Watch("ready")
   onReady(val: boolean) {
     this.initialized = this.initialized || val;
