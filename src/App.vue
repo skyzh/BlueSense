@@ -2,12 +2,13 @@
   <div id="app">
     <Navbar :route.sync="route" />
     <RealtimeReport
-      v-bind:realtimeReport="realtimeReport"
-      v-bind:reportTime="reportTime"
+      :realtimeReport="realtimeReport"
+      :reportTime="reportTime"
+      :ready="ready"
       v-if="route == 'realtime'"
     />
     <DataArchive v-if="route == 'archive'" />
-    <Alerts />
+    <Alerts v-if="route == 'realtime'" :pastHour="pastHour" />
   </div>
 </template>
 
@@ -15,10 +16,11 @@
 import { Component, Vue } from "vue-property-decorator";
 import Navbar from "./components/Navbar.vue";
 import RealtimeReport from "./components/RealtimeReport.vue";
-import { getRealtimeReport } from "./sense";
+import { getRealtimeReport, queryRange } from "./sense";
 import { roundDigit } from "./utils";
 import DataArchive from "./components/DataArchive.vue";
 import Alerts from "./components/Alerts.vue";
+import SenseCheckpoint from "./checkpoint";
 
 @Component({
   components: {
@@ -30,11 +32,14 @@ import Alerts from "./components/Alerts.vue";
 })
 export default class App extends Vue {
   realtimeReport = [0, 0, 0, 0, 0];
-  reportTime = "Fetching data...";
+  reportTime = "Unknown";
+  ready = false;
   // route = "archive";
   route = "realtime";
+  pastHour: SenseCheckpoint[] = [];
 
   doUpdate() {
+    setTimeout(() => {
     getRealtimeReport().then(result => {
       const key = Object.keys(result);
       const val = result[key[0]];
@@ -46,7 +51,13 @@ export default class App extends Vue {
         roundDigit(val.pm10, 2)
       ];
       this.reportTime = new Date(val.time * 1000).toString();
+      this.ready = true;
     });
+    queryRange(new Date(Date.now() - 3600 * 1000), new Date()).then(result => {
+      this.pastHour = result;
+      this.ready = true;
+    });
+    }, 3000);
   }
 
   mounted() {
@@ -60,4 +71,11 @@ export default class App extends Vue {
 @import "./assets/global";
 @import "./assets/bootstrap";
 @import "./assets/home";
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
 </style>

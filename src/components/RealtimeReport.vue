@@ -3,22 +3,24 @@
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-md-8 col-lg-6">
+          <transition name="fade">
+            <Loading v-if="!ready"></Loading>
+          </transition>
           <div class="card sense-card mb-3">
             <div class="card-body">
-              <p>Changning, Shanghai</p>
               <dl class="mt-1 row">
-                <dt class="col-6 text-uppercase">Temperature</dt>
+                <dt class="col-6 font-italic">Temperature</dt>
                 <dd class="col-6">{{ realtimeReport[0] }} °C</dd>
-                <dt class="col-6 text-uppercase">Humidity</dt>
+                <dt class="col-6 font-italic">Humidity</dt>
                 <dd class="col-6">{{ realtimeReport[1] }} %</dd>
-                <dt class="col-6 text-uppercase">Pressure</dt>
+                <dt class="col-6 font-italic">Pressure</dt>
                 <dd class="col-6">{{ realtimeReport[2] }} kPa</dd>
-                <dt class="col-6 text-uppercase">PM2.5</dt>
+                <dt class="col-6 font-italic">PM2.5</dt>
                 <dd class="col-6">
                   {{ realtimeReport[3] }} µg/m
                   <sup>3</sup>
                 </dd>
-                <dt class="col-6 text-uppercase">PM10</dt>
+                <dt class="col-6 font-italic">PM10</dt>
                 <dd class="col-6">
                   {{ realtimeReport[4] }} µg/m
                   <sup>3</sup>
@@ -26,7 +28,9 @@
               </dl>
               <div class="row">
                 <div class="col">
-                  <div class="text-muted small">{{ reportTime }}</div>
+                  <span class="small">{{ reportTime }}</span>
+                  <br>
+                  <span class="text-muted small">From <em>Changning, Shanghai</em></span>
                 </div>
               </div>
             </div>
@@ -39,11 +43,16 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
+import Loading from "./Loading.vue";
 
-@Component
+@Component({
+  components: { Loading }
+})
 export default class RealtimeReport extends Vue {
-  @Prop({ default: [null, null, null, null, null] }) readonly realtimeReport!: number[];
+  @Prop({ default: [null, null, null, null, null] })
+  readonly realtimeReport!: number[];
   @Prop({ default: "" }) readonly reportTime!: string;
+  @Prop({ default: false }) readonly ready!: boolean;
 }
 </script>
 
