@@ -8,7 +8,9 @@
             <h1 class="display-3">
               <span class="text-bluesense">Blue</span>Sense
             </h1>
-            <p>Sense of the <span class="text-bluesense-sub">Blue</span> Sky.
+            <p>
+              Sense of the
+              <span class="text-bluesense-sub">Blue</span> Sky.
             </p>
           </div>
         </div>
@@ -24,19 +26,52 @@
             <ul class="list-unstyled">
               <li>
                 <ul class="list-inline">
-                  <li class="list-inline-item"><a href="javascript:" v-on:click="syncedRoute='realtime'" v-bind:class="{ active: syncedRoute == 'realtime' }">&gt; Realtime</a></li>
-                  <li class="list-inline-item"><a href="javascript:" v-on:click="syncedRoute='archive'" v-bind:class="{ active: syncedRoute == 'archive' }">&gt; Archive</a></li>
+                  <li class="list-inline-item">
+                    <a
+                      href="javascript:"
+                      v-on:click="syncedRoute='realtime'"
+                      v-bind:class="{ active: syncedRoute == 'realtime' }"
+                    >
+                      <circle-icon size="16"></circle-icon>
+                      Realtime
+                    </a>
+                  </li>
+                  <li class="list-inline-item">
+                    <a
+                      href="javascript:"
+                      v-on:click="syncedRoute='archive'"
+                      v-bind:class="{ active: syncedRoute == 'archive' }"
+                    >
+                      <circle-icon size="16"></circle-icon>
+                      Archive
+                    </a>
+                  </li>
                 </ul>
               </li>
               <li>
                 <ul class="list-inline">
-                  <li class="list-inline-item"><a href="https://t.me/s/thebluesense">&gt; Mr. Sans on Telegram</a></li>
+                  <li class="list-inline-item">
+                    <a href="https://t.me/s/thebluesense">
+                      <rss-icon size="16"></rss-icon>
+                      Mr. Sans
+                    </a>
+                  </li>
                 </ul>
               </li>
               <li>
                 <ul class="list-inline">
-                  <li class="list-inline-item"><a href="https://github.com/skyzh/BlueSense">&gt; GitHub</a></li>
-                  <li class="list-inline-item"><a href="https://skyzh.xyz">&gt; Alex Chi</a></li>
+                  <li class="list-inline-item">
+                    <a href="https://github.com/skyzh/BlueSense">
+                      <github-icon size="16"></github-icon>
+                      Source Code
+                    </a>
+                  </li>
+                  <li class="list-inline-item">
+                    <a href="https://skyzh.xyz">
+                      <arrow-up-right-icon size="16"></arrow-up-right-icon>
+                      Alex Chi
+                    </a>
+                  </li>
                 </ul>
               </li>
             </ul>
@@ -45,8 +80,10 @@
         <div class="row justify-content-center">
           <div class="col-md-8 col-lg-6">
             <p class="text-muted small text-center">An open-source project by Alex Chi</p>
-            <p class="text-muted small text-center">We're actively working on this next generation of BlueSense.</p>
-            <hr class="mx-1">
+            <p
+              class="text-muted small text-center"
+            >We're actively working on this next generation of BlueSense.</p>
+            <hr class="mx-1" />
           </div>
         </div>
       </div>
@@ -55,11 +92,19 @@
 </template>
 
 <script lang="ts">
-import { Component, PropSync, Vue } from 'vue-property-decorator';
+import { Component, PropSync, Vue } from "vue-property-decorator";
+import {
+  CircleIcon,
+  RssIcon,
+  GithubIcon,
+  ArrowUpRightIcon
+} from "vue-feather-icons";
 
-@Component
+@Component({
+  components: { CircleIcon, RssIcon, GithubIcon, ArrowUpRightIcon }
+})
 export default class Navbar extends Vue {
-  @PropSync('route', {type: String}) syncedRoute!: string
+  @PropSync("route", { type: String }) syncedRoute!: string;
 }
 </script>
 

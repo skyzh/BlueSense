@@ -3,13 +3,15 @@
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-md-8 col-lg-6">
-          <Alert
-            v-for="item in items"
-            v-bind:key="item.title"
-            :title="item.title"
-            :color="item.color"
-            :content="item.content"
-          ></Alert>
+          <transition name="fade">
+            <Alert
+              v-for="item in items"
+              v-bind:key="item.title"
+              :title="item.title"
+              :color="item.color"
+              :content="item.content"
+            ></Alert>
+          </transition>
         </div>
       </div>
     </div>

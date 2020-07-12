@@ -63,7 +63,7 @@ function drawSeries(ctx: CanvasRenderingContext2D, name: string, offsetX: number
     const axisX = Axis.fromArray(time, offsetX, offsetX + width, xMargin)
 
     // draw data
-    ctx.lineWidth = 2
+    ctx.lineWidth = 1.5
     ctx.strokeStyle = STROKE_COLOR
     ctx.setLineDash([])
     ctx.beginPath()
@@ -87,6 +87,7 @@ function drawSeries(ctx: CanvasRenderingContext2D, name: string, offsetX: number
     ctx.fill()
 
     // draw vertical split line
+    ctx.lineWidth = 1
     firstCall = true
     ctx.strokeStyle = "#cccccc"
     ctx.setLineDash([8, 8])
