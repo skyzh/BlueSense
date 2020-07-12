@@ -7,6 +7,7 @@
       v-if="route == 'realtime'"
     />
     <DataArchive v-if="route == 'archive'" />
+    <Alerts />
   </div>
 </template>
 
@@ -17,12 +18,14 @@ import RealtimeReport from "./components/RealtimeReport.vue";
 import { getRealtimeReport } from "./sense";
 import { roundDigit } from "./utils";
 import DataArchive from "./components/DataArchive.vue";
+import Alerts from "./components/Alerts.vue";
 
 @Component({
   components: {
     Navbar,
     RealtimeReport,
-    DataArchive
+    DataArchive,
+    Alerts
   }
 })
 export default class App extends Vue {

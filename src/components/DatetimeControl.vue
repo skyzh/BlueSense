@@ -3,7 +3,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Ref, Vue, PropSync } from "vue-property-decorator";
+import { Component, Vue, PropSync } from "vue-property-decorator";
 
 @Component
 export default class DatetimeControl extends Vue {

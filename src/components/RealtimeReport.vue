@@ -48,8 +48,4 @@ export default class RealtimeReport extends Vue {
 </script>
 
 <style scoped lang="scss">
-.sense-card {
-  width: 100%;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 8px 13px rgba(0, 0, 0, 0.1);
-}
 </style>
