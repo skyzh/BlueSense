@@ -1,7 +1,7 @@
 {
   "rules": {
     ".read": "true",
-    ".write": "auth != null",
+    ".write": "false",
     "data": {
       ".indexOn": "time"
     },
