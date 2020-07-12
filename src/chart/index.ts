@@ -63,6 +63,7 @@ function drawSeries(ctx: CanvasRenderingContext2D, name: string, offsetX: number
     const axisX = Axis.fromArray(time, offsetX, offsetX + width, xMargin)
 
     // draw data
+    ctx.lineWidth = 2
     ctx.strokeStyle = STROKE_COLOR
     ctx.setLineDash([])
     ctx.beginPath()
