@@ -68,7 +68,7 @@ export default class App extends Vue {
 
   mounted() {
     this.doUpdate();
-    setInterval(() => this.doUpdate(), 1000 * 5);
+    setInterval(() => this.doUpdate(), 1000 * 20);
   }
 }
 </script>
