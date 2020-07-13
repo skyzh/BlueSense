@@ -61,34 +61,10 @@ function drawSeries(ctx: CanvasRenderingContext2D, name: string, offsetX: number
     const xMargin = 0.1
     const axisY = Axis.fromArray(data, maxY, offsetY, yMargin)
     const axisX = Axis.fromArray(time, offsetX, offsetX + width, xMargin)
-
-    // draw data
-    ctx.lineWidth = 1.5
-    ctx.strokeStyle = STROKE_COLOR
-    ctx.setLineDash([])
-    ctx.beginPath()
     let firstCall = true
-    ctx.moveTo(axisX.posOf(axisX.minData), maxY)
-    for (let i = 0; i < N; i++) {
-        const x = axisX.posOf(time[i])
-        const y = axisY.posOf(data[i])
-        if (firstCall) {
-            ctx.moveTo(x, y)
-            firstCall = false
-        } else {
-            ctx.lineTo(x, y)
-        }
-    }
-    ctx.stroke()
-    ctx.lineTo(axisX.posOf(axisX.maxData), maxY)
-    ctx.lineTo(axisX.posOf(axisX.minData), maxY)
-    ctx.lineTo(axisX.posOf(axisX.minData), axisX.posOf(data[0]))
-    ctx.fillStyle = FILL_COLOR
-    ctx.fill()
 
     // draw vertical split line
     ctx.lineWidth = 1
-    firstCall = true
     ctx.strokeStyle = "#cccccc"
     ctx.setLineDash([8, 8])
     let lstTimeChunk = 0
@@ -119,6 +95,31 @@ function drawSeries(ctx: CanvasRenderingContext2D, name: string, offsetX: number
     ctx.moveTo(axisX.minPos, axisY.minPos)
     ctx.lineTo(axisX.maxPos, axisY.minPos)
     ctx.stroke()
+
+    // draw data
+    firstCall = true
+    ctx.lineWidth = 1.5
+    ctx.strokeStyle = STROKE_COLOR
+    ctx.setLineDash([])
+    ctx.beginPath()
+    ctx.moveTo(axisX.posOf(axisX.minData), maxY)
+    for (let i = 0; i < N; i++) {
+        const x = axisX.posOf(time[i])
+        const y = axisY.posOf(data[i])
+        if (firstCall) {
+            ctx.moveTo(x, y)
+            firstCall = false
+        } else {
+            ctx.lineTo(x, y)
+        }
+    }
+    ctx.stroke()
+    ctx.lineTo(axisX.posOf(axisX.maxData), maxY)
+    ctx.lineTo(axisX.posOf(axisX.minData), maxY)
+    ctx.lineTo(axisX.posOf(axisX.minData), axisX.posOf(data[0]))
+    ctx.fillStyle = FILL_COLOR
+    ctx.fill()
+
 
     // draw text
     ctx.fillStyle = "black"
