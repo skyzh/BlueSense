@@ -1,16 +1,20 @@
 {
   "rules": {
-    ".read": "true",
-    ".write": "false",
     "data": {
+      ".read": "true",
+      ".write": "false",
       ".indexOn": "time"
     },
     "stat": {
       "hourly": {
+        ".read": "true",
+        ".write": "false",
         ".indexOn": "time"
       }
     },
     "checkpoint": {
+      ".read": "true",
+      ".write": "false",
       "changning": {
         "minute": {
           ".indexOn": "time"
