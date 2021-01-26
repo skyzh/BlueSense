@@ -67,7 +67,7 @@
                     </a>
                   </li>
                   <li class="list-inline-item">
-                    <a href="https://skyzh.xyz">
+                    <a href="https://www.skyzh.dev">
                       <arrow-up-right-icon size="16"></arrow-up-right-icon>
                       Alex Chi
                     </a>
